@@ -1,1 +1,9 @@
 /.lake
+blueprint/print/print.aux
+blueprint/print/print.fdb_latexmk
+blueprint/print/print.fls
+blueprint/print/print.log
+blueprint/print/print.out
+blueprint/print/print.pdf
+blueprint/print/print.synctex.gz
+blueprint/src/web.paux
