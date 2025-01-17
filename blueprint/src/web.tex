@@ -1,15 +1,13 @@
-% This file makes a web version of the blueprint
-% It should include all the \usepackage needed for this version.
-% The template includes standard AMS packages.
-% It is otherwise a very minimal preamble (you should probably at least
-% add cleveref and tikz-cd).
+% This file makes a web version of the blueprint It should include all the
+% \usepackage needed for this version. The template includes standard AMS
+% packages. It is otherwise a very minimal preamble (you should probably at
+% least add cleveref and tikz-cd).
 
 \documentclass{report}
 
 \usepackage{amssymb, amsthm, amsmath}
 \usepackage{hyperref}
 \usepackage[showmore, dep_graph]{blueprint}
-
 
 \input{macros/common}
 \input{macros/web}
@@ -18,10 +16,38 @@
 \github{https://github.com/vbeffara/Cours_ED}
 \dochome{https://vbeffara.github.io/Cours_ED/docs}
 
-\title{ED course}
-\author{VB et al.}
+\title{Introduction to proof assistants}
+\author{VB and the course participants}
 
 \begin{document}
 \maketitle
+
+\section*{Installing Lean on your computer}
+
+The whole system is rather heavy on resources, but installing it should be
+straightforward. Ensure that you have a fast connection before starting. Here is
+what I advise you to do:
+\begin{enumerate}
+  \item Collaboration will be \textbf{a lot} smoother if you have a github
+    account with an SSH key activated, details of how to do this depend on your
+    system (and it is not strictly necessary). If you do, tell me what your
+    github name is so that I can add you to the project.
+  \item Install VSCode, available at \url{https://code.visualstudio.com/}.
+  \item Within VSCode, install the \texttt{Lean 4} extension.
+  \item There should be a $\forall$-shaped button appearing in the top-right
+    corner, click it and choose ``Open Project...'' then ``Download project...''
+    and enter the course URL in the dialog: either
+    \url{git@github.com:vbeffara/Cours_ED.git} if you did step 1, or
+    \url{https://github.com/vbeffara/Cours_ED.git} if you didn't. This will
+    download the project to a folder you will choose on your computer.
+  \item VSCode will proceed to install all the necessary pieces for you, after
+    asking for confirmation. (It is possible to install the system by hand, but
+    it is a little involved if you want all the bells and whistles like
+    pre-built libraries and everything, see here:
+    \url{https://leanprover-community.github.io/get_started.html}.)
+  \item Choose to open the newly created project in VSCode.
+  \item That's it, you should now have a functional Lean system.
+\end{enumerate}
+
 \input{content}
 \end{document}
