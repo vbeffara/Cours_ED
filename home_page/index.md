@@ -1,8 +1,7 @@
 ---
+title: Introduction to proof assistants
 usemathjax: true
 ---
-
-# Introduction to proof assistants
 
 ## Installing Lean on your computer
 
