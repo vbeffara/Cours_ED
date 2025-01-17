@@ -15,7 +15,7 @@ what I advise you to do:
   you do, tell me what your github name is so that I can add you to the project.
 2. Install VSCode, available at [https://code.visualstudio.com/]().
 3. Within VSCode, install the `Lean 4` extension.
-4. There should be a $\forall$-shaped button appearing in the top-right corner,
+4. There should be a ∀-shaped button appearing in the top-right corner,
   click it and choose `Open Project...` then `Download project...` and enter the
     course URL in the dialog: either [git@github.com:vbeffara/Cours_ED.git]() if
     you did step 1, or [https://github.com/vbeffara/Cours_ED.git]() if you
