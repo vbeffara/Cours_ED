@@ -1,3 +1,5 @@
--- This module serves as the root of the `CoursED` library.
--- Import modules here that should be built as part of the library.
 import CoursED.Basic
+import CoursED.Demos.«1-Logic»
+import CoursED.Demos.«2-Analysis»
+import CoursED.Demos.«3-Arithmetic»
+import CoursED.Exercises
