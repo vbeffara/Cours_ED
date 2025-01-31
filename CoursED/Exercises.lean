@@ -26,6 +26,24 @@ theorem prime_mod (n : ℕ) (hn : prime n) :
 theorem infinite_primes : ∀ a, ∃ b > a, prime b := by
   sorry
 
+-- Algebra
+
+class group (G : Type) where
+  mul : G → G → G
+  e : G
+  inv : G → G
+  assoc : ∀ a b c, mul (mul a b) c = mul a (mul b c)
+  neutl : ∀ a, mul e a = a
+  neutr : ∀ a, mul a e = a
+  mulinv : ∀ a, mul a (inv a) = e
+
+open group
+
+variable {G : Type} [group G]
+
+theorem group_inv_mul {a b : G} : inv (mul a b) = mul (inv b) (inv a) := by
+  sorry
+
 -- Induction
 
 inductive nat
