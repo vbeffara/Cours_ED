@@ -35,7 +35,8 @@ class group (G : Type) where
   assoc : ∀ a b c, mul (mul a b) c = mul a (mul b c)
   neutl : ∀ a, mul e a = a
   neutr : ∀ a, mul a e = a
-  mulinv : ∀ a, mul a (inv a) = e
+  invl : ∀ a, mul (inv a) a = e
+  invr : ∀ a, mul a (inv a) = e
 
 open group
 
