@@ -4,7 +4,7 @@ def implies (P Q : Prop) : Prop := P → Q
 
 example (P Q : Prop) (hPQ : implies P Q) (hP : P) : Q := by
 
-  -- backward reasining
+  -- backward reasoning
   -- apply hPQ
   -- exact hP
 

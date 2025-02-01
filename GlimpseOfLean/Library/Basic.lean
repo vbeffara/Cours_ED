@@ -1,6 +1,7 @@
 import Mathlib.Data.Real.Basic
 import Mathlib.RingTheory.Ideal.Maps
 import Mathlib.RingTheory.Ideal.Quotient.Defs
+import Mathlib.RingTheory.Ideal.Quotient.Operations
 
 set_option warningAsError false
 -- it would be nice to do this persistently
@@ -77,13 +78,6 @@ lemma ker_lift : ker (Quotient.lift I f H) = map (Quotient.mk I) (ker f) := by
   apply_fun map (Quotient.mk I) at this
   rwa [map_comap_of_surjective _ Quotient.mk_surjective] at this
 
-variable {I f H}
-
-lemma injective_lift_iff : Injective (Quotient.lift I f H) ↔ ker f = I := by
-  have : I ≤ ker f := H
-  rw [injective_iff_ker_eq_bot, ker_lift, map_eq_bot_iff_le_ker, ker_mk]
-  exact ⟨fun h ↦ le_antisymm h this, fun a ↦ le_of_eq_of_le a fun _ a ↦ a⟩
-
 end Ideal
 end prelim
 
@@ -105,4 +99,3 @@ def my : Delab := do
   let stx ← delab args[0]!
   let e := mkIdent `exp
   `(term|$e $stx)
-
