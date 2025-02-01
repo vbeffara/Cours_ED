@@ -15,7 +15,21 @@ theorem continuous_iff (f : ℝ → ℝ) (x₀ : ℝ) :
   · sorry
   · intro h ε hε
     contrapose! h
-    sorry
+    choose! the_x hx using h
+    let u : ℕ → ℝ := fun n => the_x (2 ^ (- (n : ℤ)))
+    use u
+    constructor
+    ·
+      sorry
+    · intro h
+      unfold seq_limit at h
+      specialize h ε hε
+      obtain ⟨N, hN⟩ := h
+      specialize hx (2 ^ (- (N : ℤ))) (by positivity)
+      specialize hN N le_rfl
+      have := hx.2
+      have := this.trans_le hN
+      linarith
 
 -- Arithmetic
 
