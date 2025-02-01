@@ -1,6 +1,6 @@
 name = "Cours_ED"
 version = "0.1.0"
-defaultTargets = ["CoursED"]
+defaultTargets = ["CoursED", "GlimpseOfLean"]
 
 [[lean_lib]]
 name = "CoursED"
