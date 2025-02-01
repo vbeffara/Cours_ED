@@ -8,3 +8,11 @@ blueprint/print/print.pdf
 blueprint/print/print.synctex.gz
 blueprint/src/web.paux
 lake-manifest.json
+blueprint/src/TERred.aux
+blueprint/src/TERred.fdb_latexmk
+blueprint/src/TERred.fls
+blueprint/src/TERred.log
+blueprint/src/TERred.out
+blueprint/src/TERred.pdf
+blueprint/src/TERred.synctex.gz
+blueprint/src/TERred.toc
