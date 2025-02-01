@@ -1,5 +1,5 @@
 import Mathlib
-import CoursED.Demos.«4-Algebra»
+import CoursED.Demos.Algebra
 
 namespace topology
 
