@@ -8,19 +8,32 @@
 % links). It is otherwise a very minimal preamble (you should probably at least
 % add cleveref and tikz-cd).
 
-\documentclass[a4paper]{report}
-
-\usepackage{geometry}
-
+\documentclass[a4paper,11pt]{report}
+\usepackage[margin=3cm]{geometry}
 \usepackage{expl3}
-
 \usepackage{amssymb, amsthm, mathtools}
 \usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=magenta, citecolor=blue]{hyperref}
-
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
 
 \input{macros/common}
 \input{macros/print}
+
+\usepackage[all]{xy}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Théorème}
+\newtheorem{definition}{Définition}
+\newtheorem{lemma}{Lemme}
+\newtheorem{proposition}{Proposition}
+\newtheorem{example}{Exemple}
+\newtheorem{contrex}{Contre-exemple}
+\newtheorem{thmdefi}{Théorème et définition}
+\newtheorem{defippt}{Définition et proposition}
+\newtheorem{corollary}{Corollaire}
+\newtheorem{notation}{Notation}
+\newtheorem{rmq}{Remarque}
 
 \title{ED course}
 \author{VB et al.}
@@ -28,4 +41,5 @@
 \begin{document}
 \maketitle
 \input{content}
+\input{rotation}
 \end{document}

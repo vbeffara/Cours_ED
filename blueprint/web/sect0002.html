@@ -12,9 +12,9 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The proof</title>
+<title>Une preuve : Nombre de rotation</title>
 <link rel="prev" href="sect0001.html" title="Introduction" />
-<link rel="up" href="index.html" title="ED course" />
+<link rel="up" href="index.html" title="Introduction to proof assistants" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
 <link rel="stylesheet" href="styles/showmore.css" />
@@ -25,7 +25,7 @@
 <body>
 <header>
 <svg  id="toc-toggle" class="icon icon-list-numbered "><use xlink:href="symbol-defs.svg#icon-list-numbered"></use></svg>
-<h1 id="doc_title"><a href="index.html">ED course</a></h1>
+<h1 id="doc_title"><a href="index.html">Introduction to proof assistants</a></h1>
 </header>
 
 <div class="wrapper">
@@ -35,7 +35,75 @@
   <a href="sect0001.html"><span class="toc_ref"></span> <span class="toc_entry">Introduction</span></a>
  </li>
 <li class=" active current">
-  <a href="sect0002.html"><span class="toc_ref">1</span> <span class="toc_entry">The proof</span></a>
+  <a href="sect0002.html"><span class="toc_ref">1</span> <span class="toc_entry">Une preuve : Nombre de rotation</span></a>
+  <span class="expand-toc">▼</span>
+  <ul class="sub-toc-1 active">
+     <li class="">
+  <a href="sect0002.html#a0000000005"><span class="toc_ref">1.1</span> <span class="toc_entry">Fondements</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0002.html#a0000000006"><span class="toc_ref">1.1.1</span> <span class="toc_entry">Notations</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000007"><span class="toc_ref">1.1.2</span> <span class="toc_entry">Homéomorphismes: passage au quotient et relèvement</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">Nombre de rotation</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0002.html#a0000000009"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Résultats préliminaires sur les suites sous-additives et sur-additives</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000010"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Définition</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000011"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Premières propriétés</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000012"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Nombre de rotation d’une composée</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000013"><span class="toc_ref">1.3</span> <span class="toc_entry">Continuité du nombre de rotation par rapport à \(T\)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0002.html#a0000000014"><span class="toc_ref">1.3.1</span> <span class="toc_entry">Résultats préliminaires</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000015"><span class="toc_ref">1.3.2</span> <span class="toc_entry">Théorème de continuité</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000016"><span class="toc_ref">1.4</span> <span class="toc_entry">Étude des orbites de \(T\) et classification de Poincaré</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0002.html#a0000000017"><span class="toc_ref">1.4.1</span> <span class="toc_entry">Homéomorphismes transitifs, orbites denses</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000018"><span class="toc_ref">1.4.2</span> <span class="toc_entry">Classification de Poincaré</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000019"><span class="toc_ref">1.5</span> <span class="toc_entry">Ensemble dérivé de \(T\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000020"><span class="toc_ref">1.6</span> <span class="toc_entry">Ouverture : brève étude du cas des homéomorphismes renversant l’orientation</span></a>
+ </li>
+
+  </ul>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -46,146 +114,589 @@
 
 
 <div class="main-text">
-<h1 id="a0000000003">1 The proof</h1>
-<div class="definition_thmwrapper theorem-style-definition" id="def:immersion">
-  <div class="definition_thmheading">
-    <span class="definition_thmcaption">
-    Definition
+<h1 id="a0000000003">1 Une preuve : Nombre de rotation</h1>
+
+<p>Notons \({\mathbb {T}}={\mathbb {R}}/{\mathbb {Z}}\) le <b class="bfseries">tore</b> unidimensionnel, qui est le cercle avec lequel nous allons travailler. Le tore \({\mathbb {T}}\) est homéomorphe au cercle unité de \({\mathbb {R}}^2\). Tout homéomorphisme \(T\) de \({\mathbb {T}}\) s’obtient comme passage au quotient d’un homéomorphisme \(f\) de \({\mathbb {R}}\), appelé <b class="bfseries">relèvement</b> de \(T\), pour lequel la fonction \(x\mapsto f(x+1)-f(x)\) est constante à \(\pm 1\).<br /></p>
+<p>Dans ce TER, nous nous proposons d’étudier plus précisément les homéomorphismes du cercle dont la constante vaut \(+1\), appelés <b class="bfseries">homéomorphismes préservant l’orientation</b>, dont nous noterons l’ensemble \(\mathrm{Hom}^+({\mathbb {T}})\).<br /></p>
+<p>Dans une première partie, nous démontrerons tous les résultats préliminaires importants, notamment autour des relèvements des homéomorphismes de \({\mathbb {T}}\). Dans une deuxième partie, nous introduirons le <b class="bfseries">nombre de rotation</b>, qui est une notion fondamentale caractérisant les homéomorphismes de \(\mathrm{Hom}^+({\mathbb {T}})\). Nous en donnerons quelques premières propriétes. La troisième partie aura pour but d’étudier la continuité du nombre de rotation. Ensuite, nous étudierons dans une quatrième partie les <b class="bfseries">orbites</b> des homémorphismes de \(\mathrm{Hom}^+({\mathbb {T}})\) et nous établirons la <b class="bfseries">classification de Poincaré</b>. Puis, nous travaillerons dans une cinquième partie sur <b class="bfseries">l’ensemble dérivé</b>, qui est une notion propre aux homéomorphismes de \(\mathrm{Hom}^+({\mathbb {T}})\) dont le nombre de rotation est la classe d’un irrationnel. Enfin, nous envisagerons brièvement dans une sixième partie le cas des homéomorphismes <b class="bfseries">renversant l’orientation</b> (ceux dont la constante donnée par le relèvement vaut \(-1\)).<br /></p>
+<p>Les résultats majeurs énoncés dans ce mémoire, dont les preuves ont été retravaillées, sont issus de l’ouvrage de Cornfeld, Fomin et Sinai (<span class="cite">
+	[
+	<a href="sect0002.html#1" >1</a>
+	]
+</span>), ainsi que des travaux de Brin et Stuck (<span class="cite">
+	[
+	<a href="sect0002.html#2" >2</a>
+	]
+</span>). </p>
+<h1 id="a0000000005">1.1 Fondements</h1>
+<h2 id="a0000000006">1.1.1 Notations</h2>
+<p> Introduisons pour commencer quelques notations qui nous serviront pour toute la suite de ce mémoire. </p>
+<div class="notation_thmwrapper theorem-style-definition" id="distance sur R/Z">
+  <div class="notation_thmheading">
+    <span class="notation_thmcaption">
+    Notation
     </span>
-    <span class="definition_thmlabel">1</span>
-    <span class="definition_thmtitle">Immersion</span>
-    <div class="thm_header_extras">
-
-    
-    ✓
-        </div>
-    <div class="thm_header_hidden_extras">
-
-    <a class="icon proof" href="sect0002.html#def:immersion">#</a>
-    
-    
-    
-    <button class="modal lean">L∃∀N</button>
-        <div class="modal-container">
-      <div class="modal-content">
-        <header>
-          <h1>Lean declarations</h1>
-          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        </header>
-        
-        <ul class="uses">
-          
-          <li><a href="https://vbeffara.github.io/Cours_ED/docs/find/#doc/Immersion" class="lean_decl">Immersion</a></li>
-          
-        </ul>
-    
-      </div>
-    </div>
-
-    
-        </div>
-  </div>
-  <div class="definition_thmcontent">
-  <p>   An Immersion is a map that is an immersion. </p>
-
-  </div>
-</div>
-<div class="lemma_thmwrapper theorem-style-plain" id="lem:main">
-  <div class="lemma_thmheading">
-    <span class="lemma_thmcaption">
-    Lemma
-    </span>
-    <span class="lemma_thmlabel">2</span>
-    <span class="lemma_thmtitle">Main lemma</span>
+    <span class="notation_thmlabel">1</span>
     <div class="thm_header_extras">
 
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0002.html#lem:main">#</a>
-    
-    <a class="icon proof" href="sect0002.html#a0000000004"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
+    <a class="icon proof" href="sect0002.html#distance sur R/Z">#</a>
     
     
-    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
-</button>
-        <div class="modal-container">
-      <div class="modal-content">
-        <header>
-          <h1>Uses</h1>
-          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        </header>
-        
-        <ul class="uses">
-          
-          <li><a href="sect0002.html#def:immersion">Definition 1</a></li>
-          
-        </ul>
-    
-      </div>
-    </div>
-
-    
-    
-    <button class="modal lean">L∃∀N</button>
-        <div class="modal-container">
-      <div class="modal-content">
-        <header>
-          <h1>Lean declarations</h1>
-          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        </header>
-        
-        <ul class="uses">
-          
-          <li><a href="https://vbeffara.github.io/Cours_ED/docs/find/#doc/main_lemma" class="lean_decl">main_lemma</a></li>
-          
-        </ul>
-    
-      </div>
-    </div>
-
     
         </div>
   </div>
-  <div class="lemma_thmcontent">
-  <p>    This is the statement of the main lemma </p>
+  <div class="notation_thmcontent">
+  <p>Notons le <b class="bfseries">tore</b> \({\mathbb {T}}={\mathbb {R}}/\mathbb {Z}\) et la <b class="bfseries">projection canonique</b> \(\pi : x \mapsto \overline{x}\) définie de \(\mathbb {R}\) dans \({\mathbb {R}}/\mathbb {Z}\) la projection reliée à la relation d’équivalence sur \(\mathbb {R}\): </p>
+<div class="displaymath" id="a0000000021">
+  \[ x \  \mathcal{R} \  y \Longleftrightarrow x - y \in \mathbb {Z}. \]
+</div>
+<p> On munit \({\mathbb {R}}/\mathbb {Z}\) de la <b class="bfseries">topologie quotient</b>, i.e. la topologie la plus fine qui rend \(\pi \) continue. </p>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000004">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
+<p>Dans la propriété suivante, nous montrons que la topologique quotient sur \({\mathbb {R}}/\mathbb {Z}\) est métrisable. </p>
+<p><b class="bfseries">Distance sur \({\mathbb {R}}/{\mathbb {Z}}\)</b><br />On pose sur \({\mathbb {R}}/{\mathbb {Z}}\) l’application \(\overline{d}\) définie par: </p>
+<div class="displaymath" id="a0000000022">
+  \[ \forall \  \overline{x}, \overline{y} \in {\mathbb {R}}/{\mathbb {Z}},\  \overline{d}(\overline{x},\overline{y})=\inf \lbrace |x'-y'|\  ;\  (x',y')\in \overline{x}\times \overline{y}\rbrace . \]
+</div>
+<p> Alors: </p>
+<ol class="enumerate">
+  <li><p>L’application \(\overline{d}\) ainsi définie est une <b class="bfseries">distance</b> sur \({\mathbb {R}}/{\mathbb {Z}}\). </p>
+</li>
+  <li><p>\(\forall \  \overline{x}, \overline{y} \in {\mathbb {R}}/{\mathbb {Z}},\  \overline{d}(\overline{x},\overline{y})\leq 1/2\) </p>
+</li>
+  <li><p>L’application \(\pi \) est \(1\)-lipschitzienne de \(({\mathbb {R}}, |.|)\) dans \(({\mathbb {R}}/{\mathbb {Z}}, \overline{d})\), donc <b class="bfseries">continue</b>. </p>
+</li>
+  <li><p>\(\forall \  x \in {\mathbb {R}},\  \forall r{\gt}0,\  \pi (B(x,r))=B_{\overline{d}}(\overline{x},r)\) </p>
+</li>
+  <li><p>L’application \(\pi \) est <b class="bfseries">ouverte</b> de \(({\mathbb {R}},|.|)\) dans \(({\mathbb {R}}/{\mathbb {Z}})\). </p>
+</li>
+  <li><p>La distance \(\overline{d}\) définit la <b class="bfseries">topologie quotient</b> sur \({\mathbb {R}}/{\mathbb {Z}}\). </p>
+</li>
+</ol>
+
+<p><b class="bfseries">Preuve:</b> </p>
+<p><b class="bfseries">1)</b> Montrons dans un premier temps que pour \(\overline{x}, \overline{y} \in {\mathbb {R}}/{\mathbb {Z}}\), la borne inférieure définissant \(\overline{d}(\overline{x},\overline{y})\) est atteinte. Soient \(\overline{x}, \overline{y}\in {\mathbb {R}}/{\mathbb {Z}}\). On a: </p>
+<div class="displaymath" id="a0000000023">
+  \begin{eqnarray*}  \overline{d}(\overline{x},\overline{y})& =& \inf \big\lbrace |(x+k_1)-(y+k_2)|\  ;\  (k_1,k_2)\in {\mathbb {Z}}^2\big\rbrace \\ & =& \inf \big\lbrace |x_0-y_0+k|\  ;\  k \in {\mathbb {Z}}\big\rbrace \end{eqnarray*}
+</div>
+<p>De plus, pour tout \(k \in {\mathbb {Z}}\), \(|x_0-y_0 +k|\geq |k|-|x_0-y_0|\). </p>
+<p>Comme \(\overline{d}(\overline{x},\overline{y})\leq |x-y|\), on a donc: </p>
+<div class="displaymath" id="a0000000024">
+  \[ \overline{d}(\overline{x},\overline{y})= \min \lbrace |x_0-y_0+k|\  ;\  k \in {\mathbb {Z}}\text{ tel que } |k|\leq 2|x-y|\rbrace . \]
+</div>
+<p> C’est ainsi le minimum d’un ensemble fini et donc \(\overline{d}(\overline{x},\overline{y})\) est atteinte.<br /></p>
+<p>De plus, l’application \(\overline{d}\) vérifie l’axiome de séparation. Soient \(\overline{x}, \overline{y} \in {\mathbb {R}}/{\mathbb {Z}}\) telles que \(\overline{d}(\overline{x},\overline{y}) = 0\). Comme la borne inférieure définissant \(\overline{d}(\overline{x},\overline{y})\) est atteinte, il existe \(x_0 \in \overline{x}\) et \(y_0 \in \overline{y}\) telles que \(\overline{d}(\overline{x},\overline{y})=|x_0-y_0|=0\). Ainsi, \(x_0=y_0\) et donc \(\overline{x}= \overline{y}\).<br /></p>
+<p>La symétrie découle de la parité de la valeur absolue \(|.|\) sur \({\mathbb {R}}\) .<br /></p>
+<p>Enfin, soient \(\overline{x},\overline{y}, \overline{z} \in {\mathbb {R}}/{\mathbb {Z}}\). Comme la borne inférieure définissant \(\overline{d}\) est atteinte, il existe \(x'\in \overline{x}\), \(y'\) et \(y'' \in \overline{y}\), \(z' \in \overline{z}\) tels que \(\overline{d}(\overline{x},\overline{y})=|x'-y'|\) et \(\overline{d}(\overline{y},\overline{z})=|y''-z'|\). Quitte à soustraire à \(y''\) une certaine constante entière \(k\), et à retrancher cette même constante à \(z'\), on peut supposer que \(y'=y''\). Ainsi, en utilisant l’inégalité triangulaire sur \(|.|\): </p>
+<div class="displaymath" id="a0000000025">
+  \[ \overline{d}(\overline{x},\overline{z})\leq |x'-z'| \leq |x'-y'|+|y'-z'|\leq \overline{d}(\overline{x},\overline{y})+\overline{d}(\overline{y},\overline{z}) \]
+</div>
+<p> Ainsi, l’application \(\overline{d}\) définit bien une métrique sur \({\mathbb {R}}/{\mathbb {Z}}\).<br /></p>
+<p><b class="bfseries">2)</b> Soient \(\overline{x}, \overline{y} \in {\mathbb {R}}/{\mathbb {Z}}\). Notons \(x'\) et \(y'\) les représentants de \(\overline{x}\) et \(\overline{y}\) dans \([0,1[\). Supposons, sans perte de généralité, que \(x'\leq y'\). Alors, \(y'-x'\) et \(1-y'+x'\) sont positifs de somme \(1\) donc l’un des deux au moins est inférieur (ou égal) à \(1/2\). De plus, comme \(\overline{d}(\overline{x},\overline{y})\leq |y-x| \) et \(\overline{d}(\overline{x},\overline{y})\leq |x-y+1|\) on obtient \(\overline{d}(\overline{x},\overline{y})\leq 1/2\).<br /></p>
+<p><b class="bfseries">3)</b> Soient \(x,y \in {\mathbb {R}}\). Par définition de \(\overline{d}\), on a \(\overline{d}(\pi (x),\pi (y))=\overline{d}(\overline{x},\overline{y})\leq |x-y|\). Donc l’application \(\pi \) est \(1\)-lipschitzienne donc continue de \((\mathbb {R},|.|)\) dans \(({\mathbb {R}}/\mathbb {Z},\overline{d})\). <br /></p>
+<p><b class="bfseries">4)</b> Soient \(x \in {\mathbb {R}}\) et \(r{\gt}0\). On a \(\pi (B(x,r))\subset B_{\overline{d}}(\overline{x},r)\) car \(\pi \) est \(1\)-lipschitzienne. Montrons l’autre inclusion. Soit \(\overline{y} \in B_{\overline{d}}(\overline{x},r)\). Alors: </p>
+<div class="displaymath" id="a0000000026">
+  \[ r{\gt}\overline{d}(\overline{x},\overline{y})= \min \lbrace |x-y-k|\  ;\  k \in {\mathbb {Z}}\rbrace  \]
+</div>
+<p> On peut alors choisir l’entier \(k_0\) qui réalise ce minimum. Alors, \(y+k_0 \in B(x,r)\) et donc \(\pi (y+k_0)= \overline{y} \in B_{\overline{d}}(\overline{x},r)\). D’où \(B_{\overline{d}}(\overline{x},r) \subset \pi (B(x,r))\) et l’égalité souhaitée.<br /></p>
+<p><b class="bfseries">5)</b> Cette propriété découle du point <b class="bfseries">4</b>.<br /></p>
+<p><b class="bfseries">6)</b>Montrons que cette distance définit la topologie quotient sur \({\mathbb {R}}/{\mathbb {Z}}\), c’est-à-dire la topologie la plus fine qui rend la projection canonique \(\pi \) continue. Par le point <b class="bfseries">3</b>, \(\pi \) est continue pour la topologie associée à \(\overline{d}\): cette topologie est donc moins fine que la topologie quotient.<br /></p>
+<p>Soit \(U\) un ouvert de \({\mathbb {R}}/{\mathbb {Z}}\) pour la topologie quotient. Alors \(\pi ^{-1}(U)\) est un ouvert de \(({\mathbb {R}}, |.|)\). Comme \(\pi \) est surjective, \(U=\pi (\pi ^{-1}(U))\). Comme \(\pi \) est ouverte de \(({\mathbb {R}},|.|)\) dans \(({\mathbb {R}}/{\mathbb {Z}},\overline{d})\) par le point <b class="bfseries">5</b>, \(U\) est ouvert pour la topologie associée à la distance \(\overline{d}\), qui est ainsi plus fine que la topologie quotient, ce qui permet de conclure. \(\square \)<br /></p>
+<div class="notation_thmwrapper theorem-style-definition" id="a0000000027">
+  <div class="notation_thmheading">
+    <span class="notation_thmcaption">
+    Notation
     </span>
-    <span class="expand-proof">▶</span>
+    <span class="notation_thmlabel">2</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000027">#</a>
+    
+    
+    
+        </div>
   </div>
-  <div class="proof_content">
-  <p>The proof is missing. </p>
+  <div class="notation_thmcontent">
+  <p>Notons \(\mathcal{E}^+\) (resp. \({\mathcal{E}}^-\)) l’ensemble des fonctions de \(\mathbb {R}\) dans \(\mathbb {R}\) <b class="bfseries">continues</b>, <b class="bfseries">strictement croissantes</b> (resp. <b class="bfseries">strictement décroissantes</b>) telles que pour tout \(x \in \mathbb {R}\), \(f(x+1) = f(x)+1\) (resp. \(f(x+1)=f(x)-1\)). Notons \({\mathcal{E}}= {\mathcal{E}}^+ \cup {\mathcal{E}}^-\). </p>
 
   </div>
 </div>
-<div class="theorem_thmwrapper theorem-style-plain" id="thm:sphere_eversion">
+<p> On peut facilement démontrer que: </p>
+<div class="proposition_thmwrapper theorem-style-plain" id="E+">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">1</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#E+">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p><b class="bfseries">Propriétés autour de \({\mathcal{E}}^+\)</b> </p>
+<ol class="enumerate">
+  <li><p>(\({\mathcal{E}}\),\(\circ \)) et (\(\mathcal{E}^+\),\(\circ \)) sont des sous-groupes de \(\mathrm{Hom}(\mathbb {R})\). </p>
+</li>
+  <li><p>Pour tout \(f \in \mathcal{E}^+\), \(f - \mathrm{Id_{\mathbb {R}}}\) est continue et \(1-\)périodique sur \(\mathbb {R}\), donc bornée et uniformément continue. </p>
+</li>
+  <li><p>Pour tout \(f \in \mathcal{E}^+\), \(f\) est uniformément continue sur \(\mathbb {R}\). </p>
+</li>
+  <li><p>Par récurrence, on démontre facilement que pour tous \(f \in \mathcal{E}^+\), \(k \in \mathbb {Z}\), et \(x \in \mathbb {R}\), \(f(x+k)=f(x)+k\) et \(f^k(x+1)=f^k(x)+1\) (\(f^k\) désigne la composée et non le produit). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<div class="notation_thmwrapper theorem-style-definition" id="a0000000028">
+  <div class="notation_thmheading">
+    <span class="notation_thmcaption">
+    Notation
+    </span>
+    <span class="notation_thmlabel">3</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000028">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="notation_thmcontent">
+  <p><b class="bfseries">Attention !</b> Précisons que pour tout \(f: {\mathbb {R}}\to {\mathbb {R}}\) et tout \(n\in \mathbb {N}\), \(f^n\) désignera la <b class="bfseries">composée</b> \(f\circ ...\circ f\) (\(n\) fois) et non le produit de \(f\) avec elle-même \(n\) fois. </p>
+
+  </div>
+</div>
+<h2 id="a0000000007">1.1.2 Homéomorphismes: passage au quotient et relèvement</h2>
+<p> Nous pouvons relier les homéomorphismes de \({\mathbb {T}}\) aux homéomorphismes de \({\mathbb {R}}\). Le théorème suivant démontre qu’à tout élément de \({\mathcal{E}}\) correspond un unique homéomorphisme de \({\mathbb {T}}\). </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="passage au quotient">
   <div class="theorem_thmheading">
     <span class="theorem_thmcaption">
     Theorem
     </span>
-    <span class="theorem_thmlabel">3</span>
-    <span class="theorem_thmtitle">Smale 1958</span>
+    <span class="theorem_thmlabel">2</span>
     <div class="thm_header_extras">
 
-    
-    ✓
         </div>
     <div class="thm_header_hidden_extras">
 
-    <a class="icon proof" href="sect0002.html#thm:sphere_eversion">#</a>
+    <a class="icon proof" href="sect0002.html#passage au quotient">#</a>
     
-    <a class="icon proof" href="sect0002.html#a0000000005"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
-</a>
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> <b class="bfseries">Passage au quotient</b><br />Soit \(f\in {\mathcal{E}}\), i.e. \(f: \mathbb {R} \to \mathbb {R}\) une fonction continue et strictement monotone telle que \(x\mapsto f(x+1) -f(x)\) est constante égale à \(\pm 1\).<br />Alors, il existe une unique application \(T_f \in \mathrm{Hom}({\mathbb {T}})\), telle que \(T_f\circ \pi = \pi \circ f\). </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>On vérifie que \(\pi \circ f\) est constante sur les classes d’équivalences de \({\mathbb {R}}/\mathbb {Z}\). Soient \(x,y \in \mathbb {R}\) tels que \(\pi (x)= \pi (y)\), il existe \(k \in \mathbb {Z}\) tel que \(x= y +k\). Ainsi, \(f(x)=f(y+k)=f(y)\pm k\) et donc \(\pi (f(x))=\pi (f(y)\pm k)=\pi (f(x))\). Donc, par théorème d’isomorphisme, il existe une unique application \(T_f\) tel que \(T_f\circ \pi =\pi \circ f\).<br /></p>
+<p>De plus, \(T_f\) est surjective car \(f\) et \(\pi \) le sont. Montrons que \(T_f\) est injectif. Soient \(\overline{x}\), \(\overline{y} \in {\mathbb {R}}/\mathbb {Z}\) tels que \(T_f(\overline{x})= T_f(\overline{y})\). Alors, comme \(T_f\circ \pi =\pi \circ f\), \(\overline{f(x)}=\overline{f(y)}\). Ainsi, il existe \(k \in \mathbb {Z}\), tel que \(f(x)=f(y)+k=f(y\pm k)\). Et comme f est bijective, on obtient que \(x=y\pm k\), et donc \(\overline{x}=\overline{y}\). Donc \(T_f\) est une application bijective de \({\mathbb {T}}\).<br /></p>
+<p>Il reste à montrer que \(T_f\) et \(T_f^{-1}\) sont continues, ce qui est immédiat car \(T_f\circ \pi =\pi \circ f\) et \(T_f^{-1}\circ \pi =\pi \circ f^{-1}\), et que \(f\) et \(f^{-1}\) sont continues, tout comme \(\pi \) pour la topologie quotient. \(\square \)<br /></p>
+<div class="displaymath" id="a0000000029">
+  \[ \Large \xymatrix {{\mathbb {R}}\ar [r]^f \ar [dr]^{\pi \circ f}\ar [d]_\pi & {\mathbb {R}}\ar [d]^\pi \\ {\mathbb {R}}/{\mathbb {Z}} \ar [r]_{T_f}& {\mathbb {R}}/{\mathbb {Z}}} \]
+</div>
+
+<p>On peut énoncer une réciproque du théorème précédent, et montrer qu’à tout homéomorphisme de \({\mathbb {T}}\) on peut faire correspondre un homéomorphisme de \({\mathbb {R}}\), unique à une constante entière additive près. Commençons par un lemme qui servira à établir cette réciproque.<br /></p>
+<div class="lemma_thmwrapper theorem-style-plain" id="préli relèvement">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">3</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#préli relèvement">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> Soit \(y_0 \in {\mathbb {R}}\), et \(\varepsilon \in \  ]0,1/2[\). La restriction de \(\pi \) à \([y_0-\varepsilon , y_0 +\varepsilon ]\) est un homéomorphisme de \([y_0-\varepsilon , y_0 +\varepsilon ]\) vers son image. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve :</b> \(\pi |_{[y_0-\varepsilon ,\  y_0 +\varepsilon ]}\) est injective donc définit une bjection de \([y_0-\varepsilon , y_0 +\varepsilon ]\) vers son image. Cette bjiection est continue car \(\pi \) l’est. Pour tout fermé \(F\) de \([y_0-\varepsilon , y_0 +\varepsilon ]\), \(\pi (F)\) est compact, donc fermé dans \(\pi ([y_0-\varepsilon , y_0 +\varepsilon ])\). Donc la bijection réciproque est continue. \(\square \)<br /></p>
+<div class="thmdefi_thmwrapper theorem-style-definition" id="relèvement des homémorphismes">
+  <div class="thmdefi_thmheading">
+    <span class="thmdefi_thmcaption">
+    Théorème et définition
+    </span>
+    <span class="thmdefi_thmlabel">1</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#relèvement des homémorphismes">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="thmdefi_thmcontent">
+  <p> <b class="bfseries">Relèvement des homéomorphismes</b><br />Tout homéomorphisme \(T\) de \({\mathbb {T}}\) s’obtient par passage au quotient d’une application continue et strictement monotone \(f:\mathbb {R} \to \mathbb {R}\) telle que la fonction \(x \mapsto f(x+1) -f(x)\) est constante égale à \(+1\) ou \(-1\). On a alors \(T \circ \pi = \pi \circ f\). Une telle application \(f\) s’appelle un <b class="bfseries">relèvement</b> de \(T\). Elle est unique à une constante additive entière près.<br />Lorsque la constante \(f(x+1)-f(x)\) vaut \(+1\), \(f \in \mathcal{E}^+\) et \(T \in \mathrm{Hom}^+({\mathbb {T}})\). On dit que \(T\) <b class="bfseries">préserve l’orientation</b>.<br />Lorsque la constante \(f(x+1)-f(x)\) vaut \(-1\), \(f \in \mathcal{E}^-\) et \(T \in \mathrm{Hom}^-({\mathbb {T}})\). On dit que \(T\) <b class="bfseries">renverse l’orientation</b>. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Soit \(T\) un homéomorphisme de \({\mathbb {T}}\). </p>
+<p>Unicité: </p>
+<p>Montrons l’unicité du relèvement à addition d’un entier près. Soient \(f_1, f_2\) telles que \(T \circ \pi = \pi \circ f_1\) et \(T \circ \pi = \pi \circ f_2\). On a alors \(\overline{f_1}=\overline{f_2}\). La fonction \(f_1 - f_2\) est continue et à valeurs dans \(\mathbb {Z}\), donc d’après le théorème de valeurs intermédiaires, \(f_1 - f_2\) est constante, il existe \(k \in \mathbb {Z}\) tel que pour tout \(x \in \mathbb {R}, f_1(x)=f_2(x)+k\).<br /></p>
+<p>Existence: </p>
+<p>Fixons \(y_0 \in {\mathbb {R}}\) tel que \(\overline{y_0}= \pi (y_0)=T(\pi (0))=T(\overline{0})\). Notons \(\beta = \sup E\), où </p>
+<div class="displaymath" id="a0000000030">
+  \[ E=\lbrace b \in {\mathbb {R}}^*_+:\exists f \in \mathcal{C}([0,b[,{\mathbb {R}}):f(0)=y_0\text{ et }T \circ \pi = \pi \circ f \text{ sur }[0,b[\rbrace . \]
+</div>
+<p>En fixant \(\varepsilon \in ]0,1/2[\) et en appliquant le lemme <a href="sect0002.html#préli relèvement">3</a> à l’intervalle \([y_0-\varepsilon ,y_0+\varepsilon ]\) on obtient par composition une application \(f\) continue telle que \(f(0)=y_0\) et \(T \circ \pi = \pi \circ f\) sur \([0,\varepsilon [\). Ainsi, \(E\neq \emptyset \) et donc \(\beta \in {\mathbb {R}}^*_+ \cup \lbrace + \infty \rbrace \).<br /></p>
+<p>De plus, si \(\beta _1,\beta _2 \in E\) et \(f_1 \in \mathcal{C}([0,b_1], {\mathbb {R}})\) et \(f_2\in \mathcal{C}([0,b_2], {\mathbb {R}})\) vérifient \(f_1(0)=f_2(0)=y_0\), \(T \circ \pi = \pi \circ f_1\) et \(T \circ \pi = \pi \circ f_2\). Alors \(\pi \circ f_1 = \pi \circ f_2\) sur \([0, \min (b_1,b_2)]\), d’après le théorème des valeurs intermédiaires \(f_1 - f_2\) est constante à valeurs dans \(\mathbb {Z}\). Or, comme \(f_1(0)=f_2(0)\), on a donc \(f_1 = f_2\) sur \([0, \min (b_1,b_2)]\). <br /></p>
+<p>On peut donc définir de façon cohérente \(f_0:[0,\beta [\to {\mathbb {R}}\) continue telle que \(f(0)=y_0\) et \(T \circ \pi = \pi \circ f_0\) sur \([0,\beta [\), en posant pour tout \(x\in [0,\beta [\), \(f_0(x)=f(x)\) pour tout \(b\in E\) et \(f \in \mathcal{C}([0,b],{\mathbb {R}})\) telle que \(f(0)=y_0\) et \(T \circ \pi = \pi \circ f\).<br /></p>
+<p>Il reste à montrer que \(\beta = + \infty \). Par l’absurde, supposons que \(\beta {\lt} + \infty \). Fixons \(\varepsilon \in ]0,1/2[\). Par continuité de \(T\circ \pi \), il existe \(\delta {\gt}0\), tel que: </p>
+<div class="displaymath" id="a0000000031">
+  \[ \forall t \in [\beta - \delta ,\beta +\delta ],  \mathrm{dist}_{{\mathbb {R}}/\mathbb {Z}}(T(\overline{\beta }),T(\overline{t}))\leq \varepsilon . \]
+</div>
+<p> Soit \(y_{\beta }\in {\mathbb {R}}\) tel que \(\overline{y_\beta }=\pi (y_\beta )=T(\overline{\beta })\). En appliquant le lemme <a href="sect0002.html#préli relèvement">3</a> à \([y_\beta -\varepsilon ,y_\beta +\varepsilon ]\), on obtient par composition une application \(g\) de \([y_\beta -\varepsilon ,y_\beta + \varepsilon ]\) dans \({\mathbb {R}}\) telle que \(T\circ \pi =\pi \circ g\) sur \([y_\beta -\varepsilon ,y_\beta + \varepsilon ]\). Sur \([y_\beta - \varepsilon , y_\beta [\), on a \(\pi \circ f_0= \pi \circ g\), donc la fonction continue \(g-f_0\) est constante à valeurs dans \(\mathbb {Z}\). Quitte à retrancher cette constante à \(g\), on peut supposer que \(f_0\) et \(g\) coïncident sur \([y_\beta - \varepsilon , y_\beta [\). En recollant \(f_0\) et \(g\), on voit que \(\beta + \delta \in E\), ce qui contredit la définition de \(\beta \). Ainsi, \(\beta = + \infty \) et il existe \(f_0 \in \mathcal{C}([0,+\infty [)\) continue telle que \(f(0)=y_0\) et \(T \circ \pi = \pi \circ f_0\).<br /></p>
+<p>De façon symétrique on peut construire une fonction \(g_0:]-\infty ,0]\to {\mathbb {R}}\) continue telle que \(g_0(0)=y_0\) et \(T \circ \pi = \pi \circ g_0\). En recollant \(g_0\) et \(f_0\), on obtient une fonction \(f \in \mathcal{C}({\mathbb {R}},{\mathbb {R}})\) telle que \(\pi \circ f = T \circ \pi \).<br /></p>
+<p>Or, pour tout \(a \in {\mathbb {R}}\), \(\pi \circ f=T\circ \pi \) est injective sur l’intervalle \([a,a+1[\), donc \(f\) est également injective sur cet intervalle. Et comme \(f\) est continue sur \({\mathbb {R}}\), \(f\) est strictement monotone sur \([a,a+1[\). Or le sens de variation de \(f\) sur \([a,a+1[\) ne dépend pas de \(a\). Donc \(f\) est strictement monotone sur \({\mathbb {R}}\).<br /></p>
+<p>Comme \(\pi (f(1))=\pi (f(0))\), on a \(f(1)-f(0)\in \mathbb {Z}^*\). Si \(|f(1)-f(0)| \geq 2\), par théorème des valeurs intermédiaires, il existerait un réel \(a \in ]0,1[\) tel que \(|f(a)-f(0)|=1\), ce qui contredirait l’injectivité de \(T\circ \pi \) sur \([0,1[\). Ainsi on a bien \(f(1)=f(0)\pm 1\). <br /></p>
+<p>Enfin, la fonction \(x\mapsto f(x+1)-f(x)\) est continue et à valeurs dans \(\mathbb {Z}\) (en raison de la relation \(T \circ \pi = \pi \circ f\)) donc constante, égale à \(f(1)-f(0)\) donc à \(\pm 1\). \(\square \)<br /></p>
+<div class="notation_thmwrapper theorem-style-definition" id="a0000000032">
+  <div class="notation_thmheading">
+    <span class="notation_thmcaption">
+    Notation
+    </span>
+    <span class="notation_thmlabel">4</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000032">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="notation_thmcontent">
+  <p>Notons \(\mathcal{T}_{\mathrm{ent}}\) l’ensemble des translations entières sur \({\mathbb {R}}\), c’est-à-dire l’ensemble des applications \(t_\alpha : x \mapsto x + \alpha \) pour \(\alpha \in \mathbb {Z}\). </p>
+
+  </div>
+</div>
+
+<div class="proposition_thmwrapper theorem-style-plain" id="a0000000033">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">4</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000033">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>On définit sur \({\mathcal{E}}^+\) la relation d’équivalence \(\thicksim \) par: </p>
+<div class="displaymath" id="a0000000034">
+  \[ f\  \thicksim \  g \Longleftrightarrow f-g \text{ est constante et à valeurs dans\  } \mathbb {Z}. \]
+</div>
+<p> Alors: </p>
+<ol class="enumerate">
+  <li><p>\((\mathcal{T}_{\mathrm{ent}}, \circ )\) est un sous-groupe distingué de \(({\mathcal{E}}^+,\circ )\). </p>
+</li>
+  <li><p>La relation d’équivalence \(\thicksim \) est la relation d’équivalence associée au sous-groupe \((\mathcal{T}_{\mathrm{ent}},\circ )\). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<p> <b class="bfseries">Preuve :</b> </p>
+<p><b class="bfseries">1) </b> On vérifie facilement que \(\mathcal{T}_{\mathrm{ent}}\subset {\mathcal{E}}^+\) et \(\mathrm{Id}_{\mathbb {R}}=t_0 \in \mathcal{T}_{\mathrm{ent}}\). De plus, pour tous \(\alpha , \beta \in \mathbb {Z}\), on a \((t_\alpha )^{-1}=t_{-\alpha } \in \mathcal{T}_{\mathrm{ent}}\) et \(t_\alpha \circ t_\beta =t_{\alpha + \beta } \in \mathcal{T}_{\mathrm{ent}}\). Enfin, pour tous \(f \in {\mathcal{E}}^+\), \(\alpha \in \mathbb {Z}\) et \(x \in {\mathbb {R}}\), on a \(f\circ t_\alpha \circ f^{-1}(x)=f(f^{-1}(x)+\alpha )=f(f^{-1}(x))+\alpha =x+\alpha \) et donc \(f\circ t_\alpha \circ f^{-1}=t_\alpha \in \mathcal{T}_{\mathrm{ent}}\). Ainsi, \(\mathcal{T}_{\mathrm{ent}}\) est un sous-groupe distingué de \({\mathcal{E}}^+\).<br /></p>
+<p><b class="bfseries">2) </b>Soient \(f,g \in {\mathcal{E}}^+\). On a les équivalences suivantes: </p>
+<div class="displaymath" id="a0000000035">
+  \begin{eqnarray*}  f \thicksim g & \Longleftrightarrow &  \exists \  \alpha \in \mathbb {Z},\  \forall \  x \in {\mathbb {R}},\  f(x)=g(x)+\alpha \\ & \Longleftrightarrow &  \exists \  \alpha \in \mathbb {Z},\  \forall \  x \in {\mathbb {R}},\  g^{-1}(f(x))=g^{-1}(g(x)+\alpha )=x + \alpha =t_\alpha (x) \\ & \Longleftrightarrow & g^{-1}\circ f \in \mathcal{T}_{\mathrm{ent}}. \end{eqnarray*}
+</div>
+<p> Ce qui montre le résultat. \(\square \)<br /></p>
+<p> <b class="bfseries">Distance sur \({\mathcal{E}}^+\) et \(\mathcal{E}^+/\mathcal{T}_{\mathrm{ent}}\)</b><br /></p>
+<ol class="enumerate">
+  <li><p>On munit \({\mathcal{E}}^+\) de la métrique \(d\) associée à la norme \(||.||_{\infty }\) définie par: </p>
+<div class="displaymath" id="a0000000036">
+  \[ \forall f,g \in {\mathcal{E}}^+,\  d(f,g):=||f-g||_{\infty }. \]
+</div>
+<p> La distance \(d\) est invariante par translation. </p>
+</li>
+  <li><p>On munit \(\mathcal{E}^+/\mathcal{T}_{\mathrm{ent}}\) de la distance \(d_q\) définie par: </p>
+<div class="displaymath" id="a0000000037">
+  \[ \forall C_1, C_2 \in \mathcal{E}^+/\mathcal{T}_{\mathrm{ent}},\  d_q(C_1,C_2):=\inf \lbrace d(f,g): (f,g)\  C_1 \times C_2\rbrace  \]
+</div>
+</li>
+</ol>
+
+<p><b class="bfseries">Preuve:</b> </p>
+<p><b class="bfseries">1)</b> Cette distance a bien un sens car pour tous \(f,g \in {\mathcal{E}}^+\), la fonction \(f-g\) est périodique et continue, donc bornée. On vérifie facilement que cela définit bien une métrique sur \({\mathcal{E}}^+\), à partir des axiomes vérifiés par la norme de la convergence uniforme \(||.||_{\infty }\), et que cette métrique est invariante par translation.<br /></p>
+<p><b class="bfseries">2)</b> Montrons dans un premier temps que pour \(C_1, C_2 \in \mathcal{E}^+/\mathcal{T}_{\mathrm{ent}}\), la borne inférieure définissant \(d_q(C_1,C_2)\) est atteinte. Fixons \((f,g) \in C_1 \times C_2\). On a: </p>
+<div class="displaymath" id="a0000000038">
+  \begin{eqnarray*}  d_q(C_1,C_2)& =& \inf \big\lbrace ||(f+k_1\mathds {1})-(g+k_2\mathds {1})||_\infty \  ;\  (k_1,k_2)\in {\mathbb {Z}}^2\big\rbrace \\ & =& \inf \big\lbrace ||f-g+k\mathds {1}||_\infty \  ;\  k \in {\mathbb {Z}}\big\rbrace \end{eqnarray*}
+</div>
+<p>De plus, pour tout \(k \in {\mathbb {Z}}\), \(||f-g +k\mathds {1}||_\infty \geq |k|-||f-g||_\infty \). </p>
+<p>Comme \(d_q(C_1,C_2)\leq ||f-g||_\infty \), on a donc: </p>
+<div class="displaymath" id="a0000000039">
+  \[ d_q(C_1,C_2)= \min \lbrace ||f-g+k\mathds {1}||_\infty \  ;\  k \in {\mathbb {Z}}\text{ tel que } |k|\leq 2||f-g||_\infty \rbrace . \]
+</div>
+<p> C’est ainsi le minimum d’un ensemble fini, donc \(d(C_1,C_2)\) est atteinte.<br /></p>
+<p>De plus, l’application \(d_q\) vérifie l’axiome de séparation. Soient \(C_1, C_2 \in \mathcal{E}^+/\mathcal{T}_{\mathrm{ent}}\) telles que \(d_q(C_1,C_2) = 0\). Comme la borne inférieure définissant \(d_q\) est atteinte, il existe \(f_0 \in C_1\) et \(g_0 \in C_2\) telles que \(d_q(C_1,C_2)=d(f_0,g_0)=0\). Comme \(d\) est une distance, on a \(f=g\) et donc \(C_1 = C_2\).<br /></p>
+<p>La symétrie est immédiate et découle de la symétrie de \(d\).<br /></p>
+<p>Enfin, soient \(C_1, C_2, C_3 \in \mathcal{E}^+/\mathcal{T}_{\mathrm{ent}}\). Comme la borne inférieure définissant \(d_q\) est atteinte, il existe \(f\in C_1\), \(g\) et \(\widetilde{g} \in C_2\), \(h \in C_3\) telles que \(d_q(C_1,C_2)=d(f,g)\) et \(d_q(C_2,C_3)=d(\widetilde{g},h)\). Quitte à soustraire à \(\widetilde{g}\) une certaine constante entière \(k\), et à retrancher cette même constante à \(h\), on peut supposer que \(g=\widetilde{g}\). Ainsi, en utilisant l’inégalité triangulaire sur \(d\): </p>
+<div class="displaymath" id="a0000000040">
+  \[ d_q(C_1,C_3)\leq d(f,h) \leq d(f,g)+d(g,h)= d_q(C_1,C_2)+d_q(C_2,C_3) \]
+</div>
+<p> Ainsi, l’application \(d_q\) définit bien une métrique sur \(\mathcal{E}^+/\mathcal{T}_{\mathrm{ent}}\). \(\square \)<br /></p>
+<p><b class="bfseries">Projection de \({\mathcal{E}}^+\) dans \(\mathcal{E}^+/\mathcal{T}_{\mathrm{ent}}\)</b><br />Notons \(p:f\mapsto \overline{f}\) l’application définie de \(({\mathcal{E}}^+,d)\) dans \((\mathcal{E}^+/\mathcal{T}_{\mathrm{ent}},d_q)\). Alors: </p>
+<ol class="enumerate">
+  <li><p>L’application \(p\) est 1-lipschitzienne, donc <b class="bfseries">continue</b>. </p>
+</li>
+  <li><p>\(\forall f\in {\mathcal{E}}^+,\  \forall r{\gt}0,\  p(B(f,r))=B_{d_q}(\overline{f},r)\). </p>
+</li>
+  <li><p>L’application \(p\) est <b class="bfseries">ouverte</b> de \(({\mathcal{E}}^+,d)\) dans \((\mathcal{E}^+/\mathcal{T}_{\mathrm{ent}},d_q)\). </p>
+</li>
+</ol>
+
+<p><b class="bfseries">Preuve:</b> </p>
+<p><b class="bfseries">1)</b> Soient \(f, g \in {\mathcal{E}}^+\). Par définition de \(d_q\), on a \(=d_q(p(f),p(g))=d_q(\overline{f},\overline{g})\leq d(f,q)\). Donc l’application \(p\) est 1-lipschitzienne.<br /></p>
+<p><b class="bfseries">2)</b> Soient \(f \in {\mathcal{E}}^+\), et \(r{\gt}0\). On a \(p(B(f,r))\subset B_{d_q}(\overline{f},r)\) car \(p\) est \(1\)-lipschitzienne. Montrons l’autre inclusion. Soit \(\overline{g} \in B_{d_q}(\overline{f},r)\). On a, pour \(g\in \overline{g}\): </p>
+<div class="displaymath" id="a0000000041">
+  \[ r{\gt}d_q(\overline{f},\overline{g})=\min \lbrace ||f-g-k\mathds {1}||_{\infty };\  k \in {\mathbb {Z}}\rbrace . \]
+</div>
+<p> On peut alors choisir l’entier \(k\) qui réalise ce minimum. Alors \(g +k\mathds {1} \in B(f,r)\), et donc \(p(g+k\mathds {1})=\overline{g} \in p(B(f,r))=B_{d_q}(\overline{f},r)\). D’où \(B_{d_q}(\overline{f},r) \subset p(B(f,r))\) et l’égalité souhaitée.<br /></p>
+<p><b class="bfseries">3)</b> Ce point découle du point précédent. \(\square \)<br /></p>
+<div class="corollary_thmwrapper theorem-style-plain" id="distance sur HomT">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">5</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#distance sur HomT">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p> La métrique \(d_q\) définit la topologie quotient sur \({\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}}\). </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Notons \(\mathcal{O}_q\) la topologie quotient sur \({\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}}\). La topologie quotient est la topologie la plus fine qui rend l’application de projection \(p\) continue. Par la proposition <a href="sect0002.html#préli p">2</a>, \(p\) est continue pour la topologie associée à \(d_q\): la topologie associée à la distance \(d_q\) est donc moins fine que la topologie \(\mathcal{O}_q\).<br /></p>
+<p>Soit \(U\) un ouvert de \(({\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}},\mathcal{O}_q)\). Alors \(p^{-1}(U)\) est un ouvert de \(({\mathcal{E}}^+,d)\). Comme \(p\) est surjective, \(U=p(p^{-1}(U))\). Et d’après la proposition <a href="sect0002.html#préli p">2</a>, \(p\) est ouverte de \(({\mathcal{E}}^+,d)\) dans \((\mathcal{E}^+/\mathcal{T}_{\mathrm{ent}},d_q)\), donc \(U\) est un ouvert pour la topologie associée à la distance \(d_q\), qui est ainsi plus fine que \(\mathcal{O}_q\), ce qui permet de conclure. \(\square \)<br /></p>
+<p><b class="bfseries">Distance sur \(\mathrm{Hom}^+({\mathbb {T}})\)</b><br />Munissons \(\mathrm{Hom}^+({\mathbb {T}})\) de la distance \(\overline{d}_\infty \) définie de la façon suivante: </p>
+<div class="displaymath" id="a0000000042">
+  \[ \forall \  T_1, T_2 \in \mathrm{Hom}^+({\mathbb {T}}),\  \overline{d}_\infty (T_1,T_2)= \underset {x\in {\mathbb {R}}}{\sup }\  \overline{d}(T_1(\overline{x}),T_2(\overline{x})). \]
+</div>
+<p> où \(\overline{d}\) est la distance sur \({\mathbb {R}}/{\mathbb {Z}}\) introduite dans la définition <a href="sect0002.html#distance sur R/Z">1</a>. On a l’inégalité suivante: </p>
+<div class="displaymath" id="a0000000043">
+  \[ \forall \  T_1, T_2 \in \mathrm{Hom}^+({\mathbb {T}}),\  \overline{d}_\infty (T_1,T_2)\leq 1/2. \]
+</div>
+
+<p><b class="bfseries">Preuve:</b> </p>
+<p>On vérifie par des arguments similaires à ceux utilisés précédemment que \(\overline{d}_\infty \) est une distance sur \(\mathrm{Hom}^+({\mathbb {T}})\). De plus, soient \(T_1, T_2 \in \mathrm{Hom}^+({\mathbb {T}})\). D’après la proposition <a href="sect0002.html#distance sur R/Z">1</a>, pour tout \(x \in {\mathbb {R}}\), \(\overline{d}(T_1(x),T_2(x)) \leq 1/2\) . Par passage au sup, \(\overline{d}_\infty (T_1,T_2)\leq 1/2\). \(\square \)<br /></p>
+<div class="corollary_thmwrapper theorem-style-plain" id="isom relation d'équiv sur les homéo">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">6</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#isom relation d'équiv sur les homéo">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p><b class="bfseries">Isomorphisme entre \(\mathcal{E}^+/\mathcal{T}_{\mathrm{ent}}\) et \(\mathrm{Hom}^+({\mathbb {T}})\)</b><br />L’application \(f\mapsto T_f\) de \({\mathcal{E}}^+\) dans \(\mathrm{Hom}^+({\mathbb {T}})\) passe au quotient et fournit un isomorphisme \(\iota \) de groupes de \({\mathcal{E}}^+/\thicksim ={\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}}\) vers \(\mathrm{Hom}^+({\mathbb {T}})\).<br />L’application \(\iota \) est définie par: </p>
+<div class="displaymath" id="a0000000044">
+  \[ \forall \  \overline{f} \in {\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}}, \  \iota (\overline{f})= T_f. \]
+</div>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Définissons l’application \(h: {\mathcal{E}}^+ \to \mathrm{Hom}^+({\mathbb {T}})\) qui pour tout \(f \in {\mathcal{E}}^+\) associe l’unique \(T_f \in \mathrm{Hom}^+({\mathbb {T}})\) telle que \(T_f\circ \pi =\pi \circ f\) (cf théorème <a href="sect0002.html#passage au quotient">2</a>). <br /></p>
+<p>On vérifie que \(h\) est un morphisme de groupes. Soient \(f, g \in {\mathcal{E}}^+\), on a par définition: </p>
+<div class="displaymath" id="a0000000045">
+  \[ h(f\circ g)\circ \pi = T_{f\circ g}\circ \pi =\pi \circ f \circ g=T_f\circ \pi \circ g= T_f\circ T_g \circ \pi  \]
+</div>
+<p> Par unicité, on \(h(f\circ g)= T_{f\circ g}= T_f \circ T_g=h(f)\circ h(g)\).<br /></p>
+<p>L’application \(h\) est constante sur les classes d’équivalence données par la relation \(\thicksim \). En effet, soient \(g, f \in {\mathcal{E}}^+\) telles que \(f\thicksim g\). Il existe un unique \(T \in \mathrm{Hom}^+({\mathbb {T}})\) tel que \(h(f)=T\). On a alors \(h(f)\circ \pi =T\circ \pi =\pi \circ f = \pi \circ g=h(g)\circ \pi \) car \(f \thicksim g\). Par unicité, on a également \(h(g)=T\).<br /></p>
+<p>De plus, \(h\) est surjective d’après le théorème <a href="sect0002.html#relèvement des homémorphismes">1</a>. Donc \(h\) est bijective. Ainsi, d’après le théorème d’isomorphisme, on a l’isomorphisme de groupes : </p>
+<div class="displaymath" id="a0000000046">
+  \[ \mathcal{E}^+/\mathcal{T}_{\mathrm{ent}} =\mathcal{E}^+/\thicksim  \simeq \mathrm{Hom}^+({\mathbb {T}}) \]
+</div>
+<p>\(\square \)<br /></p>
+<div class="proposition_thmwrapper theorem-style-plain" id="a0000000047">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">7</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000047">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>Notons \(d_q'=\min (d_q,1/2)\). L’application \(\iota \) obtenue dans le corollaire <a href="sect0002.html#isom relation d'équiv sur les homéo">6</a> est une <b class="bfseries">isométrie</b> de (\({\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}}, d_q')\) dans \((\mathrm{Hom}^+({\mathbb {T}}),\overline{d}_\infty )\).<br />Autrement dit: </p>
+<div class="displaymath" id="a0000000048">
+  \[ \forall \  \overline{f}, \overline{g} \in {\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}},\  \overline{d}_\infty (T_f,T_g)=\min (d_q(\overline{f},\overline{g}), 1/2). \]
+</div>
+<p> Par conséquent, l’application \(\iota :{\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}}\to \mathrm{Hom}^+({\mathbb {T}})\) est un isomorphisme de groupes topologiques. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Soient \(\overline{f}, \overline{g} \in {\mathcal{E}}^+/\mathcal{T}_{\mathrm{ent}}\). </p>
+<p>1\(^{\mathrm{er}}\) cas: \(d_q(\overline{f},\overline{g}){\lt}1/2\).<br />Comme la borne inférieure définissant \(d_q(\overline{f},\overline{g})\) est atteinte, quitte à changer de représentants, on peut supposer \(||f-g||_\infty {\lt}1/2\).<br />Soit \(x \in {\mathbb {R}}\). Pour tout \(k \in {\mathbb {Z}}\), on a: </p>
+<div class="displaymath" id="a0000000049">
+  \begin{eqnarray*}  |f(x)-g(x)+k|& \geq & |k|-|f(x)-g(x)|\\ & \geq & 1-1/2\\ & \geq & |f(x)-g(x)| \end{eqnarray*}
+</div>
+<p> Donc, pour tout \(x \in {\mathbb {R}}\), \(\overline{d}(\overline{f(x)},\overline{g(x)})=|f(x)-g(x)|\) et donc </p>
+<div class="displaymath" id="a0000000050">
+  \[ \overline{d}_\infty (T_f,T_g)=||f-g||_\infty =d_q(\overline{f},\overline{g}). \]
+</div>
+<p>2\(^{\mathrm{nd}}\) cas: \(d_q(\overline{f},\overline{g})\geq 1/2\).<br />Si l’on avait pour tout \(x \in {\mathbb {R}}, f(x)-g(x)+1/2 \notin {\mathbb {Z}}\), l’image de \(f-g\) serait contenue dans un intervalle \(]j-1/2,j+1/2[\) avec \(j \in {\mathbb {Z}}\). Alors \(d_q(\overline{f},\overline{g}){\lt}1/2\).<br />Par contraposition, on en déduit qu’il existe \(x_0 \in {\mathbb {R}}\) tel que \(f(x_0)-g(x_0) \in 1/2 +{\mathbb {Z}}\). Cela entraîne que \(\overline{d}(T_f(x_0),T_g(x_0)) =1/2\) et donc \(\overline{d}_\infty (T_f,T_g)\geq 1/2\). Et comme \(\overline{d}_\infty (T_f,T_g)\leq 1/2\) d’après la proposition <a href="sect0002.html#distance sur HomT">5</a>, on obtient l’égalité.<br /></p>
+<p>Dans tous les cas, on a l’égalité souhaitée entre les deux distances. \(\square \)<br /></p>
+<p><b class="bfseries">Dans toute la suite, sans mention explicite du contraire, \(T\) désignera un élément de \(\mathrm{Hom}^+({\mathbb {T}})\).</b> </p>
+<h1 id="a0000000008">1.2 Nombre de rotation</h1>
+<h2 id="a0000000009">1.2.1 Résultats préliminaires sur les suites sous-additives et sur-additives</h2>
+<p> Il est utile de montrer en premier lieu un résultat important sur des suites bien particulières: les suites sous-additives et sur-additives. Ce résultat nous sera utile pour assurer l’existence d’une limite par la suite. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000051">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">8</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000051">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>Soit \((u_n)_{n \in \mathbb {N}}\) une suite réelle.<br />On dit que \((u_n)_{n \in \mathbb {N}}\) est <b class="bfseries">sous-additive</b> si pour tout couple d’entier naturels \((p,q)\), on a: \(u_{p+q} \leq u_p + u_q\)<br />On dit que \((u_n)_{n \in \mathbb {N}}\) est <b class="bfseries">sur-additive</b> si pour tout couple d’entiers naturels \((p, q)\), on a: \(u_{p+q} \geq u_p + u_q\) </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="suiteadd">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#suiteadd">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> Soit \((u_n)_{n \in \mathbb {N}}\) une suite réelle. </p>
+<ol class="enumerate">
+  <li><p>Si \((u_n)_{n \in \mathbb {N}}\) est sous-additive, alors </p>
+<div class="displaymath" id="a0000000052">
+  \[ \frac{u_n}{n} \underset {n \to + \infty }{\longrightarrow } \underset {p \geq 1}{\inf }\   \frac{u_p}{p} \in \mathbb {R} \cup \lbrace - \infty \rbrace . \]
+</div>
+</li>
+  <li><p>Si \((u_n)_{n \in \mathbb {N}}\) est sur-additive, alors </p>
+<div class="displaymath" id="a0000000053">
+  \[ \frac{u_n}{n} \underset {n \to + \infty }{\longrightarrow } \underset {p \geq 1}{\sup }\   \frac{u_p}{p} \in \mathbb {R} \cup \lbrace + \infty \rbrace . \]
+</div>
+</li>
+</ol>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p><b class="bfseries">1)</b> On fixe \(p \in \mathbb {N}^*\). Soit \(n \geq q\). La division euclidienne de \(n\) par \(p\) donne<br />\(n=p \times q_n+r_n\) avec \(q_n \geq 1\) et \(0 \leq r_n {\lt} p\). Par sous-additivité, \(u_n \leq q_n u_p + u_{r_n}\) d’où </p>
+<div class="displaymath" id="a0000000054">
+  \[ \frac{u_n}{n} \leq \frac{p \  q_n}{n} \times \frac{u_p}{p} + \frac{u_{r_n}}{n} \leq \frac{u_p}{p} + \underset {0 \leq i \leq p-1}{\max }\frac{u_i}{n}. \]
+</div>
+<p> On prend la limite supérieure quand \(n \longrightarrow + \infty \): </p>
+<div class="displaymath" id="a0000000055">
+  \[ \underset {n \longrightarrow + \infty }{\lim \sup }\  \frac{u_n}{n}\leq \frac{u_p}{p}. \]
+</div>
+<p> Puisque cette dernière inégalité est vérifiée pour tout \(p \geq 1\), on a: </p>
+<div class="displaymath" id="a0000000056">
+  \[ \underset {n \longrightarrow + \infty }{\lim \sup }\  \frac{u_n}{n} \leq \underset {p \geq 1}{\inf }\  \frac{u_p}{p} \leq \underset {n \longrightarrow + \infty }{\lim \inf }\  \frac{u_n}{n}. \]
+</div>
+<p> d’où le résultat énoncé.<br /></p>
+<p><b class="bfseries">2)</b> Si \((u_n)_{n \in \mathbb {N}}\) est une suite sur-additive, \((-u_n)_{n \in \mathbb {N}}\) est une suite sous-additive. On peut lui appliquer le point <b class="bfseries">1</b> et conclure.\(\square \)<br /></p>
+<h2 id="a0000000010">1.2.2 Définition</h2>
+<p> Introduisons désormais une notion centrale de ce mémoire: le nombre de rotation d’un homéomorphisme préservant l’orientation. </p>
+<div class="thmdefi_thmwrapper theorem-style-definition" id="nombre de rotation">
+  <div class="thmdefi_thmheading">
+    <span class="thmdefi_thmcaption">
+    Théorème et définition
+    </span>
+    <span class="thmdefi_thmlabel">2</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#nombre de rotation">#</a>
     
     
     <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
@@ -200,11 +711,7 @@
         
         <ul class="uses">
           
-          <li><a href="sect0002.html#def:immersion">Definition 1</a></li>
-          
-          <li><a href="sect0002.html#lem:main">Lemma 2</a></li>
-          
-          <li><a href="sect0002.html#def:immersion">Definition 1</a></li>
+          <li><a href="sect0002.html#suiteadd">Theorem 9</a></li>
           
         </ul>
     
@@ -213,44 +720,1141 @@
 
     
     
-    <button class="modal lean">L∃∀N</button>
-        <div class="modal-container">
-      <div class="modal-content">
-        <header>
-          <h1>Lean declarations</h1>
-          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
-</button>
-        </header>
-        
-        <ul class="uses">
-          
-          <li><a href="https://vbeffara.github.io/Cours_ED/docs/find/#doc/sphere_eversion" class="lean_decl">sphere_eversion</a></li>
-          
-        </ul>
-    
-      </div>
-    </div>
+        </div>
+  </div>
+  <div class="thmdefi_thmcontent">
+  <p> <b class="bfseries">Nombre de rotation</b>  </p>
+<ol class="enumerate">
+  <li><p>Pour tout relèvement de \(f\) de T, la limite </p>
+<div class="displaymath" id="a0000000057">
+  \[ \alpha (f) = \underset {n \to + \infty }{\lim } \frac{f^n(0)}{n} \]
+</div>
+<p> existe et est finie. </p>
+</li>
+  <li><p>La suite de fonctions \((x \mapsto (f^n(x)-x)/n)_{n\geq 1} \) <b class="bfseries">converge uniformément</b> sur \(\mathbb {R}\) vers \(\alpha (f)\). </p>
+</li>
+  <li><p>La classe \(\overline{\alpha (f)}\) dans \({\mathbb {R}}/\mathbb {Z}\) ne dépend pas du relèvement \(f\) choisi. On l’appelle <b class="bfseries">nombre de rotation de \(T\)</b> et on la note \(\rho (T)\). </p>
+</li>
+</ol>
 
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p><b class="bfseries">1) </b>Soit \(f\) un relèvement de \(T\). Montrons la sur-additivité de la suite \((\lfloor f^n(0) \rfloor )_{n \geq 0}\).<br />Soient \(p,q \in \mathbb {N}\). On a: </p>
+<div class="displaymath" id="a0000000058">
+  \begin{eqnarray*}  f^{p+q}(0)& =& f^p(f^q(0))\\ &  \geq &  f^p(\lfloor f^q(0) \rfloor ) \text{ par croissance de }f^p\\ &  \geq &  f^p(0) +\lfloor f^q(0) \rfloor \text{ par 1-périodicité de}\  x \mapsto f^p(x)-x\\ &  \geq &  \lfloor f^p(0) \rfloor +\lfloor f^q(0) \rfloor . \end{eqnarray*}
+</div>
+<p> Comme \(\lfloor f^p(0) \rfloor +\lfloor f^q(0) \rfloor \) est un entier, \(\lfloor f^{p+q}(0) \rfloor \geq \lfloor f^p(0) \rfloor +\lfloor f^q(0) \rfloor \), d’où la sur-additivité de \((\lfloor f^n(0) \rfloor )_{n \geq 0}\). Par des arguments similaires, on montre que la suite \(( \lceil f^n(0) \rceil )_{n \geq 0}\) est sous-additive. <br />D’après le théorème <a href="sect0002.html#suiteadd">9</a>, on sait qu’il existe \(a \in \mathbb {R} \cup \lbrace + \infty \rbrace \) et \(b \in \mathbb {R} \cup \lbrace - \infty \rbrace \), tels que </p>
+<div class="displaymath" id="a0000000059">
+  \[ \frac{\lfloor f^n(0) \rfloor }{n} \underset {n \to + \infty }{\longrightarrow } a \text{ et }\frac{\lceil f^n(0) \rceil }{n} \underset {n \to + \infty }{\longrightarrow } b. \]
+</div>
+<p> <br />Or pour tout \(n\in \mathbb {N}^*\), </p>
+<div class="displaymath" id="a0000000060">
+  \[ 0 \leq \frac{\lceil f^n(0) \rceil }{n} - \frac{\lfloor f^n(0) \rfloor }{n} \leq \frac{1}{n}.  \]
+</div>
+<p> Donc en passant à la limite quand \(n \to + \infty \), on conclut que \(a=b\). <br />De plus, pour tout \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000061">
+  \[ \frac{\lfloor f^n(0) \rfloor }{n} \leq \frac{ f^n(0) }{n} \leq \frac{\lceil f^n(0) \rceil }{n}. \]
+</div>
+<p> Par théorème d’encadrement, on en déduit l’existence de la limite \(\alpha (f)\). <br /></p>
+<p><b class="bfseries">2) </b>Montrons que la suite de fonctions \((x\mapsto (f^n(x)-x)/n)_{n\geq 1}\) converge uniformément sur \(\mathbb {R}\). <br />Soit \(x \in [0,1]\), par croissance de \(f^n\), on a: </p>
+<div class="displaymath" id="a0000000062">
+  \[ f^n(0) \leq f^n(x) \leq f^n(1)=f^n(0)+1. \]
+</div>
+<p> Comme \(-1\leq x \leq 0\): </p>
+<div class="displaymath" id="a0000000063">
+  \[ f^n(0)-1\leq f^n(0) - x \leq f^n(x)-x \leq f^n(0)+1 -x \leq f^n(0)+1 . \]
+</div>
+<p> D’où </p>
+<div class="displaymath" id="a0000000064">
+  \[ \frac{f^n(0)-1}{n} - \alpha (f) \leq \frac{f^n(x)-x}{n} - \alpha (f) \leq \frac{f^n(0)+1}{n} - \alpha (f). \]
+</div>
+<p> Ainsi, </p>
+<div class="displaymath" id="a0000000065">
+  \[ \Big|\frac{f^n(x)-x}{n}-\alpha (f)\Big|\leq \Big|\frac{f^n(0)}{n}-\alpha (f)\Big| + \frac{1}{n}. \]
+</div>
+<p> Par 1-périodicité de \(x\mapsto f^n(x)-x\), cette dernière inégalité est vraie pour tout \(x \in \mathbb {R}\), et elle ne dépend plus de \(x\). On a alors: </p>
+<div class="displaymath" id="a0000000066">
+  \[ \Big|\Big|\frac{f^n - \mathrm{Id}_{{\mathbb {R}}}}{n} - \alpha (f)\Big|\Big|_{\infty } \leq \Big|\frac{f^n(0)}{n}-\alpha (f)\Big| + \frac{1}{n} \underset {n \to + \infty }{\longrightarrow }0. \]
+</div>
+<p> Ce qui démontre bien la convergence uniforme. <br /></p>
+<p><b class="bfseries">3)</b> On a vu que \(T\) possède un unique relèvement à un entier près. Soient \(f_1\) et \(f_2\) deux relèvements de \(T\). On sait alors qu’il existe \(k \in \mathbb {Z}\) tel que pour tout \(x \in \mathbb {R}\), \(f_1(x)=f_2(x)+k\).<br />Par récurrence, on montre que pour tout \(n \in \mathbb {N}\), \(f_1^n(x)=f_2^n(x)+nk\) Pour tout \(x \in \mathbb {R}\), on a donc </p>
+<div class="displaymath" id="a0000000067">
+  \[ \underset {n \longrightarrow + \infty }{\lim } = \frac{f_1^n(x)-x}{n} =\underset {n \longrightarrow + \infty }{\lim } \frac{f_2^n(x)-x}{n} + k . \]
+</div>
+<p> Donc \(\alpha (f_1)=\alpha (f_2)+k\) et \(\overline{\alpha (f_1)}=\overline{\alpha (f_2)}\) dans \({\mathbb {R}}/\mathbb {Z}\). \( \hfill \square \)<br /></p>
+<p>Etudions le cas le plus simple: le cas des <b class="bfseries">translations</b> de \({\mathbb {R}}\), qu’on voit comme <b class="bfseries">rotations</b> de \(\mathbb {T}\). </p>
+<p> <b class="bfseries">Rotations</b><br />Soit \(R_{\theta }\) l’homéomorphisme de \({\mathbb {R}}/\mathbb {Z}\) obtenu par passage au quotient à partir de l’application \(t_\theta : x \mapsto x +\theta \) de \({\mathbb {R}}\) dans \({\mathbb {R}}\). Comme la fonction \(x\mapsto t_\theta (x)-x\) est constante égale à \(\theta \), pour tout \(n \in \mathbb {N}\), on a: </p>
+<div class="displaymath" id="a0000000068">
+  \[ \frac{t_\theta ^n(0)}{n}= \frac{n \theta }{n} = \theta . \]
+</div>
+<p> Et donc \(\alpha (f)=\theta \) et \(\rho (R_\theta )=\overline{\theta }.\)  </p>
+<h2 id="a0000000011">1.2.3 Premières propriétés</h2>
+<p> Nous pouvons alors démontrer quelques propriétés qui découlent facilement des définitions et des propriétés sur les homéomorphismes de \({\mathbb {R}}\) et de \({\mathbb {T}}\). </p>
+<div class="proposition_thmwrapper theorem-style-plain" id="k rho">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">10</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#k rho">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p> Pour tout \(k \in \mathbb {Z}\), \(\rho (T^k)= k \times \rho (T)\). En particulier, on a \(\rho (\mathrm{Id_{{\mathbb {T}}}})=0\) et \(\rho (T^{-1})=-\rho (T)\). </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b><br />Soient \(f\) un relèvement de T et \(k \in \mathbb {Z}\). Alors \(f^k\) est un relèvement de \(T^k\). </p>
+<div class="displaymath" id="a0000000069">
+  \[ \frac{(f^k)^n(0)}{n}=\frac{kf^{kn}(0)}{kn}\underset {n \to + \infty }{\longrightarrow } k \times \alpha (f). \]
+</div>
+<p> ce qui montre le résultat voulu.\(\square \)<br /></p>
+<p>Le lemme suivant permet de relier des bornes sur le nombre de rotation d’un homéomorphisme. Il permettra de faciliter des démonstrations à venir. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="bornesnbrot">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">11</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#bornesnbrot">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p><b class="bfseries">Lemme fondamental</b><br />Soit f un relèvement de T. Notons </p>
+<div class="displaymath" id="a0000000070">
+  \[ a=\underset {x \in \mathbb {R}}{\inf } f(x) - x \text{ et } b=\underset {x \in \mathbb {R}}{\sup } f(x) - x. \]
+</div>
+<p> Alors: </p>
+<ol class="enumerate">
+  <li><p>Les bornes \(a\) et \(b\) sont atteintes sur [0,1] et même sur [0,1[. </p>
+</li>
+  <li><p>De plus, \(a \leq b {\lt} a + 1\). </p>
+</li>
+  <li><p>Enfin, \(a \leq \alpha (f) \leq b\). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p><b class="bfseries">1)</b> La fonction \(x\mapsto f(x)-x\) est continue sur \(\mathbb {R}\) et \(1\)-périodique. Elle est donc bornée et atteint ses bornes \(a\) et \(b\) sur le compact \([0,1]\). Comme \(f(0)=f(1)-1\), elle atteint ses bornes sur \([0,1[\). <br /></p>
+<p><b class="bfseries">2) </b>Notons \((x_1,x_2) \in [0,1]^2\) tels que \(f(x_1)-x_1=a\) et \(f(x_2)-x_2=b\).<br />1\(^{\mathrm{er}}\) cas: \(x_1 \leq x_2 {\lt} x_1\)<br />En additionnant les inégalités \(f(x_2) {\lt} f(x_1)+1\) et \(-x_2 \leq x_1\), on obtient: </p>
+<div class="displaymath" id="a0000000071">
+  \[ b=f(x_2) - x_2 {\lt} f(x_1) - x_1 + 1 = a+1. \]
+</div>
+<p> 2\(^{\mathrm{nd}}\) cas: \(x_2 \leq x_1 {\lt} x_2+1\)<br />En additionnant les inégalités \(f(x_2) \leq f(x_1)\) et \(-x_2 -1 {\lt} -x_1\), on obtient: </p>
+<div class="displaymath" id="a0000000072">
+  \[ b-1 = f(x_2)-x_2 -1 {\lt} f(x_1)-x_1 =a. \]
+</div>
+<p> Dans tous les cas, \(b{\lt}a+1\).<br /></p>
+<p><b class="bfseries">3) </b>On a pour tout \(x \in \mathbb {R},\  a \leq f(x) - x \leq b\).<br />Montrons que pour tout \(n \in \mathbb {N}\): \(n a \leq f^n(0) \leq b\). Pour \(n=0\), les inégalités sont vraies. Soit \(n\in \mathbb {N}\) pour lequel \(na \leq f^n(0) \leq nb\). Par croissance de \(f\), et par définition de \(a\) et \(b\): </p>
+<div class="displaymath" id="a0000000073">
+  \[ na+a \leq f(na)\leq f^{n+1}(0)\leq f(nb) \leq nb +b. \]
+</div>
+<p> Ce qui montre les inégalités au rang \(n+1\) qui achève la récurrence. Ainsi, pour tout \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000074">
+  \[ a\leq \frac{f^n(0)}{n}\leq b. \]
+</div>
+<p> Et par passage à la limite: \(a\leq \alpha (f)\leq b\). \(\square \) <br /></p>
+<p>Le théorème suivant permet de relier l’existence de <b class="bfseries">point fixe</b> d’une puissance d’un homéomorphisme avec la <b class="bfseries">rationalité</b> de son nombre de rotation. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="equivrationnel">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">12</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#equivrationnel">#</a>
+    
+    
     
         </div>
   </div>
   <div class="theorem_thmcontent">
-  <p>    There is a homotopy of immersions of \(𝕊^2\) into \(ℝ^3\) from the inclusion map to the antipodal map \(a : q ↦ -q\). </p>
+  <p> On a l’équivalence </p>
+<div class="displaymath" id="a0000000075">
+  \[ \rho (T) \in \mathbb {Q}/\mathbb {Z} \Longleftrightarrow \exists k \in \mathbb {N}^*,\  T^k \text{a un point fixe.} \]
+</div>
+<p> Plus précisément, </p>
+<div class="displaymath" id="a0000000076">
+  \[ \forall k \in \mathbb {N}^*,\  k \times \rho (T)=\overline{0} \Longleftrightarrow T^k \text{possède un point fixe.} \]
+</div>
 
   </div>
 </div>
-<div class="proof_wrapper" id="a0000000005">
-  <div class="proof_heading">
-    <span class="proof_caption">
-    Proof
+<p><b class="bfseries">Preuve:</b> </p>
+<p>(\(\Rightarrow \)) Montrons le sens direct. Soit \(f\) un relèvement de \(T\).<br />Dans un premier temps, montrons que si \(T\) ne possède pas de point fixe, alors \(\rho (T) \neq \overline{0}\). Par hypothèse, on a: </p>
+<div class="displaymath" id="a0000000077">
+  \[  \forall x \in \mathbb {R},\  f(x)-x \notin \mathbb {Z}. \]
+</div>
+<p> Or \(x\mapsto f(x) - x\) est continue est \(1\)-périodique. Son image est donc un segment \([a,b]\) inclus dans \(\mathbb {R} \setminus \mathbb {Z}\) D’après le lemme <a href="sect0002.html#bornesnbrot">11</a>, \(a \leq \alpha (f) \leq b {\lt} a+1\) et donc \(\alpha (f) \notin \mathbb {Z}\), ie \(\rho (T) \neq \overline{0}\).<br /></p>
+<p>Soit \(k\in \mathbb {N}^*\). Supposons désormais que \(k \rho (T)= \overline{0}\). Alors \(\alpha (f) = j/k \in \mathbb {Q}\) avec \(j \in \mathbb {Z}\) et \(k \in \mathbb {N}^*\). D’après la propriété <a href="sect0002.html#k rho">10</a>, on a donc \(\alpha (f^k)=k \times \alpha (f)= j \in \mathbb {Z}\). D’après le cas particulier étudié précédent, \(T^k\) possède un point fixe, ce qui montre le résultat voulu.<br /></p>
+<p>(\(\Leftarrow \)) Montrons le sens réciproque. Soit \(k \in \mathbb {N}^*\). Supposons que \(T^k\) a un point fixe \(x_0\). Soit \(f\) un relèvement de \(T\). Alors \(f^k(x_0)= x_0 + j\) avec \(j \in \mathbb {Z}\) et pour tout \(q \in \mathbb {N}\), \(f^{qk}(x_0)=x_0 + q\times j\  \).<br />Soit \(n \in \mathbb {N}\), la division euclidienne de \(n\) par \(k\) s’écrit \(n = k q_n + r_n\) avec \(q_n \in \mathbb {N}\) avec \(0 \leq r_n {\lt} k\). Ainsi, </p>
+<div class="displaymath" id="a0000000078">
+  \begin{eqnarray*}  f^n(x_0)& =& f^{k q_n +r_n}(x_0)\\ & =&  f^{r_n}(f^{k q_n}(x_0))\\ & =& f^{r_n}(x_0 + q_n j) \\ & =&  f^{r_n}(x_0) + q_n j \text{ par propriété des relèvements} \end{eqnarray*}
+</div>
+<p> Il en découle: </p>
+<div class="displaymath" id="a0000000079">
+  \[ \frac{f^n(x_0) - x_0}{n}=\frac{f^{r_n}(x_0)-x_0}{n} + \frac{q_n \times j}{q_n \times k + r_n} \underset {n \to + \infty }{\longrightarrow } \frac{j}{k}. \]
+</div>
+<p> D’où \(\alpha (f)=j/k \in \mathbb {Q}\). \(\square \)<br /></p>
+<p> <b class="bfseries">Rotation d’angle rationnel</b><br />Soit \(R_{p/q}\) la rotation d’angle \(p/q\) avec \((p,q) \in \mathbb {Z} \times \mathbb {N}^*\). Comme \(R_{p/q}^q= \mathrm{Id_{{\mathbb {T}}}}\), on a d’après le théorème <a href="sect0002.html#equivrationnel">12</a>, \(q \times \rho (R_{p/q})= \overline{0}\), ce qui est en accord avec l’exemple <a href="sect0002.html#rotation">3</a>.  </p>
+<p>Du lemme et du théorème précédents découle le corollaire suivant: </p>
+<div class="corollary_thmwrapper theorem-style-plain" id="equiv amel">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
     </span>
-    <span class="expand-proof">▶</span>
+    <span class="corollary_thmlabel">13</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#equiv amel">#</a>
+    
+    
+    
+        </div>
   </div>
-  <div class="proof_content">
-  <p> This obviously follows from what we did so far. </p>
+  <div class="corollary_thmcontent">
+  <p> Soient f \(\in \mathcal{E}^+\) et \(k,r \in \mathbb {Z}\). Alors </p>
+<div class="displaymath" id="a0000000080">
+  \[ \mathrm{Im}(f^k - \mathrm{Id})\subset \  ]r,r+1[ \Longleftrightarrow \alpha (f^k) \in ]r,r+1[. \]
+</div>
 
   </div>
 </div>
+<p><b class="bfseries">Preuve:</b><br />(\(\Rightarrow \)) Le lemme <a href="sect0002.html#bornesnbrot">11</a> donne le sens direct. <br />(\(\Leftarrow \)) Supposons que \(\alpha (f^k) \in ]r,r+1[\). Alors \(T_f^k\) n’a pas de point fixe d’après le théorème <a href="sect0002.html#equivrationnel">12</a>. Donc Im(\(f^k -\) Id) est incluse dans un intervalle \(]s,s+1[\) avec \(s \in \mathbb {Z}\). D’après le sens direct, \(\alpha (f^k) \in ]s,s+1[\). D’où \(s=r\). \(\square \)<br /></p>
+<p>Le nombre de rotation est un <b class="bfseries">invariant de conjugaison</b>. C’est l’objet de la propriété suivante. </p>
+<div class="proposition_thmwrapper theorem-style-plain" id="conjugaison">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">14</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#conjugaison">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p> Le nombre de rotation est <b class="bfseries">invariant par conjugaison topologique</b>: pour tous \(T_1\), \(T_2\) dans \(\mathrm{Hom}^+({\mathbb {T}})\), </p>
+<div class="displaymath" id="a0000000081">
+  \[ \rho (T_{1}\circ T_{2}\circ T_{1}^{-1})=\rho (T_{2}). \]
+</div>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Soient \(T_{1}, T_{2} \in \) Hom\(^+\)(\(\mathbb {S}^{1}\)) et \(f_{1}\), \(f_{2}\) des relèvements de \(T_{1}\) et \(T_{2}\) respectivement.<br />Alors \(f_{1}\)\(\circ \)\(f_{2}\)\(\circ \)\(f_{1}^{-1}\) est un relèvement de \(T_{1}\circ T_{2}\circ T_{1}^{-1}\).<br />Soit \(x \in \mathbb {R}\), on a pour tout \(n \in \mathbb {N}\): </p>
+<div class="displaymath" id="a0000000082">
+  \begin{eqnarray*}  \frac{(f_{1}\circ f_2 \circ f_1^{-1})^n(x)-x}{n} & =&  \frac{f_{1}\circ f_2^n \circ f_1^{-1}(x)-x}{n}\\ & =&  \frac{f_1(f_2^n\circ f_1^{-1}(x)) - f_2^n\circ f_1^{-1}(x)}{n}\\ & & + \frac{f_2^n\circ f_1^{-1}(x) - f_1^{-1}(x)}{n}+ \frac{f_1^{-1}(x) - x}{n}. \end{eqnarray*}
+</div>
+<p> Or, par propriété du nombre de rotation </p>
+<div class="displaymath" id="a0000000083">
+  \[ \underset {n \to +\infty }{\lim }\frac{f_2^n\circ f_1^{-1}(x) - f_1^{-1}(x)}{n} = \alpha (f_2). \]
+</div>
+<p> Et </p>
+<div class="displaymath" id="a0000000084">
+  \[ \underset {n \to +\infty }{\lim } \frac{f_1(f_2^n\circ f_1^{-1}(x)) - f_2^n\circ f_1^{-1}(x)}{n} = \underset {n \to +\infty }{\lim } \frac{f_1^{-1}(x) - x}{n} = 0 \]
+</div>
+<p> car les numérateurs sont bornés. En effet, les fonctions \(x \mapsto f_1(x)-x\) et \(x\mapsto f_1^{-1}(x)-x\) sont 1-périodiques et continues donc bornées.<br />Donc finalement, </p>
+<div class="displaymath" id="a0000000085">
+  \[ \underset {n \to +\infty }{\lim } \frac{(f_{1}\circ f_2 \circ f_1^{-1})^n(x)-x}{n} =\alpha (f_2) \]
+</div>
+<p> ce qui achève la preuve. \(\square \) </p>
+<h2 id="a0000000012">1.2.4 Nombre de rotation d’une composée</h2>
+<p> Existe-t-il une formule pour calculer le nombre de rotation d’une composée ? D’abord, nous montrerons que si deux homéomorphismes <b class="bfseries">commutent</b>, le <b class="bfseries">nombre de rotation de leur composée est la somme de leur nombre de rotation</b>. Nous verrons ensuite que cette propriété <b class="bfseries">ne se généralise pas</b> en exhibant un contre-exemple. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="rho commute">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">15</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#rho commute">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> Soient \(T_1\), \(T_2 \in \mathrm{Hom}^+({\mathbb {T}})\) tels que \(T_1\circ T_2=T_1 \circ T_2\). Alors, </p>
+<div class="displaymath" id="a0000000086">
+  \[ \rho (T_1\circ T_2)=\rho (T_1)+\rho (T_2). \]
+</div>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Soient \(f_1\) et \(f_2\) des relèvements de \(T_1\) et \(T_2\) respectivement. Dans un premier temps, montrons que \(f_1 \circ f_2 = f_2 \circ f_1\):<br />Comme \(f_1 \circ f_2\) et \(f_2 \circ f_1\) sont des relèvements de \(T_1\circ T_2=T_2 \circ T_1\), il existe une constante \(C \in \mathbb {Z}\) telle que </p>
+<div class="displaymath" id="a0000000087">
+  \[ f_1 \circ f_2 = f_2 \circ f_1 + C. \]
+</div>
+<p> D’où </p>
+<div class="displaymath" id="a0000000088">
+  \[ \alpha (f_1 \circ f_2) = \alpha (f_2 \circ f_1) + C. \]
+</div>
+<p> De plus, on a </p>
+<div class="displaymath" id="a0000000089">
+  \[ \frac{f_2((f_1\circ f_2)^n(0))}{n} \underset {n \to + \infty }{\longrightarrow } \alpha (f_1 \circ f_2). \]
+</div>
+<p> En effet, comme \(f_2 - \mathrm{Id_{\mathbb {R}}}\) est bornée: </p>
+<div class="displaymath" id="a0000000090">
+  \[ \Big| \frac{f_2((f_1 \circ f_2)^n(0))}{n} - \frac{(f_1 \circ f_2)^n(0)}{n} \Big| \underset {n \to + \infty }{\longrightarrow }0. \]
+</div>
+<p> En passant à la limite quand \(n \to + \infty \): </p>
+<div class="displaymath" id="a0000000091">
+  \[ \underset {n \to + \infty }{\lim } \frac{f_2((f_1 \circ f_2)^n(0))}{n} = \underset {n \to + \infty }{\lim } \frac{(f_1 \circ f_2)^n(0)}{n} = \alpha (f_1 \circ f_2). \]
+</div>
+<p> Or, pour tout \(n \in \mathbb {N}\), </p>
+<div class="displaymath" id="a0000000092">
+  \[  \frac{f_2((f_1 \circ f_2)^n(0))}{n} = \frac{(f_2 \circ f_1)^n(f_2(0))}{n}. \]
+</div>
+<p> Donc en passant à la limite quand \(n \to \infty \), \(\alpha (f_1 \circ f_2) = \alpha (f_2 \circ f_1)\). On en déduit que \(C = 0\) et donc \(f_1 \circ f_2 = f_1 \circ f_2\). Par conséquent, pour tout \(n \in \mathbb {N}\), \((f_1 \circ f_2)^n = f_1^n \circ f_2^n\).<br />Ainsi, grâce à la convergence uniforme de \(((f_1^n - \mathrm{Id_{\mathbb {R}}})/n)_{n\geq 1}\) vers \(\alpha (f_1)\), on a pour tout \(x \in \mathbb {R}\), </p>
+<div class="displaymath" id="a0000000093">
+  \begin{eqnarray*}  \frac{(f_1 \circ f_2)^n(x) - x}{n} & =&  \frac{f_1^n(f_2^n(x)) - f_2^n(x)}{n} + \frac{f_2^n(x)-x}{n}\\ & \underset {n \to + \infty }{\longrightarrow }&  \alpha (f_1) + \alpha (f_2) . \end{eqnarray*}
+</div>
+<p> On conclut que \(\alpha (f_1 \circ f_2) = \alpha (f_1) + \alpha (f_2)\) et donc \(\rho (T_1 \circ T_2)= \rho (T_1) + \rho (T_2)\). </p>
+<div class="flushright"> \(\square \) </div>
+<p> On retrouve le résultat de la propriété <a href="sect0002.html#k rho">10</a>. En effet, comme \(T\) commute avec lui-même, on peut facilement montrer par récurrence que: </p>
+<div class="displaymath" id="a0000000094">
+  \[ \forall k \in \mathbb {Z}, \  \rho (T^k)=k\rho (T) \]
+</div>
+
+<h1 id="a0000000013">1.3 Continuité du nombre de rotation par rapport à \(T\)</h1>
+<p>Dans cette partie, nous allons montrer que le nombre de rotation \(\rho (T)\) dépend continument de l’homéomorphisme \(T\) de \(\mathrm{Hom}^+({\mathbb {T}})\). </p>
+<h2 id="a0000000014">1.3.1 Résultats préliminaires</h2>
+<p>Nous avons besoin de quelques résultats préalables qui allègeront la preuve du théorème de continuité. </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000095">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">16</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000095">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>Si \(f:\mathbb {R} \to \mathbb {R}\) est une fonction uniformément continue. On définit l’application <b class="bfseries">module de continuité</b> \(\omega _f: \mathbb {R} \to \mathbb {R}^+\) par \(\omega _f(\delta ) := \sup E_{f}(\delta )\), où </p>
+<div class="displaymath" id="a0000000096">
+  \[ E_{f}(\delta ):=\lbrace |f(x_1) - f(x_2)|: (x_1;x_2) \in \mathbb {R}^2,\  |x_1 - x_2| \leq \delta \rbrace  \]
+</div>
+
+  </div>
+</div>
+<div class="proposition_thmwrapper theorem-style-plain" id="modulecont">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">17</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#modulecont">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p> Pour toute fonction \(f\) uniformément continue, le module de continuité \(w_f\) possède les 3 propriétés suivantes: </p>
+<ol class="enumerate">
+  <li><p>\(\omega _f\) est croissant. </p>
+</li>
+  <li><p>\(\omega _f\) est sous-additif: \(\forall \delta _1, \delta _2 \in \mathbb {R}^+\), \(\omega _f(\delta _1 + \delta _2) \leq \omega _f(\delta _1) +\omega _f(\delta _2)\). </p>
+</li>
+  <li><p>\(\omega _f(\delta ) \underset {\delta \to 0}{\longrightarrow }0\). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p><b class="bfseries">1)</b> Soient \(\delta _1,\delta _2 \in \mathbb {R}^+\) tels que \(\delta _1\leq \delta _2\). Comme \(E_f(\delta _1)\subset E_f(\delta _2)\), \(\sup E_f(\delta _1)\leq \sup E_f(\delta _2)\), <i class="itshape">i.e.</i> \(\omega _f(\delta _1)\leq \omega _f(\delta _2)\).<br /></p>
+<p><b class="bfseries">2)</b> Soient \(\delta _1,\delta _2 \in \mathbb {R}^+\), et \(x_1, x_2 \in \mathbb {R}\) tels que \(|x_1 -x_2|\leq \delta _1 + \delta _2\). Il existe \(x_3 \in \mathbb {R}\) tel que \(|x_1 -x_3|\leq \delta _1\) et \(|x_3 -x_2|\leq \delta _2\). Et donc: </p>
+<div class="displaymath" id="a0000000097">
+  \begin{eqnarray*}  |f(x_1)-f(x_2)|& \leq &  |f(x_1)-f(x_3)| + |f(x_3)-f(x_2)|\\ & \leq &  \sup E_f(\delta _1) + \sup E_f(\delta _2)\\ & \leq &  \omega _f(\delta _1) + \omega _f(\delta _2). \end{eqnarray*}
+</div>
+<p> Par passage au \(\sup \), on obtient : \(\omega _f(\delta _1 + \delta _2) \leq \omega _f(\delta _1) +\omega _f(\delta _2)\).<br /></p>
+<p><b class="bfseries">3)</b> Soit \(\varepsilon {\gt} 0\). Comme \(f\) est uniformément continue, il existe \(\eta {\gt}0\), tel que: </p>
+<div class="displaymath" id="a0000000098">
+  \[ \forall (x_1,x_2) \in \mathbb {R}^2, ( |x_1-x_2|\leq \eta ) \Longrightarrow (|f(x_1)-f(x_2)|\leq \varepsilon ).  \]
+</div>
+<p> On a alors \(\omega _f(\eta )\leq \varepsilon \). Comme \(\omega _f\) est croissant sur \(\mathbb {R}^+\), pour tout \(\delta \in \mathbb {R}^+\) tel que \(\delta \leq \eta \), on a \(\omega _f(\delta )\leq \omega _f(\eta )\leq \varepsilon \), ce qui achève la démonstration. \(\square \)<br /></p>
+<div class="lemma_thmwrapper theorem-style-plain" id="ouvertUr">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">18</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ouvertUr">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> Soit \(r \in \mathbb {Z}\).<br />Posons \(U_r:=\lbrace f \in \mathcal{E}^+: \mathrm{Im}(f-Id_{\mathbb {R}}) \subset \  ]r,r+1[\rbrace \). \(U_r\) est un ouvert de \(\mathcal{E}^+\) muni de la topologie issue de la norme de la convergence uniforme. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Soit \(f\in U_r\). On a : </p>
+<div class="displaymath" id="a0000000099">
+  \begin{eqnarray*}  \mathrm{Im}(f - \mathrm{Id}_{{\mathbb {R}}}) \subset ]r,r+1[ & \Longleftrightarrow &  \forall x \in {\mathbb {R}},\  |f(x)-x-(r+1/2)|{\lt} 1/2\\ & \Longleftrightarrow &  ||f - \mathrm{Id}_{\mathbb {R}}- (r + 1/2) ||_{\infty } {\lt} 1/2. \end{eqnarray*}
+</div>
+<p> Avec ces équivalences on en déduit que \(U_r = {\mathcal{E}}^+ \cap B_{\infty }(\mathrm{Id}_{\mathbb {R}}+r + 1/2,1/2)\), ce qui permet de conclure que \(U_r\) est un ouvert pour la topologie demandée. \(\square \)<br /></p>
+<div class="lemma_thmwrapper theorem-style-plain" id="psi">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">19</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#psi">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> Notons \(\mathcal{C}_U(\mathbb {R},\mathbb {R})\) l’ensemble des fonctions uniformément continues définies de \(\mathbb {R}\) dans \({\mathbb {R}}\). L’application \(\psi : \mathcal{C}_U(\mathbb {R},\mathbb {R}) \times \mathcal{C}_U(\mathbb {R},\mathbb {R}) \to \mathcal{C}_U(\mathbb {R},\mathbb {R})\) définie par \(\psi (f,g)=f\circ g\) est continue pour la topologie associée à la norme de la convergence uniforme. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>L’application \(\psi \) est bien définie car une composée de fonctions uniformément continues est uniformément continue. Soient \(f_1, f_2, g_1, g_2 \in \mathcal{C}_U(\mathbb {R},\mathbb {R})\). On a : </p>
+<div class="displaymath" id="a0000000100">
+  \begin{eqnarray*}  ||\psi (f_1,g_1) -\psi (f_2,g_2)||_{\infty }& =&  ||f_1\circ g_1 - f_1 \circ g_2||_{\infty }\\ & \leq &  ||f_1\circ g_1 - f_1\circ g_2||_{\infty } +||f_1\circ g_2 - f_2 \circ g_2||_{\infty } \\ & \leq &  \omega _{f_1}(||g_2 - g_1||_{\infty }) + ||f_2 - f_1||_{\infty } \\ & \longrightarrow &  0 \text{ quand } g_2 \to g_1 \text{ et } f_2 \to f_1 \end{eqnarray*}
+</div>
+<p> d’après la proposition <a href="sect0002.html#modulecont">17</a>. \(\square \)<br /></p>
+<div class="corollary_thmwrapper theorem-style-plain" id="phin">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">20</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#phin">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p> Soit \(n \in \mathbb {N}\), l’application \(\varphi _n : \mathcal{C}_U(\mathbb {R},\mathbb {R}) \to \mathcal{C}_U(\mathbb {R},\mathbb {R})\) définie par \(\varphi _n(f)=f^n\) est continue pour la topologie associée à la norme de la convergence uniforme. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Par récurrence, montrons que pour tout \(n \in \mathbb {N}\), \(\varphi _n \) est continue. Pour \(n=0\), le résultat est clair. Soit \(n \in \mathbb {N}\) pour lequel \(\varphi _n\) est continue. Alors pour tout \(f \in \mathcal{C}_U(\mathbb {R},\mathbb {R})\), on a \(\varphi _{n+1}(f)= \psi (f,f^n)\) (où \(\psi \) est l’application du lemme <a href="sect0002.html#psi">19</a>). Donc \(\varphi _{n+1}\) est continue d’après l’hypothèse de récurrence et par le lemme <a href="sect0002.html#psi">19</a>. \(\square \) <br /></p>
+<h2 id="a0000000015">1.3.2 Théorème de continuité</h2>
+<p> Nous arrivons désormais au théorème qui nous intéresse dans cette partie. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="a0000000101">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000101">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>Le nombre de rotation \(\rho (T)\) dépend continûment de T. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Montrons d’abord que l’application \(\alpha : \mathcal{E}^+ \to \mathbb {R}\) qui associe \(\alpha (f)\) à tout \(f \in \mathcal{E}\) est continue pour la topologie associée à la norme de la convergence uniforme dans \(\mathcal{E}^+\).<br />Vérifions que pour tout ouvert \(O\) de \(\mathbb {R}\), \(\alpha ^{-1}(O)= \lbrace f \in \mathcal{E}^+: \alpha (f) \in O\rbrace \) est un ouvert de \( \mathcal{E}^+ \). On peut se restreindre aux ouverts de la forme \(]r/k,(r+1)/k[\) avec \(r \in \mathbb {Z}\) et \(k \in \mathbb {N}^*\). Soit \(O\) un ouvert de cette forme, on a: </p>
+<div class="displaymath" id="a0000000102">
+  \begin{eqnarray*}  \alpha ^{-1}(O)& =& \big\lbrace f \in \mathcal{E}: \alpha (f) \in \  ]r/k \  , (r+1)/k[ \big\rbrace \\ & =&  \big\lbrace f \in \mathcal{E}: \alpha (f^k) \in \  ]r , r+1 [ \big\rbrace (\text{propriété } \ref{k rho})\\ & =&  \big\lbrace f \in \mathcal{E}: \text{Im}(f^k - \mathrm{Id_{\mathbb {R}}}) \subset ]r,r+1[ \big\rbrace (\text{corollaire } \ref{equiv amel})\\ & =&  \lbrace f \in \mathcal{E}: f^k \in U_r \rbrace \text{ où } U_r \text{ est l'ouvert du lemme } \ref{ouvertUr}\\ & =&  \varphi _k^{-1}(U_r) \text{ où }\varphi _k \text{ est l'application du corollaire } \ref{phin}. \end{eqnarray*}
+</div>
+<p> Or \(U_r\) est un ouvert (lemme <a href="sect0002.html#ouvertUr">18</a>) et \(\varphi _k\) est continue (corollaire <a href="sect0002.html#phin">20</a>), \(\alpha ^{-1}(O)\) est donc un ouvert de \(\mathcal{E}^+\). <br /></p>
+<p>Ainsi, l’application \(\overline{\alpha }:f\mapsto \overline{\alpha (f)}= \pi \circ \alpha (f)\) est continue de \(\mathcal{E}^+\) (muni de la topologie issue norme de la convergence uniforme) dans \({\mathbb {R}}/\mathbb {Z}\) (muni de la topologie quotient). Cette application est constante sur chaque classe d’équivalence pour la relation d’équivalence sur \(\mathcal{E}^+\) définie par: </p>
+<div class="displaymath" id="a0000000103">
+  \[ f\  \thicksim \  g \Longleftrightarrow f-g \text{ est constante et à valeurs dans\  } \mathbb {Z}. \]
+</div>
+<p> Par passage au quotient, l’application \(\overline{\alpha }\) fournit une application continue \(\widetilde{\alpha }\) de \(\mathcal{E}^+/\thicksim \) dans \({\mathbb {R}}/\mathbb {Z}\) telle que \(\overline{\alpha }=\widetilde{\alpha }\circ p\) où \(p\) est la projection canonique de \({\mathcal{E}}^+\) sur \(\mathcal{E}^+/\thicksim \).<br />En utilisant l’isomorphisme \(\iota \) vu au corollaire <a href="sect0002.html#isom relation d'équiv sur les homéo">6</a>, on en déduit que \(\rho \) est continue de \(\mathcal{E}^+/\thicksim \) dans \(\mathrm{Hom}^+({\mathbb {T}})\). \(\square \)<br /></p>
+<p>Voici un diagramme commutatif récapitulant tous les liens entre les différentes applications introduites dans ce mémoire: </p>
+<div class="displaymath" id="a0000000104">
+  \[ \Large \xymatrix { & ({\mathcal{E}}^+,||.||_\infty ) \ar [dl]_{f\mapsto T_f} \ar [r]^{\alpha } \ar [d]_p \ar [dr]^{\overline{\alpha }} &  ({\mathbb {R}},|.|) \ar [d]^\pi \\ (\mathrm{Hom}^+({\mathbb {T}}),\overline{d}_\infty )\ar @/_1.5pc/@{-{\gt}}[rr]_\rho & ({\mathcal{E}}^+/\thicksim ,d_q) \ar [l]^\iota \ar [r]_{\widetilde{\alpha }} &  ({\mathbb {R}}/{\mathbb {Z}},\overline{d})} \]
+</div>
+<h1 id="a0000000016">1.4 Étude des orbites de \(T\) et classification de Poincaré</h1>
+<p>L’objectif de cette partie est d’étudier les orbites d’un homéomorphisme \(T\), et d’établir un début de classification des homéomorphismes de \(\mathrm{Hom}^+({\mathbb {T}})\). </p>
+<h2 id="a0000000017">1.4.1 Homéomorphismes transitifs, orbites denses</h2>
+<p> Introduisons pour commencer quelques notions de vocabulaire autour des orbites. </p>
+<div class="notation_thmwrapper theorem-style-definition" id="a0000000105">
+  <div class="notation_thmheading">
+    <span class="notation_thmcaption">
+    Notation
+    </span>
+    <span class="notation_thmlabel">5</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000105">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="notation_thmcontent">
+  <p>Lorsqu’il n’y aura pas d’ambiguïté avec l’homéomorphisme \(f: X \to X\) (avec X un espace topologique) considéré, on pourra noter \(O_x := \lbrace f^n(x), n\in \mathbb {Z}\rbrace \) <b class="bfseries">l’orbite</b> de élément \(x\) sous l’action d’un homéomorphisme \(f\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000106">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">22</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000106">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>Soit \(f: X \to X\) un homéomorphisme. </p>
+<ol class="enumerate">
+  <li><p>On dit que \(f\) est <b class="bfseries">transitif</b> si et seulement si il existe un point \(x \in X\) tel que l’orbite \(O_x\) est dense dans \(X\). </p>
+</li>
+  <li><p>On dit que \(f\) est <b class="bfseries">minimal</b> si et seulement si pour tout \(x \in X\), l’orbite \(O_x\) est dense dans \(X\). Autrement dit, \(f\) est minimal si toutes les orbites sont denses dans \(X\). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<p> Tout homéomorphisme est minimal est transitif. Nous allons voir par la suite que l’implication réciproque est vraie pour un homéomorphisme de \(\mathrm{Hom}^+({\mathbb {T}})\).  </p>
+<p> Pour une rotation \(R_\theta \), il y a équivalence entre: </p>
+<ol class="enumerate">
+  <li><p>\(R_{\theta }\) est minimale. </p>
+</li>
+  <li><p>\(R_{\theta }\) est transitive. </p>
+</li>
+  <li><p>\(\theta \) est irrationnel. </p>
+</li>
+</ol>
+
+<p><b class="bfseries">Preuve:</b> </p>
+<p>(1)\(\Rightarrow \)(2) Cette implication est immédiate.<br /></p>
+<p>(2)\(\Rightarrow \)(3) Montrons cette implication par contraposition. Supposons \(\theta = p/q\) (avec \(p\in \mathbb {Z}\), \(q \in \mathbb {N}^*\) tels que \(p \wedge q =1\)). Pour tout \(x \in {\mathbb {T}}, R_{\theta }^q(x)=x\) et donc \(O_x = \lbrace x, R_{\theta }(x),...,R_{\theta }^{q-1}(x) \rbrace \). Comme toute orbite est finie, \(R_{\theta }\) n’est pas transitive.<br /></p>
+<p>(3)\(\Rightarrow \)(1) Supposons \(\theta \in \mathbb {R} \setminus \mathbb {Q}\). Soient \(x\in {\mathbb {T}}\), et \(a \in \mathbb {R}\) tel que \(x = \overline{a}\). Montrons que \(O_x\) est dense dans \({\mathbb {T}}\). On a \(O_x=\lbrace R_{\theta }^n(x); n \in \mathbb {Z} \rbrace = \pi ( a + \theta \mathbb {Z} )=\pi ( a + \mathbb {Z} + \theta \mathbb {Z} )\). L’ensemble \(G := \mathbb {Z} + \theta \mathbb {Z}\) est un sous-groupe de \(\mathbb {R}\) contenant \(1\) et \(\theta \). Comme \(\theta \) est irrationnel, ce sous-groupe ne peut pas être de la forme \(\alpha \mathbb {Z}\) (avec \(\alpha \in \mathbb {R}\)). Donc il est dense dans \(\mathbb {R}\), et donc \(a+G\) est également dense dans \(\mathbb {R}\). Par continuité et surjectivité de \(\pi \), \(O_x = \pi (a+G)\) est dense dans \(\mathbb {R} / \mathbb {Z}\), ce qui prouve le résultat. \(\square \)<br /></p>
+<p>La propriété suivante présente une <b class="bfseries">condition nécessaire</b> pour qu’un homéomorphisme soit transitif.<br /></p>
+<div class="proposition_thmwrapper theorem-style-plain" id="trans et nb rotation ratio">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">23</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#trans et nb rotation ratio">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p> Si \(\rho (T) \in \mathbb {Q}/\mathbb {Z}\), alors aucune orbite de \(T\) n’est dense dans \({\mathbb {T}}\). De façon équivalente: si \(T\) est transitive, alors nécessairement \(\rho (T) \notin \mathbb {Q}/\mathbb {Z}\). </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Dans un premier temps, montrons que si \(\rho (T)= \overline{0}\), alors aucune orbite de \(T\) n’est dense. Soit \(f\) le relèvement de \(T\) tel que \(\alpha (f)=0\). Soit \(F\) l’ensemble des points fixes de \(f\). Alors \(F\) est non vide par le théorème <a href="sect0002.html#equivrationnel">12</a> et \(F\) est invariant par translation de \(1\).<br />Soit \(x \in \mathbb {R}\). Considérons: </p>
+<div class="displaymath" id="a0000000107">
+  \[ a(x)=\sup (F\  \cap \  ]-\infty ,x]) \text{ et } b(x)=\inf (F \cap [x,+\infty [) \]
+</div>
+<p> Comme \(F\) est non minoré, non majoré et fermé, \(a(x)\) et \(b(x)\) sont des réels vérifiant l’inégalité \(a(x)\leq x\leq b(x)\) et sont des points fixes de \(f\). Sur \(]a(x),b(x)[\), la fonction continue \(f - \mathrm{Id_{\mathbb {R}}}\) ne s’annule pas donc garde un signe constant.<br /></p>
+<p>Supposons que \(f - \mathrm{Id_{\mathbb {R}}}{\gt}0\) sur \(]a(x),b(x)[\). Pour tout \(y \in [a(x),b(x)]\), on a alors </p>
+<div class="displaymath" id="a0000000108">
+  \[ f(a(x))= a(x) \leq y \leq f(y) \leq b(x) =f(b(x)). \]
+</div>
+<p> La "suite" \((f^n(x))_{n\in \mathbb {Z}}\) est croissante et à valeurs dans \([a(x),b(x)]\). Donc il existe des réels \(\ell _1, \ell _2\in [a(x),b(x)]\) tels que: </p>
+<div class="displaymath" id="a0000000109">
+  \[ f^{-n}(x) \underset {n \to + \infty }{\longrightarrow } \ell _1\text{ et }f^{n}(x) \underset {n \to + \infty }{\longrightarrow } \ell _2. \]
+</div>
+<p> Ces limites \(\ell _1\) et \(\ell _2\) valent nécessairement \(a(x)\) et \(b(x)\) sinon on aurait un point fixe dans l’intervalle ouvert \(]a(x),b(x)[\) et cela contredirait la construction de \(a(x)\) et de \(b(x)\).<br /></p>
+<p>Supposons maintenant que \(f - \mathrm{Id_{\mathbb {R}}}{\lt}0\) sur \(]a(x),b(x)[\). Avec des arguments similaires, on montre que \((f^n(x))_{n\geq 0}\) et \((f^{-n}(x))_{n\geq 0}\) convergent vers \(b(x)\) et \(a(x)\) quand \(n \to \infty \).<br /></p>
+<p>Par construction, l’ensemble \(K=\lbrace f^n(x); n \in \mathbb {Z}\rbrace \cup \lbrace a(x); b(x)\rbrace = O_x \cup \lbrace a(x); b(x)\rbrace \) est un compact de \(\mathbb {R}\). De plus, \(K = \overline{O_x}\). En effet, comme \(O_x \subset K\) et \(K\) fermé, on a \(\overline{O_x}\subset K\). Et comme \(K=O_x \cup \lbrace a(x); b(x)\rbrace \), et \(a(x), b(x) \in \overline{O_x}\) d’après l’étude réalisée précédemment, on a \(K \subset \overline{O_x} \). Ainsi, l’adhérence de l’orbite de \(x\) sous l’action de \(T\) est dénombrable, en particulier, l’orbite de \(x\) n’est pas dense dans \({\mathbb {T}}\).<br /></p>
+<p>Soit maintenant \(T\) tel que \(\rho (T) \in \mathbb {Q}/\mathbb {Z}\) quelconque. Considérons alors \(p \in \mathbb {N}^*\) tel que \(p \times \rho (T)= \rho (T^p)= \overline{0}\). Soit \(x \in {\mathbb {R}}/\mathbb {Z}\). L’orbite \(O_x\) de \(x\) sous l’action de \(T\) est l’union finie des orbites de \(x, T(x), ... ,T^{p-1}(x)\) sous l’action de \(T^p\). Les adhérences de ces orbites sont dénombrables d’après le cas particulier précédent. On en déduit que \(\overline{O_x}\) est dénombrable (comme union finie d’ensemble dénombrables). En particulier, \(O_x\) n’est pas dense dans \({\mathbb {T}}\). \(\square \)<br /></p>
+<h2 id="a0000000018">1.4.2 Classification de Poincaré</h2>
+<p> Nous avons vu que si \(T\) était transitif, alors nécessairement son nombre de rotation était la classe d’un irrationnel de \(\mathbb {R}/\mathbb {Z}\). L’objectif de la <b class="bfseries">classification de Poincaré</b> est de relier plus précisément ces homéomorphismes aux rotations d’angle irrationnel, qui sont des homéomorphismes plus simples à étudier.<br /></p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000110">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">24</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000110">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>Soient \(X\) et \(Y\) deux espaces topologiques et \(f:X\to X\), \(g:Y \to Y\) deux homéomorphismes. On dit que \(f\) et \(g\) sont <b class="bfseries">semi-conjuguées</b> (resp. <b class="bfseries">conjuguées</b>) s’il existe une application continue surjective (resp. bijective) \(h : Y \to X\) telle que \(f\circ h = h \circ g\). </p>
+
+  </div>
+</div>
+<p>Le lemme qui suit sert à préparer le théorème sur la classification de Poincaré. </p>
+<div class="lemma_thmwrapper theorem-style-plain" id="a0000000111">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">25</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000111">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p>Soit f un relèvement de T. Supposons \(\alpha (f) \notin \mathbb {Q}\).<br />Soient \(n_1,n_2, m_1, m_2 \in \mathbb {Z}\), il y a équivalence entre: </p>
+<ol class="enumerate">
+  <li><p>\(\forall \  x \in \mathbb {R}, \  f^{n_1}(x)+m_1 {\lt} f^{n_2}(x)+m_2\). </p>
+</li>
+  <li><p>\(n_1 \alpha (f) + m_1 {\lt} n_2 \alpha (f) + m_2\). </p>
+</li>
+  <li><p>\(\exists \  x \in \mathbb {R}, \  f^{n_1}(x)+m_1 {\lt} f^{n_2}(x)+m_2\). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>(1)\(\Rightarrow \)(2) On a pour tout \(x \in {\mathbb {R}}\): </p>
+<div class="displaymath" id="a0000000112">
+  \[  f^{n_1- n_2}(x) + m_1 {\lt} x +m_2 \Longleftrightarrow \  f^{n_1- n_2}(x) - x {\lt} m_2 -m_1. \]
+</div>
+<p> Le lemme <a href="sect0002.html#bornesnbrot">11</a> appliqué à \(f^{n_1 - n_2}\) et la propriété <a href="sect0002.html#k rho">10</a> nous donnent: </p>
+<div class="displaymath" id="a0000000113">
+  \[ \alpha (f^{n_1 - n_2})=n_1 \alpha (f) - n_2 \alpha (f) {\lt} m_2 -m_1 . \]
+</div>
+<p> Ce qui est équivalent à \(n_1 \alpha (f) + m_1 {\lt} n_2 \alpha (f) +m_2\), ce qui est l’implication voulue.<br /></p>
+<p>(2)\(\Rightarrow \)(3) Montrons cette implication par contraposition. L’implication (1)\(\Rightarrow \)(2) reste vraie si l’on remplace les inégalités strictes par des inégalités larges et si l’on échange (\(m_1\),\(n_1\)) et (\(m_2\), \(n_2\)), ce qui nous donne exactement l’implication recherchée.<br /></p>
+<p>(3)\(\Rightarrow \)(1) Comme \(\alpha (f) \notin \mathbb {Q}\), \(T^{n_2 - n_1}\) n’a pas de point fixe (théorème <a href="sect0002.html#equivrationnel">12</a>). Donc l’image de \(f^{n_2 - n_1} - \mathrm{Id}\) est contenue dans un intervalle \(]r,r+1[\) avec \(r \in \mathbb {Z}\). En particulier, pour tout \(x \in {\mathbb {R}}\), on a \(f^{n_2}(x) - f^{n_1}(x)=f^{n_2-n_1}(f^{n_1}(x))- f^{n_1}(x) \in ]r,r+1[\). Or \(m_1 - m_2 {\lt} f^{n_2}(x)-f^{n_1}(x)\). Comme \(m_1 - m_2 \in \mathbb {Z}\), on a \(m_1 - m_2 \leq r\).<br />Et donc, pour tout \(x \in \mathbb {R}, \  f^{n_2}(x) - f^{n_1}(x) = f^{n_2-n_1}(f^{n_1}(x))- f^{n_1}(x){\gt}r \geq m_1 - m_2\), ce qui achève la démonstration. \(\square \)<br /></p>
+<div class="theorem_thmwrapper theorem-style-plain" id="poincaré">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">26</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#poincaré">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> Supposons que \(\rho (T) \notin \mathbb {Q}/\mathbb {Z}\), ie supposons que pour tout relèvement \( f\) de \(T\), \(\alpha (f) \in {\mathbb {R}}\setminus {\mathbb {Q}}\). Notons \(\alpha _T\) l’unique représentant de \(\rho (T)\) dans [0,1[. La <b class="bfseries">classification de Poincaré</b> distingue deux cas: </p>
+<ol class="enumerate">
+  <li><p>Si \(T\) est transitive, alors \(T\) est <b class="bfseries">conjuguée à la rotation</b> \(R_{\alpha _T}\). </p>
+</li>
+  <li><p>Si \(T\) n’est pas transitive, \(T\) est seulement <b class="bfseries">semi-conjuguée à la rotation</b> \(R_{\alpha _T}\). Plus particulièrement, il existe une application continue surjective \(h\) telle que </p>
+<div class="displaymath" id="a0000000114">
+  \[ h\circ T = R_{\alpha _T} \circ h. \]
+</div>
+</li>
+</ol>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Soient \(x\) un réel fixé et \(f\) un relèvement de \(T\). On définit <i class="itshape">A</i> et<i class="itshape"> B</i> les ensembles suivants: </p>
+<div class="displaymath" id="a0000000115">
+  \[ A =\lbrace f^n(x)+m; (n,m) \in \mathbb {Z}^2 \rbrace \text{ et } B=\lbrace n\alpha _T +m; (n,m)\in \mathbb {Z}^2\rbrace . \]
+</div>
+<p> Comme <i class="itshape">B</i> est un sous-groupe de \({\mathbb {R}}\) qui contient \(1\) et l’irrationnel \(\alpha _T\), il ne peut donc être de la forme \(\lambda \mathbb {Z}\) (avec \(\lambda \in {\mathbb {R}}\)), donc il est dense dans \({\mathbb {R}}\).<br /></p>
+<p>On pose l’application \(H: A\to B\) définie par </p>
+<div class="displaymath" id="a0000000116">
+  \[ H(f^n(x)+m)= n \alpha _T +m. \]
+</div>
+<p> D’après le lemme <a href="sect0002.html#lemme poincaré">3</a>, \(H\) est bien définie (comme \(\alpha _T\) est irrationnel), bijective et strictement croissante. De plus, pour tout \(z \in A\), il existe \(n,m\in \mathbb {Z}\) tels que \(z=f^n(x)+m\) et on a alors </p>
+<div class="displaymath" id="a0000000117">
+  \[ H(z+1)=H(f^n(x)+m+1)=n\alpha _T+m+1=H(z)+1 \]
+</div>
+<p> et </p>
+<div class="displaymath" id="a0000000118">
+  \[ H(f(z))=H(f(f^n(x)+m))=H(f^{n+1}(x)+m)=(n+1)\alpha _T +m =H(z)+\alpha _T. \]
+</div>
+<p>On définit la fonction \(\widetilde{H}:{\mathbb {R}}\to {\mathbb {R}}\) en posant pour tout \(y \in {\mathbb {R}}\): </p>
+<div class="displaymath" id="a0000000119">
+  \[ \widetilde{H}(y)= \sup \lbrace H(z): z \in A \cap ]-\infty ,y]\rbrace . \]
+</div>
+<p>On vérifie facilement que pour tout \(y \in A\) \(H(y)=\widetilde{H}(y)\), ainsi \(\widetilde{H}\) prolonge \(H\). De plus, \(\widetilde{H}\) est croissante sur \({\mathbb {R}}\). En effet, soient \(y_1, y_2 \in {\mathbb {R}}\) tels que \(y_1\leq y_2\). On a l’inclusion \(\lbrace H(z): z \in A \cap ]-\infty ,y_1]\rbrace \subset \lbrace H(z): z \in A \cap ]-\infty ,y_2]\rbrace \) et par passage au sup, \(\widetilde{H}(y_1)\leq \widetilde{H}(y_2)\).<br /></p>
+<p>Montrons que \(\widetilde{H}\) est continue sur \({\mathbb {R}}\). Soient \(y_0 \in {\mathbb {R}}\) et \(\varepsilon {\gt}0\). Comme \(B\) est dense dans \({\mathbb {R}}\), on peut choisir \(b_1, b_2 \in B\) tels que \(\widetilde{H}(y_0)-\varepsilon {\lt} b_1 {\lt} \widetilde{H}(y_0) {\lt}b_2{\lt}\widetilde{H}(y_0)+\varepsilon \). Notons \(a_1\) et \(a_2\) les antécédents de \(b_1\) et \(b_2\) par \(H\) (qui est bijective). Par croissance de \(\widetilde{H}\), on a \(a_1{\lt}a_2\) et pour tout \(y\in [a_1,a_2]\), \(|\widetilde{H}(y)-\widetilde{H}(y_0)|{\lt}\varepsilon \). On en déduit que \(\widetilde{H}\) est continue en \(y_0\).<br /></p>
+<p>De plus, comme \(\widetilde{H}\) est continue, \(\mathrm{Im}(\widetilde{H})\) est un intervalle de \({\mathbb {R}}\) contenant \(B\) qui est dense dans \({\mathbb {R}}\). Ainsi, \(\mathrm{Im}(\widetilde{H})={\mathbb {R}}\), et donc \(\widetilde{H}\) est surjective.<br /></p>
+<p>Remarquons que, pour tout \(y \in {\mathbb {R}}\): </p>
+<div class="displaymath" id="a0000000120">
+  \begin{eqnarray*}  \widetilde{H}(y+1)& =& \sup \lbrace n \alpha _T +m: (n,m)\in \mathbb {Z}^2,\  f^n(x)+m\leq y+1 \rbrace \\ & =&  \sup \lbrace n \alpha _T +m: (n,m)\in \mathbb {Z}^2,\  f^n(x)+m-1\leq y\rbrace \\ & =& \sup \lbrace n \alpha _T +m+1: (n,m)\in \mathbb {Z}^2,\  f^n(x)+m\leq y \rbrace \\ & =& \widetilde{H}(y)+1 \end{eqnarray*}
+</div>
+<p> et </p>
+<div class="displaymath" id="a0000000121">
+  \begin{eqnarray*}  \widetilde{H}(f(y))& =&  \sup \lbrace n \alpha _T + m : (n,m)\in \mathbb {Z}^2,\  f^n(x)+m \leq f(y) \rbrace \\ & =&  \sup \lbrace \alpha _T + (n-1) \alpha _T + m : (n,m)\in \mathbb {Z}^2,\  f^{n-1}(x)+m \leq y \rbrace \\ & =&  \alpha _T + \sup \lbrace n \alpha _T + m : (n,m)\in \mathbb {Z}^2,\  f^{n}(x)+m \leq y \rbrace \\ & =& \alpha _T + \widetilde{H}(y). \\ \end{eqnarray*}
+</div>
+<p> Ainsi, par passage au quotient \(\widetilde{H}\) fournit une surjection continue \(h: {\mathbb {R}}/\mathbb {Z}\to {\mathbb {R}}/\mathbb {Z}\) telle que </p>
+<div class="displaymath" id="a0000000122">
+  \[ h\circ T=R_{\alpha _T} \circ h. \]
+</div>
+<p>Dans le cas où T est transitive, on peut fixer un réel \(x\) tel que l’orbite de \(\overline{x}\) sous l’action de T soit dense dans \({\mathbb {R}}/\mathbb {Z}\). Pour ce choix du réel \(x\), l’ensemble \(A\) précédemment défini est dense dans \({\mathbb {R}}\). Pour tous réels \(y_1{\lt}y_2\), il existe \(z_1{\lt}z_2\) dans \(A\) tels que \(y_1{\lt}z_1{\lt}z_2{\lt}y_2\). Par croissance stricte de \(H\) et par croissance de \(\widetilde{H}\), on alors </p>
+<div class="displaymath" id="a0000000123">
+  \[ \widetilde{H}(y_1)\leq \widetilde{H}(z_1)=H(z_1){\lt}H(z_2)=\widetilde{H}(z_2)\leq \widetilde{H}(y_2). \]
+</div>
+<p> Ainsi, dans ce cas \(\widetilde{H}\) est strictement croissante donc bijective sur \({\mathbb {R}}\). Cela entraine que \(h\) est bijective et donc que \(T\) est conjuguée à \(R_{\alpha _T}\). \(\square \)<br /></p>
+<div class="corollary_thmwrapper theorem-style-plain" id="minimal équivaut transitif">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">27</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#minimal équivaut transitif">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p> Il y a équivalence entre les 3 propriétés suivantes: </p>
+<ol class="enumerate">
+  <li><p>Il existe \(x\in {\mathbb {T}}\) tel que \(O_x\) soit dense dans \({\mathbb {T}}\) (autrement dit, \(T\) est transitif). </p>
+</li>
+  <li><p>\(T\) est conjugué à une rotation d’angle irrationnel. </p>
+</li>
+  <li><p>Pour tout \(x\in {\mathbb {T}}\), l’orbite \(O_x\) de \(x\) est dense dans \({\mathbb {T}}\) (autrement dit T est minimal). </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>(1)\(\Rightarrow \)(2) Cette implication est donnée par la classification de Poincaré (théorème <a href="sect0002.html#poincaré">26</a>).<br /></p>
+<p>(2)\(\Rightarrow \)(3) Si \(T\) est conjugué à \(R_{\theta }\), avec \(\theta \in \mathbb {R}\setminus \mathbb {Q}\). Alors, il existe \(h\) continue bijective telle que \(T=h\circ R_\theta \circ h^{-1}\). Soit \(x\in {\mathbb {T}}\). L’orbite de \(x\) sous l’action de T est: </p>
+<div class="displaymath" id="a0000000124">
+  \begin{eqnarray*}  O_x& =& \lbrace T^n(x), n \in \mathbb {N} \rbrace \\ & =&  \lbrace h\circ R_\theta ^n \circ h^{-1}(x), n \in \mathbb {Z} \rbrace \\ & =&  h(\lbrace R^n_\theta (y), n \in \mathbb {Z}\rbrace )\text{ où } y = h^{-1}(x). \end{eqnarray*}
+</div>
+<p> Comme \(\lbrace R^n_\theta (y), n \in \mathbb {Z}\rbrace \) est dense dans \({\mathbb {T}}\) d’après l’exemple <a href="sect0002.html#exemple rot">2</a>, et comme \(h\) est continue et surjective, \(O_x\) dense dans \({\mathbb {T}}\).<br /></p>
+<p>(3)\(\Rightarrow \)(1) Cette implication est immédiate. \(\square \) </p>
+<h1 id="a0000000019">1.5 Ensemble dérivé de \(T\)</h1>
+<p> Dans toute cette partie, on considère \(T \in \mathrm{Hom}^+({\mathbb {T}})\) tel que \(\rho (T) \notin {\mathbb {Q}}/{\mathbb {Z}}\). </p>
+<div class="notation_thmwrapper theorem-style-definition" id="a0000000125">
+  <div class="notation_thmheading">
+    <span class="notation_thmcaption">
+    Notation
+    </span>
+    <span class="notation_thmlabel">6</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000125">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="notation_thmcontent">
+  <p>Soient \(x,y \in {\mathbb {R}}/\mathbb {Z}\). Notons \(a,b\) les représentants dans \([0,1[\) de \(x,y\). On pose: </p>
+<div class="displaymath" id="a0000000126">
+  \[ [x,y] = \left\{  \begin{array}{ll} \pi ([a,b]) &  \text{si } a\leq b \\ \pi ([a,1[)\cup \pi ([0,b]) &  \mbox{si } a{\gt}b. \end{array} \right.  \]
+</div>
+
+  </div>
+</div>
+<p> Pour tous \(x, y \in {\mathbb {R}}/\mathbb {Z}\), avec la notation précédente on a: </p>
+<div class="displaymath" id="a0000000127">
+  \[ [x,y]\cup [y,x]={\mathbb {T}}\text{ et } [x,y]\cap [y,x]=\lbrace x; y\rbrace . \]
+</div>
+
+
+<div class="lemma_thmwrapper theorem-style-plain" id="T[x;y]">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">28</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#T[x;y]">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> Soient \(x,y \in {\mathbb {R}}/{\mathbb {Z}}\), on a l’égalité \(T([x,y])=[T(x),T(y)].\) </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve :</b> </p>
+<p>Soit \(f\) un relèvement de \(T\). Soient \(a, b, c, d\) les représentants dans \([0,1[\) de \(x,y,T(x),T(y)\). Supposons sans perte de généralité que \(0\leq a\leq b {\lt}1\). Alors \(f(a)\) et \(f(b)\) sont des représentants de \(T(x)\) et \(T(y)\) et \(f(a)\leq f(b) \leq f(a+1)=f(a)+1\). On a: </p>
+<div class="displaymath" id="a0000000128">
+  \[ T([x,y])=(T\circ \pi )[a,b]=(\pi \circ f)[a,b]=\pi ([f(a),f(b)]). \]
+</div>
+<p>1\(^{\mathrm{er}}\) cas: \(f(a)\) et \(f(b)\) appartiennent à un même intervalle \([k,k+1[\) avec \(k \in {\mathbb {Z}}\).<br />Dans ce cas, \(c=f(a)-k\) et \(d=f(b)-k\). On a alors: </p>
+<div class="displaymath" id="a0000000129">
+  \[ [T(x),T(y)]=\pi ([c,d])=\pi ([c,d]+k)=\pi ([f(a),f(b)]). \]
+</div>
+<p>2\(^{\mathrm{nd}}\) cas: il existe \(k \in {\mathbb {Z}}\) tel que \(f(a){\lt}k\leq f(b)\).<br />Dans ce cas, \(c=f(a)-k+1\) et \(d=f(b)-k\). Ainsi, \(c{\gt}d\) et on a alors: </p>
+<div class="displaymath" id="a0000000130">
+  \begin{eqnarray*}  [T(x),T(y)]& =& \pi ([c,1[])\cup \pi ([0,d])\\ & =& \pi ([c,1[+k-1)\cup \pi ([0,d]+k)\\ & =& \pi ([f(a),k[)\cup \pi ([k,f(b)])\\ & =& \pi ([f(a),f(b)]) \end{eqnarray*}
+</div>
+<p>Dans tous les cas, on a \(T([x,y])=\pi ([f(a),f(b)])=[T(x),T(y)]\), ce qui démontre le lemme. \(\square \)<br /></p>
+<div class="lemma_thmwrapper theorem-style-plain" id="delta orbite">
+  <div class="lemma_thmheading">
+    <span class="lemma_thmcaption">
+    Lemma
+    </span>
+    <span class="lemma_thmlabel">29</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#delta orbite">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="lemma_thmcontent">
+  <p> Soient \(n,m \in \mathbb {Z}\) avec \(n\neq m\). Soit \(x_0 \in {\mathbb {T}}\). Notons \(\Delta := [T^n(x_0),T^m(x_0)]\) et \(\Delta ':=[T^m(x_0),T^n(x_0)]\) les deux arcs de cercle joignant \(T^n(x_0)\) et \(T^m(x_0)\).<br />Alors, pour tout \(k_0 \in {\mathbb {N}}\), il existe des entiers \(k_1\geq k_0\) et \(k_1'\geq k_0\) tels que </p>
+<div class="displaymath" id="a0000000131">
+  \[ {\mathbb {T}}=\overset {k_1}{\underset {j=k_0}{\bigcup }}T^{j(m-n)}\Delta =\overset {k_1’}{\underset {j=k_0}{\bigcup }}T^{j(m-n)}\Delta '. \]
+</div>
+<p> <br />De plus, pour tout \(x \in {\mathbb {T}}\), l’orbite \(O_x\) de \(x\) rencontre \(\Delta \) et \(\Delta '\) une infinité de fois dans le passé comme dans le futur. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>Soient \(f\) un relèvement de \(T\), \(x_0 \in {\mathbb {T}}\), \(k_0 \in {\mathbb {N}}\) et \(n\neq m\) dans \({\mathbb {Z}}\). Comme \(\rho (T) \notin {\mathbb {Q}}/{\mathbb {Z}}\), on a d’après le théorème <a href="sect0002.html#equivrationnel">12</a> que \(T^m(x_0)\neq T^n(x_0)\). Notons \(a,b\) les représentants dans \([0,1[\) de \(T^n(x_0)\) et \(T^m(x_0)\). Supposons, sans perte de généralité, que \(0\leq a{\lt}b{\lt}1\). Pour tout \(k \in {\mathbb {N}}\), on a par croissance de \(f\): </p>
+<div class="displaymath" id="a0000000132">
+  \[ f^{k(m-n)}a{\lt}f^{k(m-n)}(b){\lt}f^{k(m-n)}(a+1)=f^{k(m-n)}(a)+1 \]
+</div>
+<p> De plus, on remarque que \(T^{m-n}(T^n(x_0))=T^m(x_0)\), donc \(f^{m-n}(a)=b+r\) avec \(r\in {\mathbb {Z}}\). Pour tout \(k\in {\mathbb {N}}\), notons: </p>
+<div class="displaymath" id="a0000000133">
+  \[ I_k=[f^{k(m-n)}(a)-kr,f^{k(m-n)}(b)-kr]\text{ et } \Delta _k=\pi (I_k). \]
+</div>
+<p> Pour tout \(k\in {\mathbb {N}}\), la borne inférieure de \(I_{k+1}\) est la borne supérieure de \(I_k\). En effet: </p>
+<div class="displaymath" id="a0000000134">
+  \[ f^{(k+1)(m-n)}(a)-(k+1)r=f^{k(m-n)}(b+r)-(k+1)r=f^{k(m-n)}(b)-kr. \]
+</div>
+<p> Ainsi, les \((I_k)_{k\geq 0}\) sont adjacents les uns aux autres. De plus, </p>
+<div class="displaymath" id="a0000000135">
+  \begin{eqnarray*}  \Delta _k& =& \pi (I_k)\\ & =& \pi ([f^{k(m-n)}(a-kr),f^{k(m-n)}(b-kr)])\\ & =& \pi ( f^{k(m-n)}[a-kr,b-kr])\\ & =& T^{k(m-n)}(\pi ([a-kr,b-kr]))\\ & =& T^{k(m-n)}(\pi [a,b])\\ & =& T^{k(m-n)}[T^n(x_0),T^m(x_0)]\\ & =& [T^{k(m-n)}(T^n(x_0)),T^{k(m-n)}(T^m(x_0))]\text{ d'après le lemme \ref{T[x;y]}}. \end{eqnarray*}
+</div>
+<p>Montrons qu’il existe \(k_1\in \mathbb {N}\) tel que \({\mathbb {T}}=\overset {k_1}{\underset {j=k_0}{\bigcup }}\Delta _j.\) Pour tout \(k\geq k_0\), </p>
+<div class="displaymath" id="a0000000136">
+  \[ \overset {k}{\underset {j=k_0}{\bigcup }}\Delta _j=\overset {k}{\underset {j=k_0}{\bigcup }}\pi (I_j)=\pi (\overset {k}{\underset {j=k_0}{\bigcup }}I_j)=\pi ([f^{k_0(m-n)}(a)-k_0r,f^{k(m-n)}(b)-kr]) \]
+</div>
+<p>Or: </p>
+<div class="displaymath" id="a0000000137">
+  \[ \frac{f^{k(m-n)}(b)-b-kr}{k}=\frac{f^{k(m-n)}(b)-b}{k}-r\underset {k\to +\infty }{\longrightarrow }\alpha (f^{m-n})-r.  \]
+</div>
+<p> Comme \(f^{m-n}(a)-a=b-a+r \in ]r,r+1[\) et que \(\alpha (f^{m-n})\notin {\mathbb {Z}}\), l’image de \(f^{m-n} - \mathrm{Id}_{{\mathbb {R}}}\) ne contient pas d’entier donc reste incluse dans \(]r,r+1[\) (théorème <a href="sect0002.html#equivrationnel">12</a>). D’après le corollaire <a href="sect0002.html#equiv amel">13</a>, on a \(\alpha (f^{m-n})\in ]r,r+1[\) et donc \(\alpha (f^{m-n})-r \in ]0,1[\).<br />On en déduit que la suite \((f^{k(m-n)}(b)-kr)_{k\geq 0}\) tend vers \(+\infty \). Ainsi, il existe un rang \(k_1\geq k_0\) tel que pour tout \(k\geq k_1\), </p>
+<div class="displaymath" id="a0000000138">
+  \[ f^{k(m-n)}(b)-kr\geq f^{k_0(m-n)}(a)-k_0r +1 \text{ d'où } {\mathbb {T}}=\overset {k}{\underset {j=k_0}{\bigcup }}\Delta _j. \]
+</div>
+<p>On montre le résultat sur \(\Delta '\) de façon similaire. </p>
+<p>Ainsi, pour tout \(x \in {\mathbb {T}}\) et pour tout \(k_0 \in {\mathbb {N}}\), il existe \(j_1 \geq k_0\) et \(j_1'\geq k_0\) tels que \(x \in T^{j_1(m-n)}\Delta \) et \(x\in T^{j_1'(m-n)}\Delta '\) . On a donc \(T^{-j_1(m-n)}(x) \in \Delta \) et \(T^{-j_1'(m-n)}(x) \in \Delta '\), c’est-à-dire \(O_x \cap \Delta \neq \emptyset \), \(O_x \cap \Delta ' \neq \emptyset \) ce qui prouve le lemme. \(\square \)<br /></p>
+<div class="theorem_thmwrapper theorem-style-plain" id="ensemble dérivé">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">30</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#ensemble dérivé">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> Soit \(x \in {\mathbb {T}}\). Notons \(L_x\) <b class="bfseries">l’ensemble des valeurs d’adhérence</b> de la suite \((T^n(x))_{n\geq 0}\). L’ensemble \(L_x\) possède les trois propriétés suivantes: </p>
+<ol class="enumerate">
+  <li><p>Il est invariant par \(T\) et \(T^{-1}\). </p>
+</li>
+  <li><p>Il ne dépend pas de \(x\). </p>
+</li>
+  <li><p>Il vaut soit \({\mathbb {T}}\) tout entier, soit un fermé de \({\mathbb {T}}\) d’intérieur vide sans point isolé. </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p><b class="bfseries">1)</b> Cette propriété est immédiate.<br /></p>
+<p><b class="bfseries">2)</b> Soient \(x_1, x_2 \in {\mathbb {T}}\). Montrons que \(L_{x_1}=L_{x_2}\). Soit \(x \in L_{x_1}\). Il existe \(\varphi :{\mathbb {N}}\to {\mathbb {N}}\) strictement croissante telle que \(T^{\varphi (k)}(x_1) \underset {k \to \infty }{\longrightarrow }x\).<br /></p>
+<p>D’après le lemme <a href="sect0002.html#delta orbite">29</a>, pour tout \(k\in {\mathbb {N}}\), il existe des entiers naturels \(n\) arbitrairement grands tels que \(T^{n}(x_2)\) appartienne à l’arc de cercle le plus court joignant \(T^{\varphi (k)}(x_1)\) et \(T^{\varphi (k+1)}(x_1)\). On peut donc construire une suite strictement croissante \((n_k)_{k\geq 0}\) d’entiers naturels telle que pour tout \(k \in {\mathbb {N}}\), \(T^{n_k}(x_2)\) appartienne à l’arc de cercle le plus court joignant \(T^{\varphi (k)}(x_1)\) et \(T^{\varphi (k+1)}(x_1)\). On a alors \(T^{n_k}(x_2) \underset {k \to \infty }{\longrightarrow }x\). Donc \(x\in L_{x_2}\), ce qui montre \(L_{x_1}\subset L_{x_2}\).<br /></p>
+<p>Par symétrie \(L_{x_2}\subset L_{x_1}\), d’où l’égalité ensembliste.<br /></p>
+<p><b class="bfseries">3)</b> Soit \(x\in {\mathbb {T}}\) et \(y \in L_x\). Par définition de \(L_x\), on a une suite strictement croissante \((n_k)_{k\geq 0}\) d’entiers naturels telle que \(y=\underset {k \to \infty }{\lim }T^{n_k}(x)\). Par le point <b class="bfseries">1</b>, \(L_x\) est invariant par \(T\), et donc pour tout \(k\geq 0\), \(T^{n_k}(x) \in L_x\). De plus, pour tout \(k\neq 0\), \(n_k {\gt}1\) et donc \(T^{n_k}(x)\neq x\). Donc \(y\) est un point adhérent à \(L_x\backslash \lbrace y \rbrace \), i.e. \(y\) n’est pas un point isolé. Ainsi, \(L_x\) ne possède pas de point isolé.<br /></p>
+<p>Supposons que \(L_x\) ne soit pas d’intérieur vide. Alors \(L_x\) contient une boule \(B_{{\mathbb {R}}/{\mathbb {Z}}}(y,r)\), avec \(y\in L_x\) et \(r\in ]0,1/4[\). Comme \(y\) est une valeur d’adhérence de la suite \((T^k(x))_{k\geq 0}\), on peut trouver deux entiers naturels \(n\neq m\) tels que \(T^n(x)\) et \(T^m(x)\) soient dans \(B_{{\mathbb {R}}/{\mathbb {Z}}}(y,r)\). Soit \(\Gamma \) l’arc de cercle le plus court contenant \(T^n(x)\) et \(T^m(x)\) (cela peut être \(\Delta \) ou \(\Delta '\) définis dans le lemme <a href="sect0002.html#delta orbite">29</a>). Ainsi, </p>
+<div class="displaymath" id="a0000000139">
+  \[ \Gamma \subset B_{{\mathbb {R}}/{\mathbb {Z}}}(y,r) \subset L_x. \]
+</div>
+<p> D’après le lemme <a href="sect0002.html#delta orbite">29</a> (appliqué pour \(k_0=0\)), il existe \(k_1 \in \mathbb {N}\) tel que: </p>
+<div class="displaymath" id="a0000000140">
+  \[ {\mathbb {T}}=\overset {k_1}{\underset {j=0}{\bigcup }}T^{j(m-n)}\Gamma \subset \overset {k_1}{\underset {j=0}{\bigcup }}T^{j(m-n)} L_x = L_x, \]
+</div>
+<p> la dernière égalité provenant du fait que \(L_x\) est invariant par \(T\). Ainsi, \(L_x = {\mathbb {T}}\) tout entier si \(L_x\) n’est pas d’intérieur vide, ce qui achève la preuve. \(\square \)<br /></p>
+<p>Le théorème <a href="sect0002.html#ensemble dérivé">30</a> motive et justifie la définition suivante: </p>
+<div class="definition_thmwrapper theorem-style-definition" id="a0000000141">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">31</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000141">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>L’ensemble fermé \(L_T\) des valeurs d’adhérence de la suite \((T^n(x))_{n\geq 0}\), qui ne dépend pas de \(x \in {\mathbb {T}}\), est appelé <b class="bfseries">l’ensemble dérivé</b> de \(T\). </p>
+
+  </div>
+</div>
+<p>Le point 3 du théorème <a href="sect0002.html#ensemble dérivé">30</a> montre que l’ensemble dérivé est soit \({\mathbb {T}}\) tout entier, soit un fermé d’intérieur non vide sans point isolé. Ce deuxième cas se produit effectivement: <b class="bfseries">Arnaud Denjoy</b> a construit l’exemple d’un homéomorphisme dont l’ensemble dérivé ne vaut pas \({\mathbb {T}}\) tout entier. C’est l’objet du théorème suivant, dont on admettra le résultat. </p>
+<div class="theorem_thmwrapper theorem-style-plain" id="Denjoy">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">32</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#Denjoy">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p> <b class="bfseries">Exemple de Denjoy</b><br />Soit \(\alpha \) un irrationnel fixé. Tout ensemble \(L\) fermé d’intérieur non vide sans point isolé peut être vu comme ensemble dérivé d’un homéomorphisme de nombre de rotation \(\alpha \). </p>
+
+  </div>
+</div>
+<p>Enfin, le cas où l’ensemble dérivé vaut \({\mathbb {T}}\) tout entier est plus simple et donne lieu à la proposition suivante. </p>
+<div class="proposition_thmwrapper theorem-style-plain" id="a0000000142">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">33</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000142">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>On a les équivalences suivantes: </p>
+<ol class="enumerate">
+  <li><p>\(L_T= {\mathbb {T}}\). </p>
+</li>
+  <li><p>\(T\) est minimal. </p>
+</li>
+  <li><p>\(T\) est transitif. </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> </p>
+<p>D’après le théorème <a href="sect0002.html#ensemble dérivé">30</a>, pour tout \(x \in {\mathbb {T}}\), l’ensemble des valeurs d’adhérence de la suite \((T^n(x))_{n\geq 0}\) est égal à l’ensemble dérivé \(L_T\). Ainsi, on a: </p>
+<div class="displaymath" id="a0000000143">
+  \[ L_T= \underset {N \in \mathbb {N}}{\bigcap }\overline{\lbrace T^n(x); \  n\geq N\rbrace }\subset \overline{O_x} . \]
+</div>
+<p>(1)\(\Rightarrow \)(2) Si \(L_T = {\mathbb {T}}\), alors pour tout \(x \in {\mathbb {T}}\), l’orbite \(O_x\) est dense dans \({\mathbb {T}}\), donc \(T\) est minimal.<br /></p>
+<p>(2)\(\Rightarrow \)(3) Si \(T\) est minimal, alors \(T\) est transitif par définition.<br /></p>
+<p>(3)\(\Rightarrow \)(1) Si \(T\) est transitif, alors il existe \(x \in {\mathbb {T}}\) tel que l’orbite \(O_x\) est dense dans \({\mathbb {T}}\). Par définition, l’ensemble \(L_T\) contient tout point de \(\overline{\lbrace T^n(x);\  n \geq 0\rbrace }\) qui n’est pas dans \(\lbrace T^n(x);\  n \geq 0\rbrace \), c’est-à-dire: </p>
+<div class="displaymath" id="a0000000144">
+  \[ \overline{O_x}\  \backslash \lbrace T^n(x);\  n \geq 0\rbrace \subset L_T. \]
+</div>
+<p> Comme \(\lbrace T^n(x);\  n \geq 0\rbrace \) est dénombrable, l’ensemble \(\overline{O_x}\  \backslash \lbrace T^n(x);\  n \geq 0\rbrace \) est dense dans \({\mathbb {T}}\). Et comme \(L_T\) est fermé, avec l’inclusion précédente, on conclut que \(L_T= {\mathbb {T}}\). \(\square \)<br /></p>
+<p> On a redémontré l’équivalence vue au corollaire <a href="sect0002.html#minimal équivaut transitif">27</a> entre transitif et minimal dans le cas des homéomorphismes préservant l’orientation.  </p>
+<h1 id="a0000000020">1.6 Ouverture : brève étude du cas des homéomorphismes renversant l’orientation</h1>
+<p> Nous nous sommes intéressés jusqu’ici uniquement aux homéomorphismes préservant l’orientation. Il est alors naturel de se demander si les homéomorphismes renversant l’orientation possèdent des propriétés remarquables.<br /></p>
+<div class="proposition_thmwrapper theorem-style-plain" id="a0000000145">
+  <div class="proposition_thmheading">
+    <span class="proposition_thmcaption">
+    Proposition
+    </span>
+    <span class="proposition_thmlabel">34</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000145">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="proposition_thmcontent">
+  <p>Soit \(T\in \mathrm{Hom}^-({\mathbb {T}})\) un homéomorphisme renversant l’orientation. Alors \(T\) possède <b class="bfseries">exactement deux points fixes</b>. </p>
+
+  </div>
+</div>
+<p><b class="bfseries">Preuve:</b> Soit \(f \in {\mathcal{E}}^-\) un relèvement de \(T\). Notons \(g: {\mathbb {R}}\to {\mathbb {R}}\) la fonction définie par \(g(x)=f(x)-x\). La fonction \(g\) est continue et strictement décroissante car \(f\) et \(-\mathrm{Id}_{{\mathbb {R}}}\) le sont. Donc \(g\) est un homéomorphisme décroissant de \({\mathbb {R}}\) dans \({\mathbb {R}}\). Comme \(g(1)=f(1)-1=f(0)-2\), les seuls éléments de \(g^{-1}(\mathbb {Z})\) dans \([0,1[\) sont \(x_1:=g^{-1}(\lfloor g(0) \rfloor )\) et \(x_2:=g^{-1}(\lfloor g(0) \rfloor )\). Ainsi, les seuls points fixes de \(T\) sont \(\overline{x_1}\) et \(\overline{x_2}\). \(\square \)<br /></p>
+<div class="corollary_thmwrapper theorem-style-plain" id="a0000000146">
+  <div class="corollary_thmheading">
+    <span class="corollary_thmcaption">
+    Corollary
+    </span>
+    <span class="corollary_thmlabel">35</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0002.html#a0000000146">#</a>
+    
+    
+    
+        </div>
+  </div>
+  <div class="corollary_thmcontent">
+  <p>Soit \(T \in \mathrm{Hom}^-({\mathbb {T}})\). Alors: </p>
+<ol class="enumerate">
+  <li><p>\(T^2 \in \mathrm{Hom}^+({\mathbb {T}})\) et \(\rho (T^2)=\overline{0}\). </p>
+</li>
+  <li><p>Pour tout \(x \in {\mathbb {T}}\), les suites \((T^{2n}(x))_{n\geq }0\), \((T^{2n+1}(x))_{n\geq }0\), \((T^{-2n}(x))_{n\geq }0\) et \((T^{-2n-1}(x))_{n\geq }0\) convergent vers des points fixes de \(T^2\). Par conséquent, l’adhérence de l’orbite de \(x\) est dénombrable. </p>
+</li>
+</ol>
+
+  </div>
+</div>
+<dl class="bibliography">
+  <dt><a name="1">1</a></dt>
+  <dd><p>I.P. Cornfeld, S.V. Fomin et Ya.G. Sinai, <em>Ergodic theory</em>, Springer-Verlag, 1982.  </p>
+</dd>
+  <dt><a name="2">2</a></dt>
+  <dd><p>M. Brin, G. Stuck, <em>Introduction to Dynamical Systems</em>, Cambridge, Cambridge University Press, 2002. </p>
+</dd>
+</dl>
+<p>\(\addcontentsline{toc}{section}{Références}\) </p>
 
 </div> <!--main-text -->
 </div> <!-- content-wrapper -->
@@ -264,7 +1868,7 @@
 
   <a href="sect0001.html" title="Introduction"><svg  class="icon icon-arrow-left "><use xlink:href="symbol-defs.svg#icon-arrow-left"></use></svg>
 </a>
-  <a href="index.html" title="ED course"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
+  <a href="index.html" title="Introduction to proof assistants"><svg  class="icon icon-arrow-up "><use xlink:href="symbol-defs.svg#icon-arrow-up"></use></svg>
 </a>
 </nav>
 

@@ -1,150 +1,138 @@
-\documentclass[11pt,a4 paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{yhmath}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{animate}
-\usepackage{enumitem}
-\usepackage[french]{babel}
-\usepackage{hyperref}
-\usepackage[T1]{fontenc}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{amsfonts}
-\usepackage{dsfont}
-\usepackage[all]{xy}
-\usepackage{amsthm}
-\usepackage{fancyhdr}
-\usepackage{framed}
-\usepackage[many]{tcolorbox}
-\usepackage{pgfplots}
-\usepackage{mathrsfs}
-\usepackage{geometry}
-\usepackage{calrsfs}
-\usepackage{setspace}
-\geometry{hmargin=2.8cm,vmargin=3.0cm}
-\usetikzlibrary{arrows}
+\chapter{Une preuve : Nombre de rotation}
 
 
-\newtheorem{theoreme}{Théorème}[section]
-\newtheorem{definition}[theoreme]{Définition}
-\newtheorem{lemme}[theoreme]{Lemme}
-\newtheorem{propriete}[theoreme]{Proposition}
-\newtheorem{ex}[theoreme]{Exemple}
-\newtheorem{contrex}[theoreme]{Contre-exemple}
-\newtheorem{thmetdefinition}[theoreme]{Théorème et définition}
-\newtheorem{definitionproposition}[theoreme]{Définition et proposition}
-\newtheorem{corollaire}[theoreme]{Corollaire}
-\newtheorem{nota}[theoreme]{Notation}
-\newtheorem{rmq}[theoreme]{Remarque}
+% \documentclass[11pt,a4 paper]{article}
+% \usepackage[utf8]{inputenc}
+% \usepackage{yhmath}
+% \usepackage{amssymb}
+% \usepackage{amsmath}
+% \usepackage{graphicx}
+% \usepackage{animate}
+% \usepackage{enumitem}
+% \usepackage[french]{babel}
+% \usepackage{hyperref}
+% \usepackage[T1]{fontenc}
+% \usepackage[dvipsnames]{xcolor}
+% \usepackage{amsfonts}
+% \usepackage{dsfont}
+% \usepackage[all]{xy}
+% \usepackage{amsthm}
+% \usepackage{fancyhdr}
+% \usepackage{framed}
+% \usepackage[many]{tcolorbox}
+% \usepackage{pgfplots}
+% \usepackage{mathrsfs}
+% \usepackage{geometry}
+% \usepackage{calrsfs}
+% \usepackage{setspace}
+% \geometry{hmargin=2.8cm,vmargin=3.0cm}
+% \usetikzlibrary{arrows}
 
-\newcommand{\Tbb}{\mathbb{T}}
-\newcommand{\Rbb}{\mathbb{R}}
-\newcommand{\Qbb}{\mathbb{Q}}
-\newcommand{\Zbb}{\mathbb{Z}}
-\newcommand{\Nbb}{\mathbb{N}}
-\newcommand{\Ec}{\mathcal{E}}
+
+% \newtheorem{theoreme}{Théorème}[section]
+% \newtheorem{definition}[theoreme]{Définition}
+% \newtheorem{lemme}[theoreme]{Lemme}
+% \newtheorem{propriete}[theoreme]{Proposition}
+% \newtheorem{example}[theoreme]{Exemple}
+% \newtheorem{contrex}[theoreme]{Contre-exemple}
+% \newtheorem{thmetdefinition}[theoreme]{Théorème et définition}
+% \newtheorem{definitionproposition}[theoreme]{Définition et proposition}
+% \newtheorem{corollaire}[theoreme]{Corollaire}
+% \newtheorem{notation}[theoreme]{Notation}
+% \newtheorem{rmq}[theoreme]{Remarque}
+
+\newcommand{\Tbb}{{\mathbb{T}}}
+\newcommand{\Rbb}{{\mathbb{R}}}
+\newcommand{\Qbb}{{\mathbb{Q}}}
+\newcommand{\Zbb}{{\mathbb{Z}}}
+\newcommand{\Nbb}{{\mathbb{N}}}
+\newcommand{\Ec}{{\mathcal{E}}}
 \newcommand{\sphere}{\mathbb{S}^1}
 \newcommand{\Cc}{\mathcal{C}}
 \newcommand{\Id}{\mathrm{Id}}
 \newcommand{\HomT}{\mathrm{Hom}^+(\Tbb)}
 \newcommand{\HommoinsT}{\mathrm{Hom}^-(\Tbb)}
 \newcommand{\Tent}{\mathcal{T}_{\mathrm{ent}}}
-\newcommand*{\EnsembleQuotient}[2]%
-{\ensuremath{%
-		#1/\!\raisebox{-.65ex}{\ensuremath{\mathcal{#2}}}}}
+\newcommand*{\EnsembleQuotient}[2]{\ensuremath{#1/#2}}
 
-\newtcolorbox{box_thm}{colback=white!100,colframe=black!100,enhanced}
-\newenvironment{thm}{\begin{box_thm}\begin{theoreme}}{\end{theoreme}\end{box_thm}}
+% \newtcolorbox{box_thm}{colback=white!100,colframe=black!100,enhanced}
+% \newenvironment{theorem}{\begin{box_thm}\begin{theoreme}}{\end{theoreme}\end{box_thm}}
 
 
-\newtcolorbox{box_defi}{colback=white!100,colframe=black!100,enhanced}
-\newenvironment{defi}{\begin{box_defi}\begin{definition}}{\end{definition}\end{box_defi}}
+% \newtcolorbox{box_defi}{colback=white!100,colframe=black!100,enhanced}
+% \newenvironment{definition}{\begin{box_defi}\begin{definition}}{\end{definition}\end{box_defi}}
 
-\newtcolorbox{box_thmdefi}{colback=white!100,colframe=black!100,enhanced}
-\newenvironment{thmdefi}{\begin{box_thmdefi}\begin{thmetdefinition}}{\end{thmetdefinition}\end{box_thmdefi}}
+% \newtcolorbox{box_thmdefi}{colback=white!100,colframe=black!100,enhanced}
+% \newenvironment{thmdefi}{\begin{box_thmdefi}\begin{thmetdefinition}}{\end{thmetdefinition}\end{box_thmdefi}}
 
-\newtcolorbox{box_coro}{colback=white!100,colframe=black!100,enhanced}
-\newenvironment{coro}{\begin{box_coro}\begin{corollaire}}{\end{corollaire}\end{box_coro}}
+% \newtcolorbox{box_coro}{colback=white!100,colframe=black!100,enhanced}
+% \newenvironment{corollary}{\begin{box_coro}\begin{corollaire}}{\end{corollaire}\end{box_coro}}
 
-\newtcolorbox{box_ppt}{colback=white!100,colframe=black!100,enhanced}
-\newenvironment{ppt}{\begin{box_ppt}\begin{propriete}}{\end{propriete}\end{box_ppt}}
+% \newtcolorbox{box_ppt}{colback=white!100,colframe=black!100,enhanced}
+% \newenvironment{proposition}{\begin{box_ppt}\begin{propriete}}{\end{propriete}\end{box_ppt}}
 
-\newtcolorbox{box_lm}{colback=white!100,colframe=black!100,enhanced}
-\newenvironment{lm}{\begin{box_lm}\begin{lemme}}{\end{lemme}\end{box_lm}}
+% \newtcolorbox{box_lm}{colback=white!100,colframe=black!100,enhanced}
+% \newenvironment{lemma}{\begin{box_lm}\begin{lemme}}{\end{lemme}\end{box_lm}}
 
-\newtcolorbox{box_defippt}{colback=white!100,colframe=black!100,enhanced}
-\newenvironment{defippt}{\begin{box_defippt}\begin{definitionproposition}}{\end{definitionproposition}\end{box_defippt}}
-
-
-\title{Les homéomorphismes du cercle préservant l'orientation}
-\author{Julie DEUDON, encadrée par Christophe LEURIDAN}
+% \newtcolorbox{box_defippt}{colback=white!100,colframe=black!100,enhanced}
+% \newenvironment{defippt}{\begin{box_defippt}\begin{definitionproposition}}{\end{definitionproposition}\end{box_defippt}}
 
 
-\pagestyle{fancy}
-\lhead{TER: Les homéomorphismes du cercle préservant l'orientation}
-\rhead{Julie DEUDON}
+% \title{Les homéomorphismes du cercle préservant l'orientation}
+% \author{Julie DEUDON, encadrée par Christophe LEURIDAN}
 
-\begin{document}
-	\begin{titlepage}
-		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-		\begin{center}
-			\textsc{\LARGE
-				Institut Joseph Fourier
-				\\Université Grenoble Alpes
-			} \\[3cm]
-	
-			\HRule \\[0.4cm]
-			{ \Huge \bfseries \underline{Travail d'Etudes et de Recherche:}\\[0,15cm]\huge Les homéomorphismes du cercle préservant l'orientation. \\[0.15cm] }
-			\HRule \\[1.5cm]
-			\huge Julie DEUDON
-			\\Encadrée par Christophe LEURIDAN\\
-			\vspace{11cm}
-			\Large Année 2022
-			\\[1cm]
-		\end{center}
-	\end{titlepage}
 
-	\newpage
-	\tableofcontents
-	
-	
-\newpage
-\section*{\huge Introduction}
-\addcontentsline{toc}{section}{Introduction}
-\begin{center}
-	$\rule{\linewidth}{0.4mm}$
-\end{center}
-\vspace{1cm}
+% \pagestyle{fancy}
+% \lhead{TER: Les homéomorphismes du cercle préservant l'orientation}
+% \rhead{Julie DEUDON}
+
+% \begin{document}
+% 	\begin{titlepage}
+% 		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+% 		\begin{center}
+% 			\textsc{\LARGE
+% 				Institut Joseph Fourier
+% 				\\Université Grenoble Alpes
+% 			} \\[3cm]
+
+% 			\HRule \\[0.4cm]
+% 			{ \Huge \bfseries \underline{Travail d'Etudes et de Recherche:}\\[0,15cm]\huge Les homéomorphismes du cercle préservant l'orientation. \\[0.15cm] }
+% 			\HRule \\[1.5cm]
+% 			\huge Julie DEUDON
+% 			\\Encadrée par Christophe LEURIDAN\\
+% 			\vspace{11cm}
+% 			\Large Année 2022
+% 			\\[1cm]
+% 		\end{center}
+% 	\end{titlepage}
+
+% 	\tableofcontents
 
 
 
-	\begin{large}
 		\par Notons $\Tbb =\EnsembleQuotient{\Rbb}{\Zbb}$ le \textbf{tore} unidimensionnel, qui est le cercle avec lequel nous allons travailler. Le tore $\Tbb$ est homéomorphe au cercle unité de $\Rbb^2$. Tout homéomorphisme $T$ de $\Tbb$ s'obtient comme passage au quotient d'un homéomorphisme $f$ de $\Rbb$, appelé \textbf{relèvement} de $T$, pour lequel la fonction $x\mapsto f(x+1)-f(x)$ est constante à $\pm1$.\\
-		
+
 		\par Dans ce TER, nous nous proposons d'étudier plus précisément les homéomorphismes du cercle dont la constante vaut $+1$, appelés \textbf{homéomorphismes préservant l'orientation}, dont nous noterons l'ensemble $\HomT$.\\
-		
+
 		\par Dans une première partie, nous démontrerons tous les résultats préliminaires importants, notamment autour des relèvements des homéomorphismes de $\Tbb$. Dans une deuxième partie, nous introduirons le \textbf{nombre de rotation}, qui est une notion fondamentale caractérisant les homéomorphismes de $\HomT$. Nous en donnerons quelques premières propriétes. La troisième partie aura pour but d'étudier la continuité du nombre de rotation. Ensuite, nous étudierons dans une quatrième partie les \textbf{orbites} des homémorphismes de $\HomT$ et nous établirons la \textbf{classification de Poincaré}. Puis, nous travaillerons dans une cinquième partie sur \textbf{l'ensemble dérivé}, qui est une notion propre aux homéomorphismes de $\HomT$ dont le nombre de rotation est la classe d'un irrationnel. Enfin, nous envisagerons brièvement dans une sixième partie le cas des homéomorphismes \textbf{renversant l'orientation} (ceux dont la constante donnée par le relèvement vaut $-1$).\\
-		
+
 		\par Les résultats majeurs énoncés dans ce mémoire, dont les preuves ont été retravaillées, sont issus de l'ouvrage de Cornfeld, Fomin et Sinai (\cite{1}), ainsi que des travaux de Brin et Stuck (\cite{2}).
-	\end{large}
 
 
 
 
-	
-\newpage
+
 \section{Fondements}
 
 
 \subsection{Notations}
 Introduisons pour commencer quelques notations qui nous serviront pour toute la suite de ce mémoire.
 
-\begin{nota}
+\begin{notation}
 	Notons le \textbf{tore} $\Tbb=\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ et la \textbf{projection canonique} $\pi: x \mapsto \overline{x}$ définie de $\mathbb{R}$ dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ la projection reliée à la relation d'équivalence sur $\mathbb{R}$:
 	$$x \ \mathcal{R} \ y \Longleftrightarrow x - y \in \mathbb{Z}.$$
 	On munit $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ de la \textbf{topologie quotient}, i.e. la topologie la plus fine qui rend $\pi$ continue.
-\end{nota}
+\end{notation}
 
 
 Dans la propriété suivante, nous montrons que la topologique quotient sur $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ est métrisable.
@@ -152,7 +140,7 @@ Dans la propriété suivante, nous montrons que la topologique quotient sur $\En
 
 \begin{defippt}\label{distance sur R/Z}\textbf{Distance sur $\EnsembleQuotient{\Rbb}{\Zbb}$}\\
 	On pose sur $\EnsembleQuotient{\Rbb}{\Zbb}$ l'application $\overline{d}$ définie par:
-	$$\forall\ \overline{x}, \overline{y} \in \EnsembleQuotient{\Rbb}{\Zbb},\ \overline{d}(\overline{x},\overline{y})=\inf \lbrace |x'-y'|\ ;\ (x',y')\in \overline{x}\times\overline{y}\rbrace.$$ 
+	$$\forall\ \overline{x}, \overline{y} \in \EnsembleQuotient{\Rbb}{\Zbb},\ \overline{d}(\overline{x},\overline{y})=\inf \lbrace |x'-y'|\ ;\ (x',y')\in \overline{x}\times\overline{y}\rbrace.$$
 	Alors:
 	\begin{enumerate}
 		\item L'application $\overline{d}$ ainsi définie est une \textbf{distance} sur $\EnsembleQuotient{\Rbb}{\Zbb}$.
@@ -162,9 +150,9 @@ Dans la propriété suivante, nous montrons que la topologique quotient sur $\En
 		\item L'application $\pi$ est \textbf{ouverte} de $(\Rbb,|.|)$ dans $(\EnsembleQuotient{\Rbb}{\Zbb})$.
 		\item La distance $\overline{d}$ définit la \textbf{topologie quotient} sur $\EnsembleQuotient{\Rbb}{\Zbb}$.
 	\end{enumerate}
-	
 
-\end{defippt}	
+
+\end{defippt}
 
 	\textbf{Preuve:}
 	\par\textbf{1)} Montrons dans un premier temps que pour $\overline{x}, \overline{y} \in \EnsembleQuotient{\Rbb}{\Zbb}$, la borne inférieure définissant $\overline{d}(\overline{x},\overline{y})$ est atteinte. Soient $\overline{x}, \overline{y}\in \EnsembleQuotient{\Rbb}{\Zbb}$. On a:
@@ -172,8 +160,8 @@ Dans la propriété suivante, nous montrons que la topologique quotient sur $\En
 			\overline{d}(\overline{x},\overline{y})&=&\inf\big\lbrace |(x+k_1)-(y+k_2)|\ ;\ (k_1,k_2)\in \Zbb^2\big\rbrace\\
 			&=&\inf \big\lbrace |x_0-y_0+k|\ ;\ k \in \Zbb\big\rbrace
 	\end{eqnarray*}
-	
-	
+
+
 	De plus, pour  tout $k \in \Zbb$, $|x_0-y_0 +k|\geq |k|-|x_0-y_0|$.
 
 	Comme $\overline{d}(\overline{x},\overline{y})\leq |x-y|$, on a donc:
@@ -187,21 +175,21 @@ Dans la propriété suivante, nous montrons que la topologique quotient sur $\En
 	\par Enfin, soient $\overline{x},\overline{y}, \overline{z} \in \EnsembleQuotient{\Rbb}{\Zbb}$. Comme la borne inférieure définissant $\overline{d}$ est atteinte, il existe $x'\in \overline{x}$, $y'$ et $y'' \in \overline{y}$, $z' \in \overline{z}$ tels que $\overline{d}(\overline{x},\overline{y})=|x'-y'|$ et $\overline{d}(\overline{y},\overline{z})=|y''-z'|$. Quitte à soustraire à $y''$ une certaine constante entière $k$, et à retrancher cette même constante à $z'$, on peut supposer que $y'=y''$. Ainsi, en utilisant l'inégalité triangulaire sur $|.|$:
 	$$\overline{d}(\overline{x},\overline{z})\leq |x'-z'| \leq |x'-y'|+|y'-z'|\leq \overline{d}(\overline{x},\overline{y})+\overline{d}(\overline{y},\overline{z})$$
 	Ainsi, l'application $\overline{d}$ définit bien une métrique sur $\EnsembleQuotient{\Rbb}{\Zbb}$.\\
-	
+
 	\par \textbf{2)} Soient $\overline{x}, \overline{y} \in \EnsembleQuotient{\Rbb}{\Zbb}$. Notons $x'$ et $y'$ les représentants de $\overline{x}$ et $\overline{y}$ dans $[0,1[$. Supposons, sans perte de généralité, que $x'\leq y'$. Alors, $y'-x'$ et $1-y'+x'$ sont positifs de somme $1$ donc l'un des deux au moins est inférieur (ou égal) à $1/2$. De plus, comme $\overline{d}(\overline{x},\overline{y})\leq|y-x| $ et $\overline{d}(\overline{x},\overline{y})\leq|x-y+1|$ on obtient $\overline{d}(\overline{x},\overline{y})\leq1/2$.\\
 
 	\par\textbf{3)} Soient $x,y \in \Rbb$. Par définition de $\overline{d}$, on a $\overline{d}(\pi(x),\pi(y))=\overline{d}(\overline{x},\overline{y})\leq |x-y|$. Donc l'application $\pi$ est $1$-lipschitzienne donc continue de $(\mathbb{R},|.|)$ dans $(\EnsembleQuotient{\Rbb}{\mathbb{Z}},\overline{d})$. \\
-	
+
 	\par\textbf{4)} Soient $x \in \Rbb$ et $r>0$. On a $\pi(B(x,r))\subset B_{\overline{d}}(\overline{x},r)$ car $\pi$ est $1$-lipschitzienne. Montrons l'autre inclusion. Soit $\overline{y} \in B_{\overline{d}}(\overline{x},r)$. Alors:
 	$$r>\overline{d}(\overline{x},\overline{y})= \min\lbrace |x-y-k|\ ;\ k \in \Zbb\rbrace$$
 	On peut alors choisir l'entier $k_0$ qui réalise ce minimum. Alors, $y+k_0 \in B(x,r)$ et donc $\pi(y+k_0)= \overline{y} \in B_{\overline{d}}(\overline{x},r)$. D'où $B_{\overline{d}}(\overline{x},r) \subset \pi(B(x,r))$ et l'égalité souhaitée.\\
-	
+
 	\par \textbf{5)} Cette propriété découle du point \textbf{4}.\\
-	
-	
+
+
 	\par\textbf{6)}Montrons que cette distance définit la topologie quotient sur $\EnsembleQuotient{\Rbb}{\Zbb}$, c'est-à-dire la topologie la plus fine qui rend la projection canonique $\pi$ continue. Par le point \textbf{3}, $\pi$ est continue pour la topologie associée à $\overline{d}$: cette topologie est donc moins fine que la topologie quotient.\\
-	
-	Soit $U$ un ouvert de $\EnsembleQuotient{\Rbb}{\Zbb}$ pour la topologie quotient. Alors $\pi^{-1}(U)$ est un ouvert de $(\Rbb, |.|)$. Comme $\pi$ est surjective, $U=\pi (\pi^{-1}(U))$. Comme $\pi$ est ouverte de $(\Rbb,|.|)$ dans $(\EnsembleQuotient{\Rbb}{\Zbb},\overline{d})$ par le point \textbf{5}, $U$ est ouvert pour la topologie associée à la distance $\overline{d}$, qui est ainsi plus fine que la topologie quotient, ce qui permet de conclure. $\hfill \square$\\
+
+	Soit $U$ un ouvert de $\EnsembleQuotient{\Rbb}{\Zbb}$ pour la topologie quotient. Alors $\pi^{-1}(U)$ est un ouvert de $(\Rbb, |.|)$. Comme $\pi$ est surjective, $U=\pi (\pi^{-1}(U))$. Comme $\pi$ est ouverte de $(\Rbb,|.|)$ dans $(\EnsembleQuotient{\Rbb}{\Zbb},\overline{d})$ par le point \textbf{5}, $U$ est ouvert pour la topologie associée à la distance $\overline{d}$, qui est ainsi plus fine que la topologie quotient, ce qui permet de conclure. \hfill $\square$\\
 
 
 
@@ -216,28 +204,28 @@ Dans la propriété suivante, nous montrons que la topologique quotient sur $\En
 
 
 
-\begin{nota}
+\begin{notation}
 	Notons $\mathcal{E}^+$ (resp. $\Ec^-$) l'ensemble des fonctions de $\mathbb{R}$ dans $\mathbb{R}$ \textbf{continues}, \textbf{strictement croissantes} (resp. \textbf{strictement décroissantes}) telles que pour tout $x \in \mathbb{R}$, $f(x+1) = f(x)+1$ (resp. $f(x+1)=f(x)-1$). Notons $\Ec = \Ec^+ \cup \Ec^-$.
-\end{nota}
+\end{notation}
 	On peut facilement démontrer que:
-	
-\begin{ppt}\label{E+}\textbf{Propriétés autour de $\Ec^+$}
+
+\begin{proposition}\label{E+}\textbf{Propriétés autour de $\Ec^+$}
 	\begin{enumerate}
 	\item ($\Ec$,$\circ$) et ($\mathcal{E}^+$,$\circ$) sont des sous-groupes de $\mathrm{Hom}(\mathbb{R})$.
 	\item Pour tout $f \in \mathcal{E}^+$, $f - \mathrm{Id_{\mathbb{R}}}$ est continue et $1-$périodique sur $\mathbb{R}$, donc bornée et uniformément continue.
 	\item Pour tout  $f \in \mathcal{E}^+$, $f$ est uniformément continue sur $\mathbb{R}$.
 	\item	Par récurrence, on démontre facilement que pour tous $f \in \mathcal{E}^+$, $k \in \mathbb{Z}$, et $x \in \mathbb{R}$, $f(x+k)=f(x)+k$ et $f^k(x+1)=f^k(x)+1$ ($f^k$ désigne la composée et non le produit).
 \end{enumerate}
-	\end{ppt}
+	\end{proposition}
 
 
 
 
 
 
-\begin{nota}
+\begin{notation}
 	\textbf{Attention !}  Précisons que pour tout $f: \Rbb \to \Rbb$ et tout $n\in \mathbb{N}$, $f^n$ désignera la \textbf{composée} $f\circ...\circ f$ ($n$ fois) et non le produit de $f$ avec elle-même $n$ fois.
-\end{nota}
+\end{notation}
 
 
 
@@ -251,7 +239,6 @@ Dans la propriété suivante, nous montrons que la topologique quotient sur $\En
 
 \subsection{Homéomorphismes: passage au quotient et relèvement}
 	Nous pouvons relier les homéomorphismes de $\Tbb$ aux homéomorphismes de $\Rbb$. Le théorème suivant démontre qu'à tout élément de $\Ec$ correspond un unique homéomorphisme de $\Tbb$.
-	
 
 
 
@@ -273,18 +260,19 @@ Dans la propriété suivante, nous montrons que la topologique quotient sur $\En
 
 
 
-	
-\begin{thm}\label{passage au quotient}
+
+
+\begin{theorem}\label{passage au quotient}
 	 \textbf{Passage au quotient}\\Soit $f\in \Ec$, i.e. $f: \mathbb{R} \to \mathbb{R}$ une fonction continue et strictement monotone telle que $x\mapsto f(x+1) -f(x)$ est constante égale à $\pm 1$.\\ Alors, il existe une unique application $T_f \in \mathrm{Hom}(\Tbb)$, telle que $T_f\circ \pi = \pi \circ f$.
-\end{thm}
+\end{theorem}
 
 	\textbf{Preuve:}
 	\par On vérifie que $\pi \circ f$ est constante sur les classes d'équivalences de $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$. Soient $x,y \in \mathbb{R}$ tels que $\pi(x)= \pi(y)$, il existe $k \in \mathbb{Z}$ tel que $x= y +k$. Ainsi, $f(x)=f(y+k)=f(y)\pm k$ et donc $\pi(f(x))=\pi(f(y)\pm k)=\pi(f(x))$. Donc, par théorème d'isomorphisme, il existe une unique application $T_f$ tel que $T_f\circ \pi =\pi \circ f$.\\
-	
+
 	De plus, $T_f$ est surjective car $f$ et $\pi$ le sont. Montrons que $T_f$ est injectif. Soient $\overline{x}$, $\overline{y} \in \EnsembleQuotient{\Rbb}{\mathbb{Z}}$ tels que $T_f(\overline{x})= T_f(\overline{y})$. Alors, comme $T_f\circ \pi =\pi \circ f$, $\overline{f(x)}=\overline{f(y)}$. Ainsi, il existe $k \in \mathbb{Z}$, tel que $f(x)=f(y)+k=f(y\pm k)$. Et comme f est bijective, on obtient que $x=y\pm k$, et donc $\overline{x}=\overline{y}$. Donc $T_f$ est une application bijective de $\Tbb$.\\
-	
-	Il reste à montrer que $T_f$ et $T_f^{-1}$ sont continues, ce qui est immédiat car $T_f\circ\pi=\pi \circ f$ et $T_f^{-1}\circ\pi=\pi\circ f^{-1}$, et que $f$ et $f^{-1}$ sont continues, tout comme $\pi$ pour la topologie quotient. $\hfill \square$\\
-	
+
+	Il reste à montrer que $T_f$ et $T_f^{-1}$ sont continues, ce qui est immédiat car $T_f\circ\pi=\pi \circ f$ et $T_f^{-1}\circ\pi=\pi\circ f^{-1}$, et que $f$ et $f^{-1}$ sont continues, tout comme $\pi$ pour la topologie quotient. \hfill $\square$\\
+
 $$\Large\xymatrix{\Rbb \ar[r]^f \ar[dr]^{\pi\circ f}\ar[d]_\pi &\Rbb \ar[d]^\pi\\
 \EnsembleQuotient{\Rbb}{\Zbb} \ar[r]_{T_f}&\EnsembleQuotient{\Rbb}{\Zbb}}$$
 
@@ -292,15 +280,15 @@ $$\Large\xymatrix{\Rbb \ar[r]^f \ar[dr]^{\pi\circ f}\ar[d]_\pi &\Rbb \ar[d]^\pi\
 \vspace{8mm}
 
 
-	
+
 On peut énoncer une réciproque du théorème précédent, et montrer qu'à tout homéomorphisme de $\Tbb$ on peut faire correspondre un homéomorphisme de $\Rbb$, unique à une constante entière additive près. Commençons par un lemme qui servira à établir cette réciproque.\\
 
-\begin{lm}\label{préli relèvement}
+\begin{lemma}\label{préli relèvement}
 	Soit $y_0 \in \Rbb$, et $\varepsilon \in \ ]0,1/2[$. La restriction de $\pi$ à $[y_0-\varepsilon, y_0 +\varepsilon]$ est un homéomorphisme de $[y_0-\varepsilon, y_0 +\varepsilon]$ vers son image.
-\end{lm}
+\end{lemma}
 
 	\textbf{Preuve :}
-	$\pi|_{[y_0-\varepsilon,\ y_0 +\varepsilon]}$ est injective donc définit une bjection de $[y_0-\varepsilon, y_0 +\varepsilon]$ vers son image. Cette bjiection est continue car $\pi$ l'est. Pour tout fermé $F$ de $[y_0-\varepsilon, y_0 +\varepsilon]$, $\pi(F)$ est compact, donc fermé dans $\pi([y_0-\varepsilon, y_0 +\varepsilon])$. Donc la bijection réciproque est continue. $\hfill \square$\\
+	$\pi|_{[y_0-\varepsilon,\ y_0 +\varepsilon]}$ est injective donc définit une bjection de $[y_0-\varepsilon, y_0 +\varepsilon]$ vers son image. Cette bjiection est continue car $\pi$ l'est. Pour tout fermé $F$ de $[y_0-\varepsilon, y_0 +\varepsilon]$, $\pi(F)$ est compact, donc fermé dans $\pi([y_0-\varepsilon, y_0 +\varepsilon])$. Donc la bijection réciproque est continue. \hfill $\square$\\
 
 
 
@@ -315,35 +303,48 @@ On peut énoncer une réciproque du théorème précédent, et montrer qu'à tou
 
 	\textbf{Preuve:}
 	\par Soit $T$ un homéomorphisme de $\Tbb$.
-	\par \underline{Unicité:} 
+	\par \underline{Unicité:}
 	\par Montrons l'unicité du relèvement à addition d'un entier près. Soient $f_1, f_2$ telles que $T \circ \pi = \pi \circ f_1$ et $T \circ \pi = \pi \circ f_2$. On a alors $\overline{f_1}=\overline{f_2}$. La fonction $f_1 - f_2$ est continue et à valeurs dans $\mathbb{Z}$, donc d'après le théorème de valeurs intermédiaires, $f_1 - f_2$ est constante, il existe $k \in \mathbb{Z}$ tel que pour tout $x \in \mathbb{R}, f_1(x)=f_2(x)+k$.\\
-	
+
 	\par \underline{Existence:}
-	\par Fixons $y_0 \in \Rbb$ tel que $\overline{y_0}= \pi(y_0)=T(\pi(0))=T(\overline{0})$. Notons $\beta = \sup E$, où 
+	\par Fixons $y_0 \in \Rbb$ tel que $\overline{y_0}= \pi(y_0)=T(\pi(0))=T(\overline{0})$. Notons $\beta = \sup E$, où
 	$$E=\lbrace b \in \Rbb^*_+:\exists f \in \Cc([0,b[,\Rbb):f(0)=y_0\text{ et }T \circ \pi = \pi \circ f \text{ sur }[0,b[\rbrace.$$
-	
+
 	\par En fixant $\varepsilon \in ]0,1/2[$ et en appliquant le lemme \ref{préli relèvement} à l'intervalle $[y_0-\varepsilon,y_0+\varepsilon]$ on obtient par composition une application $f$ continue  telle que $f(0)=y_0$ et $T \circ \pi = \pi \circ f$ sur $[0,\varepsilon[$. Ainsi, $E\neq \emptyset$ et donc $\beta \in \Rbb^*_+ \cup \lbrace + \infty \rbrace$.\\
-	
+
 	\par De plus, si $\beta_1,\beta_2 \in E$ et $f_1 \in \Cc([0,b_1], \Rbb)$ et $f_2\in \Cc([0,b_2], \Rbb)$ vérifient $f_1(0)=f_2(0)=y_0$, $T \circ \pi = \pi \circ f_1$ et $T \circ \pi = \pi \circ f_2$. Alors $\pi \circ f_1 = \pi \circ f_2$ sur $[0, \min(b_1,b_2)]$, d'après le théorème des valeurs intermédiaires $f_1 - f_2$ est constante à valeurs dans $\mathbb{Z}$. Or, comme $f_1(0)=f_2(0)$, on a donc $f_1 = f_2$ sur $[0, \min(b_1,b_2)]$. \\
-	
+
 	\par On peut donc définir de façon cohérente $f_0:[0,\beta[\to \Rbb$ continue telle que $f(0)=y_0$ et $T \circ \pi = \pi \circ f_0$ sur $[0,\beta[$, en posant pour tout $x\in [0,\beta[$, $f_0(x)=f(x)$ pour tout $b\in E$ et $f \in \Cc([0,b],\Rbb)$ telle que $f(0)=y_0$ et $T \circ \pi = \pi \circ f$.\\
-	
+
 	\par Il reste à montrer que $\beta = + \infty$. Par l'absurde, supposons que $\beta < + \infty$. Fixons $\varepsilon \in ]0,1/2[$. Par continuité de $T\circ\pi$, il existe $\delta >0$, tel que:
-	$$\forall t \in [\beta - \delta,\beta +\delta], \ \mathrm{dist}_{\EnsembleQuotient{\Rbb}{_\mathbb{Z}}}(T(\overline{\beta}),T(\overline{t}))\leq \varepsilon.$$
-	Soit $y_{\beta}\in \Rbb$ tel que $\overline{y_\beta}=\pi(y_\beta)=T(\overline{\beta})$. En appliquant le lemme \ref{préli relèvement} à $[y_\beta-\varepsilon,y_\beta+\varepsilon]$, on obtient par composition une application $g$ de $[y_\beta -\varepsilon,y_\beta + \varepsilon]$ dans $\Rbb$ telle que $T\circ\pi=\pi \circ g$ sur $[y_\beta -\varepsilon,y_\beta + \varepsilon]$. Sur $[y_\beta - \varepsilon, y_\beta[$, on a $\pi\circ f_0= \pi \circ g$, donc la fonction continue $g-f_0$ est constante à valeurs dans $\mathbb{Z}$. Quitte à retrancher cette constante à $g$, on peut supposer que $f_0$ et $g$ coïncident sur $[y_\beta - \varepsilon, y_\beta[$. En recollant $f_0$ et $g$, on voit que $\beta + \delta \in E$, ce qui contredit la définition de $\beta$. Ainsi, $\beta = + \infty$ et il existe $f_0 \in \Cc([0,+\infty[)$ continue telle que $f(0)=y_0$ et $T \circ \pi = \pi \circ f_0$.\\
-	
+	$$\forall t \in [\beta - \delta,\beta +\delta], \
+	\mathrm{dist}_{\EnsembleQuotient{\Rbb}{\mathbb{Z}}}(T(\overline{\beta}),T(\overline{t}))\leq
+	\varepsilon.$$ Soit $y_{\beta}\in \Rbb$ tel que
+	$\overline{y_\beta}=\pi(y_\beta)=T(\overline{\beta})$. En appliquant le lemme
+	\ref{préli relèvement} à $[y_\beta-\varepsilon,y_\beta+\varepsilon]$, on
+	obtient par composition une application $g$ de $[y_\beta -\varepsilon,y_\beta
+	+ \varepsilon]$ dans $\Rbb$ telle que $T\circ\pi=\pi \circ g$ sur $[y_\beta
+	-\varepsilon,y_\beta + \varepsilon]$. Sur $[y_\beta - \varepsilon, y_\beta[$,
+	on a $\pi\circ f_0= \pi \circ g$, donc la fonction continue $g-f_0$ est
+	constante à valeurs dans $\mathbb{Z}$. Quitte à retrancher cette constante à
+	$g$, on peut supposer que $f_0$ et $g$ coïncident sur $[y_\beta - \varepsilon,
+	y_\beta[$. En recollant $f_0$ et $g$, on voit que $\beta + \delta \in E$, ce
+	qui contredit la définition de $\beta$. Ainsi, $\beta = + \infty$ et il existe
+	$f_0 \in \Cc([0,+\infty[)$ continue telle que $f(0)=y_0$ et $T \circ \pi = \pi
+	\circ f_0$.\\
+
 	\par De façon symétrique on peut construire une fonction $g_0:]-\infty,0]\to \Rbb$ continue telle que $g_0(0)=y_0$ et $T \circ \pi = \pi \circ g_0$. En recollant $g_0$ et $f_0$, on obtient une fonction $f \in \Cc(\Rbb,\Rbb)$ telle que $\pi \circ f = T \circ \pi$.\\
-	
+
 	\par Or, pour tout $a \in \Rbb$, $\pi\circ f=T\circ \pi$ est injective sur l'intervalle $[a,a+1[$, donc $f$ est également injective sur cet intervalle. Et comme $f$ est continue sur $\Rbb$, $f$ est strictement monotone sur $[a,a+1[$. Or le sens de variation de $f$ sur $[a,a+1[$ ne dépend pas de $a$. Donc $f$ est strictement monotone sur $\Rbb$.\\
-	
+
 	\par Comme $\pi(f(1))=\pi(f(0))$, on a $f(1)-f(0)\in \mathbb{Z}^*$. Si $|f(1)-f(0)| \geq 2$, par théorème des valeurs intermédiaires, il existerait un réel $a \in ]0,1[$ tel que $|f(a)-f(0)|=1$, ce qui contredirait l'injectivité de $T\circ\pi$ sur $[0,1[$. Ainsi on a bien $f(1)=f(0)\pm 1$. \\
-	
-	\par Enfin, la fonction $x\mapsto f(x+1)-f(x)$ est continue et à valeurs dans $\mathbb{Z}$ (en raison de la relation $T \circ \pi = \pi \circ f$) donc constante, égale à $f(1)-f(0)$ donc à $\pm 1$. $\hfill \square$\\
+
+	\par Enfin, la fonction $x\mapsto f(x+1)-f(x)$ est continue et à valeurs dans $\mathbb{Z}$ (en raison de la relation $T \circ \pi = \pi \circ f$) donc constante, égale à $f(1)-f(0)$ donc à $\pm 1$. \hfill $\square$\\
 
 
-\begin{nota}
+\begin{notation}
 	Notons $\Tent$ l'ensemble des translations entières sur $\Rbb$, c'est-à-dire l'ensemble des applications $t_\alpha: x \mapsto x + \alpha$ pour $\alpha \in \mathbb{Z}$.
-\end{nota}
+\end{notation}
 \vspace{8mm}
 
 
@@ -356,17 +357,24 @@ On peut énoncer une réciproque du théorème précédent, et montrer qu'à tou
 
 
 
-\begin{ppt}
-	On définit sur $\Ec^+$ la relation d'équivalence $\thicksim$ par: 
+\begin{proposition}
+	On définit sur $\Ec^+$ la relation d'équivalence $\thicksim$ par:
 	$$f\ \thicksim\ g \Longleftrightarrow f-g \text{ est constante et à valeurs dans\ } \mathbb{Z}.$$
 	Alors:
 	\begin{enumerate}
 		\item $(\Tent, \circ)$ est un sous-groupe distingué de $(\Ec^+,\circ)$.
 		\item La relation d'équivalence $\thicksim$ est la relation d'équivalence associée au sous-groupe $(\Tent,\circ)$.
 	\end{enumerate}
-\end{ppt}
-\textbf{Preuve :} 
-\par \textbf{1) } On vérifie facilement que $\Tent \subset \Ec^+$ et $\Id_\Rbb=t_0 \in \Tent$. De plus, pour tous $\alpha, \beta \in \mathbb{Z}$, on a $(t_\alpha)^{-1}=t_{-\alpha} \in \Tent$ et $t_\alpha\circ t_\beta=t_{\alpha + \beta} \in \Tent$. Enfin, pour tous $f \in \Ec^+$, $\alpha \in \mathbb{Z}$ et $x \in \Rbb$, on a $f\circ t_\alpha \circ f^{-1}(x)=f(f^{-1}(x)+\alpha)=f(f^{-1}(x))+\alpha=x+\alpha$ et donc $f\circ t_\alpha \circ f^{-1}=t_\alpha \in \Tent$. Ainsi, $\Tent$ est un sous-groupe distingué de $\Ec^+$.\\
+\end{proposition}
+\textbf{Preuve :}
+\par \textbf{1) } On vérifie facilement que $\Tent \subset \Ec^+$ et
+$\Id_\Rbb=t_0 \in \Tent$. De plus, pour tous $\alpha, \beta \in \mathbb{Z}$, on
+a $(t_\alpha)^{-1}=t_{-\alpha} \in \Tent$ et $t_\alpha\circ t_\beta=t_{\alpha +
+\beta} \in \Tent$. Enfin, pour tous $f \in \Ec^+$, $\alpha \in \mathbb{Z}$ et $x
+\in \Rbb$, on a $f\circ t_\alpha \circ
+f^{-1}(x)=f(f^{-1}(x)+\alpha)=f(f^{-1}(x))+\alpha=x+\alpha$ et donc $f\circ
+t_\alpha \circ f^{-1}=t_\alpha \in \Tent$. Ainsi, $\Tent$ est un sous-groupe
+distingué de $\Ec^+$.\\
 
 \par \textbf{2) }Soient $f,g \in \Ec^+$. On a les équivalences suivantes:
 \begin{eqnarray*}
@@ -374,7 +382,7 @@ On peut énoncer une réciproque du théorème précédent, et montrer qu'à tou
 	&\Longleftrightarrow& \exists\ \alpha \in \mathbb{Z},\ \forall\ x \in \Rbb,\ g^{-1}(f(x))=g^{-1}(g(x)+\alpha)=x + \alpha =t_\alpha(x) \\
 	&\Longleftrightarrow&g^{-1}\circ f \in \Tent.
 \end{eqnarray*}
-Ce qui montre le résultat. $\hfill \square$\\
+Ce qui montre le résultat. \hfill $\square$\\
 
 
 
@@ -399,27 +407,27 @@ Ce qui montre le résultat. $\hfill \square$\\
 
 	\textbf{Preuve:}
 	\par\textbf{1)} Cette distance a bien un sens car pour tous $f,g \in \Ec^+$, la fonction $f-g$ est périodique et continue, donc bornée. On vérifie facilement que cela définit bien une métrique sur $\Ec^+$, à partir des axiomes vérifiés par la norme de la convergence uniforme $||.||_{\infty}$, et que cette métrique est invariante par translation.\\
-	
+
 	\par\textbf{2)} Montrons dans un premier temps que pour $C_1, C_2 \in \EnsembleQuotient{\mathcal{E}^+}{\Tent}$, la borne inférieure définissant $d_q(C_1,C_2)$ est atteinte. Fixons $(f,g) \in C_1 \times C_2$. On a:
 		\begin{eqnarray*}
 		d_q(C_1,C_2)&=&\inf\big\lbrace ||(f+k_1\mathds{1})-(g+k_2\mathds{1})||_\infty\ ;\ (k_1,k_2)\in \Zbb^2\big\rbrace\\
 		&=&\inf \big\lbrace ||f-g+k\mathds{1}||_\infty\ ;\ k \in \Zbb\big\rbrace
 	\end{eqnarray*}
-	
-	
+
+
 	De plus, pour  tout $k \in \Zbb$, $||f-g +k\mathds{1}||_\infty\geq |k|-||f-g||_\infty$.
-	
+
 	Comme $d_q(C_1,C_2)\leq ||f-g||_\infty$, on a donc:
 	$$d_q(C_1,C_2)= \min \lbrace ||f-g+k\mathds{1}||_\infty\ ;\ k \in \Zbb \text{ tel que } |k|\leq 2||f-g||_\infty\rbrace.$$
 	C'est ainsi le minimum d'un ensemble fini, donc $d(C_1,C_2)$ est atteinte.\\
-	
+
 	De plus, l'application $d_q$ vérifie l'axiome de séparation. Soient $C_1, C_2 \in \EnsembleQuotient{\mathcal{E}^+}{\Tent}$ telles que $d_q(C_1,C_2) = 0$. Comme la borne inférieure définissant $d_q$ est atteinte, il existe $f_0 \in C_1$ et $g_0 \in C_2$ telles que $d_q(C_1,C_2)=d(f_0,g_0)=0$. Comme $d$ est une distance, on a $f=g$ et donc $C_1 = C_2$.\\
-	
+
 	La symétrie est immédiate et découle de la symétrie de $d$.\\
-	
+
 	Enfin, soient $C_1, C_2, C_3 \in \EnsembleQuotient{\mathcal{E}^+}{\Tent}$. Comme la borne inférieure définissant $d_q$ est atteinte, il existe $f\in C_1$, $g$ et $\widetilde{g} \in C_2$, $h \in C_3$ telles que $d_q(C_1,C_2)=d(f,g)$ et $d_q(C_2,C_3)=d(\widetilde{g},h)$. Quitte à soustraire à $\widetilde{g}$ une certaine constante entière $k$, et à retrancher cette même constante à $h$, on peut supposer que $g=\widetilde{g}$. Ainsi, en utilisant l'inégalité triangulaire sur $d$:
 	$$d_q(C_1,C_3)\leq d(f,h) \leq d(f,g)+d(g,h)= d_q(C_1,C_2)+d_q(C_2,C_3)$$
-	Ainsi, l'application $d_q$ définit bien une métrique sur $\EnsembleQuotient{\mathcal{E}^+}{\Tent}$. $\hfill \square$\\
+	Ainsi, l'application $d_q$ définit bien une métrique sur $\EnsembleQuotient{\mathcal{E}^+}{\Tent}$. \hfill $\square$\\
 
 
 
@@ -429,7 +437,7 @@ Ce qui montre le résultat. $\hfill \square$\\
 
 
 
-	
+
 
 \begin{defippt}\label{préli p}\textbf{Projection de $\Ec^+$ dans 		  $\EnsembleQuotient{\mathcal{E}^+}{\Tent}$}\\
 		Notons $p:f\mapsto \overline{f}$ l'application définie de $(\Ec^+,d)$ dans $(\EnsembleQuotient{\mathcal{E}^+}{\Tent},d_q)$.
@@ -444,12 +452,12 @@ Ce qui montre le résultat. $\hfill \square$\\
 
 	\textbf{Preuve:}
 	\par \textbf{1)} Soient $f, g \in \Ec^+$. Par définition de $d_q$, on a $=d_q(p(f),p(g))=d_q(\overline{f},\overline{g})\leq d(f,q)$. Donc l'application $p$ est 1-lipschitzienne.\\
-	
+
 	\par \textbf{2)} Soient $f \in \Ec^+$, et $r>0$. On a $p(B(f,r))\subset B_{d_q}(\overline{f},r)$ car $p$ est $1$-lipschitzienne. Montrons l'autre inclusion. Soit $\overline{g} \in B_{d_q}(\overline{f},r)$. On a, pour $g\in \overline{g}$:
 		$$r>d_q(\overline{f},\overline{g})=\min\lbrace ||f-g-k\mathds{1}||_{\infty};\ k \in \Zbb\rbrace.$$
 	On peut alors choisir l'entier $k$ qui réalise ce minimum. Alors $g	+k\mathds{1} \in B(f,r)$, et donc $p(g+k\mathds{1})=\overline{g} \in p(B(f,r))=B_{d_q}(\overline{f},r)$. D'où $B_{d_q}(\overline{f},r) \subset p(B(f,r))$ et l'égalité souhaitée.\\
-	
-	\par \textbf{3)} Ce point découle du point précédent. $\hfill \square$\\
+
+	\par \textbf{3)} Ce point découle du point précédent. \hfill $\square$\\
 
 
 
@@ -462,15 +470,15 @@ Ce qui montre le résultat. $\hfill \square$\\
 
 
 
-	
-\begin{coro}\label{distance dq donne topo quotient}
+
+\begin{corollary}\label{distance dq donne topo quotient}
 		La métrique $d_q$ définit la topologie quotient sur $\EnsembleQuotient{\Ec^+}{\Tent}$.
-\end{coro}
-	
+\end{corollary}
+
 	\textbf{Preuve:}
 	\par Notons $\mathcal{O}_q$ la topologie quotient sur $\EnsembleQuotient{\Ec^+}{\Tent}$. La topologie quotient est la topologie la plus fine qui rend l'application de projection $p$ continue. Par la proposition \ref{préli p}, $p$ est continue pour la topologie associée à $d_q$: la topologie associée à la distance $d_q$ est donc moins fine que la topologie $\mathcal{O}_q$.\\
-	
-	\par Soit $U$ un ouvert de $(\EnsembleQuotient{\Ec^+}{\Tent},\mathcal{O}_q)$. Alors $p^{-1}(U)$ est un ouvert de $(\Ec^+,d)$. Comme $p$ est surjective, $U=p(p^{-1}(U))$. Et d'après la proposition \ref{préli p}, $p$ est ouverte de $(\Ec^+,d)$ dans $(\EnsembleQuotient{\mathcal{E}^+}{\Tent},d_q)$, donc $U$ est un ouvert pour la topologie associée à la distance $d_q$, qui est ainsi plus fine que $\mathcal{O}_q$, ce qui permet de conclure. $\hfill \square$\\
+
+	\par Soit $U$ un ouvert de $(\EnsembleQuotient{\Ec^+}{\Tent},\mathcal{O}_q)$. Alors $p^{-1}(U)$ est un ouvert de $(\Ec^+,d)$. Comme $p$ est surjective, $U=p(p^{-1}(U))$. Et d'après la proposition \ref{préli p}, $p$ est ouverte de $(\Ec^+,d)$ dans $(\EnsembleQuotient{\mathcal{E}^+}{\Tent},d_q)$, donc $U$ est un ouvert pour la topologie associée à la distance $d_q$, qui est ainsi plus fine que $\mathcal{O}_q$, ce qui permet de conclure. \hfill $\square$\\
 
 
 
@@ -487,7 +495,7 @@ Ce qui montre le résultat. $\hfill \square$\\
 \end{defippt}
 
 	\textbf{Preuve:}
-	\par On vérifie par des arguments similaires à ceux utilisés précédemment que $\overline{d}_\infty$ est une distance sur $\HomT$. De plus, soient $T_1, T_2 \in \HomT$. D'après la proposition \ref{distance sur R/Z}, pour tout $x \in \Rbb$, $\overline{d}(T_1(x),T_2(x)) \leq1/2$ . Par passage au sup, $\overline{d}_\infty(T_1,T_2)\leq 1/2$. $\hfill \square$\\
+	\par On vérifie par des arguments similaires à ceux utilisés précédemment que $\overline{d}_\infty$ est une distance sur $\HomT$. De plus, soient $T_1, T_2 \in \HomT$. D'après la proposition \ref{distance sur R/Z}, pour tout $x \in \Rbb$, $\overline{d}(T_1(x),T_2(x)) \leq1/2$ . Par passage au sup, $\overline{d}_\infty(T_1,T_2)\leq 1/2$. \hfill $\square$\\
 
 
 
@@ -497,50 +505,50 @@ Ce qui montre le résultat. $\hfill \square$\\
 
 
 
-\begin{coro}\label{isom relation d'équiv sur les homéo}\textbf{Isomorphisme entre $\EnsembleQuotient{\mathcal{E}^+}{\Tent}$ et $\HomT$}\\
+\begin{corollary}\label{isom relation d'équiv sur les homéo}\textbf{Isomorphisme entre $\EnsembleQuotient{\mathcal{E}^+}{\Tent}$ et $\HomT$}\\
 	L'application $f\mapsto T_f$ de $\Ec^+$ dans $\HomT$ passe au quotient et fournit un isomorphisme $\iota$ de groupes de $\EnsembleQuotient{\Ec^+}{\thicksim}=\EnsembleQuotient{\Ec^+}{\Tent}$ vers $\HomT$.\\
 	L'application $\iota$ est définie par:
 	$$\forall \ \overline{f} \in \EnsembleQuotient{\Ec^+}{\Tent}, \ \iota(\overline{f})= T_f.$$
 	%\begin{enumerate}
 			%\item Le sous-groupe topologique  $\EnsembleQuotient{\mathcal{E}^+}{\Tent}$ est isomorphe à $\HomT$.
 		%\end{enumerate}
-\end{coro}
-	
-	
-	\textbf{Preuve:}		
+\end{corollary}
+
+
+	\textbf{Preuve:}
 	\par Définissons l'application $h: \Ec^+ \to \mathrm{Hom}^+(\Tbb)$ qui pour tout $f \in \Ec^+$ associe l'unique $T_f \in \mathrm{Hom}^+(\Tbb)$ telle que $T_f\circ\pi=\pi\circ f$ (cf théorème \ref{passage au quotient}). \\
-	
+
 	\par On vérifie que $h$ est un morphisme de groupes. Soient $f, g \in \Ec^+$, on a par définition:
 	$$h(f\circ g)\circ \pi = T_{f\circ g}\circ\pi=\pi\circ f \circ g=T_f\circ\pi\circ g= T_f\circ T_g \circ \pi$$
 	Par unicité, on $h(f\circ g)= T_{f\circ g}= T_f \circ T_g=h(f)\circ h(g)$.\\
-	
-	
+
+
 	\par L'application $h$ est constante sur les classes d'équivalence données par la relation $\thicksim$. En effet, soient $g, f \in \Ec^+$ telles que $f\thicksim g$. Il existe un unique $T \in \mathrm{Hom}^+(\Tbb)$ tel que $h(f)=T$. On a alors $h(f)\circ \pi=T\circ\pi=\pi\circ f = \pi \circ g=h(g)\circ \pi$ car $f \thicksim g$. Par unicité, on a également $h(g)=T$.\\
 	\par De plus, $h$ est surjective d'après le théorème \ref{relèvement des homémorphismes}.  Donc $h$ est bijective. Ainsi, d'après le théorème d'isomorphisme, on a l'isomorphisme de groupes :
-	 $$\EnsembleQuotient{\mathcal{E}^+}{\Tent} =\EnsembleQuotient{\mathcal{E}^+}{\thicksim} \simeq \mathrm{Hom}^+(\Tbb)$$	 
-	
-	 
-
-	 $\hfill \square$\\
+	 $$\EnsembleQuotient{\mathcal{E}^+}{\Tent} =\EnsembleQuotient{\mathcal{E}^+}{\thicksim} \simeq \mathrm{Hom}^+(\Tbb)$$
 
 
-%\begin{nota}
+
+	 \hfill $\square$\\
+
+
+%\begin{notation}
 	%$\mathrm{Hom}^+(\Tbb)$, (resp $\mathrm{Hom}^+(\mathbb{S}^1)$) désigne l'ensemble des homéomorphismes de $\Tbb$ (resp $\mathbb{S}^1$) préservant l'orientation. Comme $\Tbb \simeq \mathbb{S}^1$, on a $\mathrm{Hom}^+(\mathbb{S}^1) \simeq \mathrm{Hom}^+(\Tbb)$.\\
 
-%\end{nota}
+%\end{notation}
 
 
 
-\begin{ppt}
+\begin{proposition}
 	Notons $d_q'=\min(d_q,1/2)$. L'application $\iota$ obtenue dans le corollaire \ref{isom relation d'équiv sur les homéo} est une \textbf{isométrie} de ($\EnsembleQuotient{\Ec^+}{\Tent}, d_q')$ dans $(\HomT,\overline{d}_\infty)$.\\
 	Autrement dit:
 	$$\forall\ \overline{f}, \overline{g} \in \EnsembleQuotient{\Ec^+}{\Tent},\ \overline{d}_\infty(T_f,T_g)=\min(d_q(\overline{f},\overline{g}), 1/2).$$
 	Par conséquent, l'application $\iota:\EnsembleQuotient{\Ec^+}{\Tent}\to \HomT$ est un isomorphisme de groupes topologiques.
-\end{ppt}
+\end{proposition}
 
 	\textbf{Preuve:}
 	\par Soient $\overline{f}, \overline{g} \in \EnsembleQuotient{\Ec^+}{\Tent}$.
-	
+
 	\par \underline{1$^{\mathrm{er}}$ cas}: $d_q(\overline{f},\overline{g})<1/2$.\\
 	 Comme la borne inférieure définissant $d_q(\overline{f},\overline{g})$ est atteinte, quitte à changer de représentants, on peut supposer $||f-g||_\infty<1/2$.\\
 	Soit $x \in \Rbb$. Pour tout $k \in \Zbb$, on a:
@@ -548,15 +556,15 @@ Ce qui montre le résultat. $\hfill \square$\\
 		|f(x)-g(x)+k|&\geq&|k|-|f(x)-g(x)|\\
 			&\geq&1-1/2\\
 			&\geq&|f(x)-g(x)|
-	\end{eqnarray*} 
-	Donc, pour tout $x \in \Rbb$, $\overline{d}(\overline{f(x)},\overline{g(x)})=|f(x)-g(x)|$ et donc $$\overline{d}_\infty(T_f,T_g)=||f-g||_\infty=d_q(\overline{f},\overline{g}).$$ 
-			
+	\end{eqnarray*}
+	Donc, pour tout $x \in \Rbb$, $\overline{d}(\overline{f(x)},\overline{g(x)})=|f(x)-g(x)|$ et donc $$\overline{d}_\infty(T_f,T_g)=||f-g||_\infty=d_q(\overline{f},\overline{g}).$$
+
 	\par \underline{2$^{\mathrm{nd}}$ cas}: $d_q(\overline{f},\overline{g})\geq1/2$.\\
 	Si l'on avait pour tout $x \in \Rbb, f(x)-g(x)+1/2 \notin \Zbb$, l'image de $f-g$ serait contenue dans un intervalle $]j-1/2,j+1/2[$ avec $j \in \Zbb$. Alors $d_q(\overline{f},\overline{g})<1/2$.\\
 	Par contraposition, on en déduit qu'il existe $x_0 \in \Rbb$ tel que $f(x_0)-g(x_0) \in 1/2 +\Zbb$. Cela entraîne que $\overline{d}(T_f(x_0),T_g(x_0)) =1/2$ et donc $\overline{d}_\infty(T_f,T_g)\geq1/2$. Et comme $\overline{d}_\infty(T_f,T_g)\leq 1/2$ d'après la proposition \ref{distance sur HomT}, on obtient l'égalité.\\
-	
+
 	\par Dans tous les cas, on a l'égalité souhaitée entre les deux distances.
-	 $\hfill \square$\\
+	 \hfill $\square$\\
 
 
 
@@ -579,39 +587,38 @@ Ce qui montre le résultat. $\hfill \square$\\
 
 
 
-\newpage
 \section{Nombre de rotation}
 
 \subsection{Résultats préliminaires sur les suites sous-additives et sur-additives}
 Il est utile de montrer en premier lieu un résultat important sur des suites bien particulières: les suites sous-additives et sur-additives. Ce résultat nous sera utile pour assurer l'existence d'une limite par la suite.
 
 
-\begin{defi}
+\begin{definition}
 	Soit $(u_n)_{n \in \mathbb{N}}$ une suite réelle.\\ On dit que $(u_n)_{n \in \mathbb{N}}$ est \textbf{sous-additive} si pour tout couple d'entier naturels $(p,q)$, on a: $u_{p+q} \leq u_p + u_q$\\
 	On dit que $(u_n)_{n \in \mathbb{N}}$ est \textbf{sur-additive} si pour tout couple d'entiers naturels $(p, q)$, on a: $u_{p+q} \geq u_p + u_q$
-\end{defi}
+\end{definition}
 
 
 
-\begin{thm}\label{suiteadd} Soit $(u_n)_{n \in \mathbb{N}}$ une suite réelle.
+\begin{theorem}\label{suiteadd} Soit $(u_n)_{n \in \mathbb{N}}$ une suite réelle.
 	\begin{enumerate}
 		\item Si $(u_n)_{n \in \mathbb{N}}$ est sous-additive, alors
 		$$\frac{u_n}{n} \underset{n \to + \infty}{\longrightarrow} \underset{p \geq 1}{\inf}\  \frac{u_p}{p} \in \mathbb{R} \cup \lbrace - \infty \rbrace.$$
-		
-		\item Si $(u_n)_{n \in \mathbb{N}}$ est sur-additive, alors 
+
+		\item Si $(u_n)_{n \in \mathbb{N}}$ est sur-additive, alors
 		$$\frac{u_n}{n} \underset{n \to + \infty}{\longrightarrow} \underset{p \geq 1}{\sup}\  \frac{u_p}{p}  \in \mathbb{R} \cup \lbrace + \infty \rbrace.$$
-	\end{enumerate} 
-\end{thm}
+	\end{enumerate}
+\end{theorem}
 
 \textbf{Preuve:}
 	\par\textbf{1)} On fixe $p \in \mathbb{N}^*$. Soit $n \geq q$. La division euclidienne de $n$ par $p$ donne\\ $n=p \times q_n+r_n$ avec $q_n \geq 1$ et $0 \leq r_n < p$. Par sous-additivité, $u_n \leq q_n u_p + u_{r_n}$ d'où
-	$$\frac{u_n}{n} \leq \frac{p \ q_n}{n} \times \frac{u_p}{p} + \frac{u_{r_n}}{n} \leq \frac{u_p}{p} + \underset{0 \leq i \leq p-1}{\max}\frac{u_i}{n}.$$  
+	$$\frac{u_n}{n} \leq \frac{p \ q_n}{n} \times \frac{u_p}{p} + \frac{u_{r_n}}{n} \leq \frac{u_p}{p} + \underset{0 \leq i \leq p-1}{\max}\frac{u_i}{n}.$$
 	On prend la limite supérieure quand $n \longrightarrow + \infty$:
 	$$\underset{n \longrightarrow + \infty}{\lim \sup}\ \frac{u_n}{n}\leq \frac{u_p}{p}.$$
 	Puisque cette dernière inégalité est vérifiée pour tout $p \geq 1$, on a:
 	$$\underset{n \longrightarrow + \infty}{\lim \sup}\ \frac{u_n}{n} \leq \underset{p \geq 1}{\inf}\ \frac{u_p}{p} \leq \underset{n \longrightarrow + \infty}{\lim \inf}\ \frac{u_n}{n}.$$
 	d'où le résultat énoncé.\\
-	\par \textbf{2)} Si $(u_n)_{n \in \mathbb{N}}$ est une suite sur-additive, $(-u_n)_{n \in \mathbb{N}}$ est une suite sous-additive. On peut lui appliquer le point \textbf{1} et conclure.$\hfill \square$\\
+	\par \textbf{2)} Si $(u_n)_{n \in \mathbb{N}}$ est une suite sur-additive, $(-u_n)_{n \in \mathbb{N}}$ est une suite sous-additive. On peut lui appliquer le point \textbf{1} et conclure.\hfill $\square$\\
 
 
 
@@ -627,17 +634,18 @@ Il est utile de montrer en premier lieu un résultat important sur des suites bi
 Introduisons désormais une notion centrale de ce mémoire: le nombre de rotation d'un homéomorphisme préservant l'orientation.
 \begin{thmdefi}\label{nombre de rotation}
 	\textbf{Nombre de rotation}
+	\uses{suiteadd}
 \begin{enumerate}
 	\item Pour tout relèvement de $f$ de T, la limite $$\alpha(f) = \underset{n \to + \infty}{\lim} \frac{f^n(0)}{n}$$ existe et est finie.
-	
+
 	\item La suite de fonctions $(x \mapsto (f^n(x)-x)/n)_{n\geq 1} $ \textbf{converge uniformément} sur $\mathbb{R}$ vers $\alpha(f)$.
-	
-	\item  La classe $\overline{\alpha(f)}$ dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ ne dépend pas du relèvement $f$ choisi. On l'appelle \textbf{nombre de rotation de $T$} et on la note $\rho(T)$. 
+
+	\item  La classe $\overline{\alpha(f)}$ dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ ne dépend pas du relèvement $f$ choisi. On l'appelle \textbf{nombre de rotation de $T$} et on la note $\rho(T)$.
 \end{enumerate}
 \end{thmdefi}
 
 
-\textbf{Preuve:} 
+\textbf{Preuve:}
 	\par \textbf{1) }Soit $f$ un relèvement de $T$. Montrons la sur-additivité de la suite $(\lfloor f^n(0) \rfloor)_{n \geq 0}$.\\
 	Soient $p,q \in \mathbb{N}$. On a:
 		\begin{eqnarray*}
@@ -648,7 +656,7 @@ Introduisons désormais une notion centrale de ce mémoire: le nombre de rotatio
 		\end{eqnarray*}
 	Comme $\lfloor f^p(0) \rfloor +\lfloor f^q(0) \rfloor$ est un entier, $\lfloor f^{p+q}(0) \rfloor \geq \lfloor f^p(0) \rfloor +\lfloor f^q(0) \rfloor$, d'où la sur-additivité de  $(\lfloor f^n(0) \rfloor)_{n \geq 0}$. Par des arguments similaires, on montre que la suite $( \lceil f^n(0) \rceil )_{n \geq 0}$ est sous-additive.
 	\\
-	D'après le théorème \ref{suiteadd}, on sait qu'il existe $a \in \mathbb{R} \cup \lbrace + \infty \rbrace$ et $b \in \mathbb{R} \cup \lbrace - \infty \rbrace$, tels que 
+	D'après le théorème \ref{suiteadd}, on sait qu'il existe $a \in \mathbb{R} \cup \lbrace + \infty \rbrace$ et $b \in \mathbb{R} \cup \lbrace - \infty \rbrace$, tels que
 	$$\frac{\lfloor f^n(0) \rfloor }{n} \underset{n \to + \infty}{\longrightarrow} a \text{ et }\frac{\lceil f^n(0) \rceil }{n} \underset{n \to + \infty}{\longrightarrow} b.$$
 	\\
 	Or pour tout $n\in \mathbb{N}^*$, $$0 \leq \frac{\lceil f^n(0) \rceil }{n} - \frac{\lfloor f^n(0) \rfloor }{n} \leq \frac{1}{n}. $$
@@ -684,17 +692,17 @@ Introduisons désormais une notion centrale de ce mémoire: le nombre de rotatio
 
 
 
-	
+
 
 
 Etudions le cas le plus simple: le cas des \textbf{translations} de $\Rbb$, qu'on voit comme \textbf{rotations} de $\mathbb{T}$.
 
-\begin{ex}\label{rotation}
+\begin{example}\label{rotation}
 	\textbf{Rotations}\\
 	Soit $R_{\theta}$ l'homéomorphisme de $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ obtenu par passage au quotient à partir de l'application $t_\theta: x \mapsto x +\theta$ de $\Rbb$ dans $\Rbb$. Comme la fonction $x\mapsto t_\theta(x)-x$ est constante égale à $\theta$, pour tout $n \in \mathbb{N}$, on a:
 	$$\frac{t_\theta^n(0)}{n}= \frac{n \theta}{n} = \theta.$$
 	Et donc $\alpha(f)=\theta$ et $\rho(R_\theta)=\overline{\theta}.$
-\end{ex}
+\end{example}
 
 
 
@@ -720,14 +728,14 @@ Etudions le cas le plus simple: le cas des \textbf{translations} de $\Rbb$, qu'o
 \subsection{Premières propriétés}
 Nous pouvons alors démontrer quelques propriétés qui découlent facilement des définitions et des propriétés sur les homéomorphismes de $\Rbb$ et de $\Tbb$.
 
-\begin{ppt}\label{k rho}
+\begin{proposition}\label{k rho}
 	Pour tout $k \in \mathbb{Z}$, $\rho(T^k)= k \times \rho(T)$. En particulier, on a $\rho(\mathrm{Id_{\Tbb}})=0$ et $\rho(T^{-1})=-\rho(T)$.
-\end{ppt}
+\end{proposition}
 
 \textbf{Preuve:}\\
 Soient $f$ un relèvement de T et $k \in \mathbb{Z}$. Alors $f^k$ est un relèvement de $T^k$.
 $$\frac{(f^k)^n(0)}{n}=\frac{kf^{kn}(0)}{kn}\underset{n \to + \infty}{\longrightarrow} k \times \alpha(f).$$
-ce qui montre le résultat voulu.$\hfill \square$\\ 
+ce qui montre le résultat voulu.\hfill $\square$\\
 
 
 
@@ -736,7 +744,7 @@ ce qui montre le résultat voulu.$\hfill \square$\\
 Le lemme suivant permet de relier des bornes sur le nombre de rotation d'un homéomorphisme. Il permettra de faciliter des démonstrations à venir.
 
 
-\begin{lm}\label{bornesnbrot}\textbf{Lemme fondamental}\\
+\begin{lemma}\label{bornesnbrot}\textbf{Lemme fondamental}\\
 	Soit f un relèvement de T. Notons $$a=\underset{x \in \mathbb{R}}{\inf} f(x) - x \text{ et } b=\underset{x \in \mathbb{R}}{\sup} f(x) - x.$$
 Alors:
 \begin{enumerate}
@@ -744,7 +752,7 @@ Alors:
 	\item De plus, $a \leq b < a + 1$.
 	\item Enfin, $a \leq \alpha(f) \leq b$.
 \end{enumerate}
-\end{lm}
+\end{lemma}
 
 	\textbf{Preuve:}
 	\par\textbf{1)} La fonction $x\mapsto f(x)-x$ est continue sur $\mathbb{R}$ et $1$-périodique. Elle est donc bornée et atteint ses bornes $a$ et $b$ sur le compact $[0,1]$. Comme $f(0)=f(1)-1$, elle atteint ses bornes sur $[0,1[$. \\
@@ -764,7 +772,7 @@ Alors:
 	Ce qui montre les inégalités au rang $n+1$ qui achève la récurrence.
 	Ainsi, pour tout $n \in \mathbb{N}$,
 	$$a\leq \frac{f^n(0)}{n}\leq b.$$
-	Et par passage à la limite: $a\leq \alpha(f)\leq b$. $\hfill \square$ \\
+	Et par passage à la limite: $a\leq \alpha(f)\leq b$. \hfill $\square$ \\
 
 
 
@@ -774,14 +782,14 @@ Alors:
 
 
 
-\par Le théorème suivant permet de relier l'existence de \textbf{point fixe} d'une puissance d'un homéomorphisme avec la \textbf{rationalité} de son nombre de rotation. 
+\par Le théorème suivant permet de relier l'existence de \textbf{point fixe} d'une puissance d'un homéomorphisme avec la \textbf{rationalité} de son nombre de rotation.
 
 
-\begin{thm}\label{equivrationnel}
+\begin{theorem}\label{equivrationnel}
 	On a l'équivalence $$\rho(T) \in \EnsembleQuotient{\mathbb{Q}}{\mathbb{Z}} \Longleftrightarrow \exists k \in \mathbb{N}^*,\ T^k \text{a un point fixe.}$$
 	 Plus précisément,
 	 $$\forall k \in \mathbb{N}^*,\ k \times \rho(T)=\overline{0} \Longleftrightarrow T^k \text{possède un point fixe.}$$
-\end{thm}
+\end{theorem}
 
 	\textbf{Preuve:}
 	\par($\Rightarrow$) Montrons le sens direct. Soit $f$ un relèvement de $T$.\\
@@ -803,13 +811,13 @@ Alors:
 	\end{eqnarray*}
 	Il en découle:
 	$$\frac{f^n(x_0) - x_0}{n}=\frac{f^{r_n}(x_0)-x_0}{n} + \frac{q_n \times j}{q_n \times k + r_n} \underset{n \to +  \infty}{\longrightarrow} \frac{j}{k}.$$
-	D'où $\alpha(f)=j/k \in \mathbb{Q}$. $\hfill \square$\\
-		
+	D'où $\alpha(f)=j/k \in \mathbb{Q}$. \hfill $\square$\\
 
-\begin{ex}
+
+\begin{example}
 	\textbf{Rotation d'angle rationnel}\\
 	Soit $R_{p/q}$ la rotation d'angle $p/q$ avec $(p,q) \in \mathbb{Z} \times \mathbb{N}^*$. Comme $R_{p/q}^q= \mathrm{Id_{\Tbb}}$, on a d'après le théorème \ref{equivrationnel}, $q \times \rho(R_{p/q})= \overline{0}$, ce qui est en accord avec l'exemple \ref{rotation}.
-\end{ex}
+\end{example}
 
 \par Du lemme et du théorème précédents découle le corollaire suivant:
 
@@ -820,14 +828,14 @@ Alors:
 
 
 
-\begin{coro}\label{equiv amel}
+\begin{corollary}\label{equiv amel}
 	Soient f $\in \mathcal{E}^+$ et $k,r \in \mathbb{Z}$. Alors
 	$$\mathrm{Im}(f^k - \mathrm{Id})\subset \ ]r,r+1[ \Longleftrightarrow  \alpha(f^k) \in ]r,r+1[.$$
-\end{coro}
+\end{corollary}
 
 \textbf{Preuve:}\\
 ($\Rightarrow$) Le lemme \ref{bornesnbrot} donne le sens direct. \\
-($\Leftarrow$) Supposons que $\alpha(f^k) \in ]r,r+1[$. Alors $T_f^k$ n'a pas de point fixe d'après le théorème \ref{equivrationnel}. Donc Im($f^k -$ Id) est incluse dans un intervalle $]s,s+1[$ avec $s \in \mathbb{Z}$. D'après le sens direct, $\alpha(f^k) \in ]s,s+1[$. D'où $s=r$. $\hfill \square$\\
+($\Leftarrow$) Supposons que $\alpha(f^k) \in ]r,r+1[$. Alors $T_f^k$ n'a pas de point fixe d'après le théorème \ref{equivrationnel}. Donc Im($f^k -$ Id) est incluse dans un intervalle $]s,s+1[$ avec $s \in \mathbb{Z}$. D'après le sens direct, $\alpha(f^k) \in ]s,s+1[$. D'où $s=r$. \hfill $\square$\\
 
 
 
@@ -838,10 +846,10 @@ Le nombre de rotation est un \textbf{invariant de conjugaison}. C'est l'objet de
 
 
 
-\begin{ppt}\label{conjugaison}
+\begin{proposition}\label{conjugaison}
 		Le nombre de rotation est \textbf{invariant par conjugaison topologique}: pour tous $T_1$, $T_2$ dans $\mathrm{Hom}^+(\Tbb)$,
 			$$\rho(T_{1}\circ T_{2}\circ T_{1}^{-1})=\rho(T_{2}).$$
-\end{ppt}
+\end{proposition}
 
 \textbf{Preuve:}
 	\par Soient $T_{1}, T_{2} \in$ Hom$^+$($\mathbb{S}^{1}$) et $f_{1}$, $f_{2}$ des relèvements de $T_{1}$ et $T_{2}$ respectivement.\\
@@ -854,7 +862,7 @@ Le nombre de rotation est un \textbf{invariant de conjugaison}. C'est l'objet de
 	\end{eqnarray*}
 	Or, par propriété du nombre de rotation $$\underset{n \to +\infty}{\lim}\frac{f_2^n\circ f_1^{-1}(x) - f_1^{-1}(x)}{n} = \alpha(f_2).$$
 	Et  $$\underset{n \to +\infty}{\lim} \frac{f_1(f_2^n\circ f_1^{-1}(x)) - f_2^n\circ f_1^{-1}(x)}{n} = \underset{n \to +\infty}{\lim} \frac{f_1^{-1}(x) - x}{n} = 0$$ car les numérateurs sont bornés. En effet, les fonctions $x \mapsto f_1(x)-x$ et $x\mapsto f_1^{-1}(x)-x$ sont 1-périodiques et continues donc bornées.\\
-	Donc finalement, $$\underset{n \to +\infty}{\lim} 	\frac{(f_{1}\circ f_2 \circ f_1^{-1})^n(x)-x}{n} =\alpha(f_2)$$ ce qui achève la preuve. $\hfill \square$
+	Donc finalement, $$\underset{n \to +\infty}{\lim} 	\frac{(f_{1}\circ f_2 \circ f_1^{-1})^n(x)-x}{n} =\alpha(f_2)$$ ce qui achève la preuve. \hfill $\square$
 
 
 
@@ -867,9 +875,9 @@ Le nombre de rotation est un \textbf{invariant de conjugaison}. C'est l'objet de
 Existe-t-il une formule pour calculer le nombre de rotation d'une composée ? D'abord, nous montrerons que si deux homéomorphismes \textbf{commutent}, le \textbf{nombre de rotation de leur composée est la somme de leur nombre de rotation}. Nous verrons ensuite que cette propriété \textbf{ne se généralise pas} en exhibant un contre-exemple.
 
 
-\begin{thm}\label{rho commute}
+\begin{theorem}\label{rho commute}
 	Soient $T_1$, $T_2 \in \mathrm{Hom}^+(\Tbb)$ tels que $T_1\circ T_2=T_1 \circ T_2$. Alors, $$\rho(T_1\circ T_2)=\rho(T_1)+\rho(T_2).$$
-\end{thm}
+\end{theorem}
 
 	\textbf{Preuve:}
 	\par Soient $f_1$ et $f_2$ des relèvements de $T_1$ et $T_2$ respectivement. Dans un premier temps, montrons que $f_1 \circ f_2 = f_2 \circ f_1$:\\
@@ -883,15 +891,15 @@ Existe-t-il une formule pour calculer le nombre de rotation d'une composée ? D'
 	$$\Big| \frac{f_2((f_1 \circ f_2)^n(0))}{n} - \frac{(f_1 \circ f_2)^n(0)}{n} \Big| \underset{n \to + \infty}{\longrightarrow}0.$$
 	En passant à la limite quand $n \to + \infty$:
 	$$\underset{n \to + \infty}{\lim} \frac{f_2((f_1 \circ f_2)^n(0))}{n} = \underset{n \to + \infty}{\lim} \frac{(f_1 \circ f_2)^n(0)}{n} = \alpha(f_1 \circ f_2).$$
-	Or, pour tout $n \in \mathbb{N}$, 
+	Or, pour tout $n \in \mathbb{N}$,
 	$$ \frac{f_2((f_1 \circ f_2)^n(0))}{n} = \frac{(f_2 \circ f_1)^n(f_2(0))}{n}.$$
-	Donc en passant à la limite quand $n \to \infty$, $\alpha(f_1 \circ f_2) = \alpha(f_2 \circ f_1)$. On en déduit que $C = 0$ et donc $f_1 \circ f_2 = f_1 \circ f_2$. Par conséquent, pour tout $n \in \mathbb{N}$, $(f_1 \circ f_2)^n = f_1^n \circ f_2^n$.\\ 
+	Donc en passant à la limite quand $n \to \infty$, $\alpha(f_1 \circ f_2) = \alpha(f_2 \circ f_1)$. On en déduit que $C = 0$ et donc $f_1 \circ f_2 = f_1 \circ f_2$. Par conséquent, pour tout $n \in \mathbb{N}$, $(f_1 \circ f_2)^n = f_1^n \circ f_2^n$.\\
 	Ainsi, grâce à la convergence uniforme de $((f_1^n - \mathrm{Id_{\mathbb{R}}})/n)_{n\geq 1}$ vers $\alpha(f_1)$, on a pour tout $x \in \mathbb{R}$,
 	\begin{eqnarray*}
 	\frac{(f_1 \circ f_2)^n(x) - x}{n} &=& \frac{f_1^n(f_2^n(x)) - f_2^n(x)}{n} + \frac{f_2^n(x)-x}{n}\\
 	&\underset{n \to + \infty}{\longrightarrow}& \alpha(f_1) + \alpha(f_2) .
 	\end{eqnarray*}
-	On conclut que $\alpha(f_1 \circ f_2) = \alpha(f_1) + \alpha(f_2)$ et donc $\rho(T_1 \circ T_2)= \rho (T_1) + \rho(T_2)$. 
+	On conclut que $\alpha(f_1 \circ f_2) = \alpha(f_1) + \alpha(f_2)$ et donc $\rho(T_1 \circ T_2)= \rho (T_1) + \rho(T_2)$.
 	\begin{flushright}
 		$\square$
 	\end{flushright}
@@ -919,22 +927,21 @@ Existe-t-il une formule pour calculer le nombre de rotation d'une composée ? D'
 
 
 
-\begin{contrex} \textbf{Attention !} Le théorème \ref{rho commute} est faux en général si $T_1$ et $T_2$ ne commutent pas, comme le montre le contre-exemple suivant: \end{contrex}
-	Soit $f_1: \mathbb{R} \to \mathbb{R}$ définie par $f_1(x):=\lfloor x \rfloor + (x - \lfloor x \rfloor)^2$. On peut montrer les résultats suivants:
-	\begin{itemize}[label =$\bullet$]
-		\item $f_1 - \mathrm{Id_{\mathbb{R}}}$ est $1$-périodique.
-		\item $f_1$ est continue et strictement croissante sur $[0,1]$ grâce au point précédent et au fait que pour tout $x \in [0,1]$ (y compris si $x=1$), on a $f(x)=x^2$.
-		\item $f_1 - \mathrm{Id_{\mathbb{R}}}$ est à valeurs dans $[-1/4,0]$ et ne s'annule que sur $\mathbb{Z}$.
-	\end{itemize}
-	Soit $f_2: \mathbb{R} \to \mathbb{R}$ définie par $f_2(x):=f_1(x +1/2)-1/2$. Alors $f_2$ a les mêmes propriétés que $f_1$ hormis le fait que les zéros de $f_2 - \mathrm{Id_{\mathbb{R}}}$ sont les points de $1/2 + \mathbb{Z}$.\\
-	Soit alors $T_1 \in \mathrm{Hom}^+(S^1)$ dont un relèvement est $f_1$, et $T_2 \in \mathrm{Hom}^+(S^1)$ dont un relèvement est $f_2$. Par construction, $T_1$ et $T_2$ possèdent un point fixe donc $\rho(T_1)= \rho(T_2)=\overline{0}$ par le théorème \ref{equivrationnel}.\\
-	Or, pour tout $x \in \mathbb{R}$,
-	 $$x-\frac{1}{2}\leq f_1(x) - \frac{1}{4}  \leq f_2(f_1(x))\leq x.$$
-	 
-	 L'inégalité $f_1(x) \leq x$ est une égalité si et seulement si $x \in \mathbb{Z}$, ce qui équivaut à $f_1(x) \in \mathbb{Z}$. De plus, l'inégalité $f_2(f_1(x)) \leq f_1(x)$ est une égalité si et seulement si $f_1(x) \in 1/2 + \mathbb{Z}$. Ces deux conditions étant incompatibles, on a pour tout $x \in \mathbb{R}$, 
-	$$x-1 < x - \frac{1}{2} \leq f_2(f_1(x))<x.$$
-	Donc $T_2 \circ T_1$ ne possède pas de point fixe. Et par le théorème \ref{equivrationnel} on a $\rho(T_2 \circ T_1) \neq \overline{0}$, \textit{i.e}. $\rho(T_2 \circ T_1) \neq \rho(T_2)+ \rho(T_1). \hfill \square$\\
-	
+% \begin{contrex} \textbf{Attention !} Le théorème \ref{rho commute} est faux en général si $T_1$ et $T_2$ ne commutent pas, comme le montre le contre-exemple suivant: \end{contrex}
+% 	Soit $f_1: \mathbb{R} \to \mathbb{R}$ définie par $f_1(x):=\lfloor x \rfloor + (x - \lfloor x \rfloor)^2$. On peut montrer les résultats suivants:
+% 	\begin{itemize}[label=$\bullet$]
+% 		\item $f_1 - \mathrm{Id_{\mathbb{R}}}$ est $1$-périodique.
+% 		\item $f_1$ est continue et strictement croissante sur $[0,1]$ grâce au point précédent et au fait que pour tout $x \in [0,1]$ (y compris si $x=1$), on a $f(x)=x^2$.
+% 		\item $f_1 - \mathrm{Id_{\mathbb{R}}}$ est à valeurs dans $[-1/4,0]$ et ne s'annule que sur $\mathbb{Z}$.
+% 	\end{itemize}
+% 	Soit $f_2: \mathbb{R} \to \mathbb{R}$ définie par $f_2(x):=f_1(x +1/2)-1/2$. Alors $f_2$ a les mêmes propriétés que $f_1$ hormis le fait que les zéros de $f_2 - \mathrm{Id_{\mathbb{R}}}$ sont les points de $1/2 + \mathbb{Z}$.\\
+% 	Soit alors $T_1 \in \mathrm{Hom}^+(S^1)$ dont un relèvement est $f_1$, et $T_2 \in \mathrm{Hom}^+(S^1)$ dont un relèvement est $f_2$. Par construction, $T_1$ et $T_2$ possèdent un point fixe donc $\rho(T_1)= \rho(T_2)=\overline{0}$ par le théorème \ref{equivrationnel}.\\
+% 	Or, pour tout $x \in \mathbb{R}$,
+% 	 $$x-\frac{1}{2}\leq f_1(x) - \frac{1}{4}  \leq f_2(f_1(x))\leq x.$$
+
+% 	 L'inégalité $f_1(x) \leq x$ est une égalité si et seulement si $x \in \mathbb{Z}$, ce qui équivaut à $f_1(x) \in \mathbb{Z}$. De plus, l'inégalité $f_2(f_1(x)) \leq f_1(x)$ est une égalité si et seulement si $f_1(x) \in 1/2 + \mathbb{Z}$. Ces deux conditions étant incompatibles, on a pour tout $x \in \mathbb{R}$,
+% 	$$x-1 < x - \frac{1}{2} \leq f_2(f_1(x))<x.$$
+% 	Donc $T_2 \circ T_1$ ne possède pas de point fixe. Et par le théorème \ref{equivrationnel} on a $\rho(T_2 \circ T_1) \neq \overline{0}$, \textit{i.e}. $\rho(T_2 \circ T_1) \neq \rho(T_2)+ \rho(T_1). \hfill \square$\\
 
 
 
@@ -945,22 +952,22 @@ Existe-t-il une formule pour calculer le nombre de rotation d'une composée ? D'
 
 
 
-	
-	
-\newpage
 
-	
-\section{Continuité du nombre de rotation $\rho(T)$ par rapport à $T$}
 
-Dans cette partie, nous allons montrer que le nombre de rotation $\rho(T)$ dépend continument de l'homéomorphisme $T$ de $\mathrm{Hom}^+(\Tbb)$. 
+
+
+
+\section{Continuité du nombre de rotation par rapport à $T$}
+
+Dans cette partie, nous allons montrer que le nombre de rotation $\rho(T)$ dépend continument de l'homéomorphisme $T$ de $\mathrm{Hom}^+(\Tbb)$.
 
 \subsection{Résultats préliminaires}
 
-Nous avons besoin de quelques résultats préalables qui allègeront la preuve du théorème de continuité. 
-\begin{defi}
+Nous avons besoin de quelques résultats préalables qui allègeront la preuve du théorème de continuité.
+\begin{definition}
 		Si $f:\mathbb{R} \to \mathbb{R}$ est une fonction uniformément continue. On définit l'application \textbf{module de continuité} $\omega_f: \mathbb{R} \to \mathbb{R}^+$ par $\omega_f(\delta) := \sup E_{f}(\delta)$, où
 		$$E_{f}(\delta):=\lbrace |f(x_1) - f(x_2)|: (x_1;x_2) \in \mathbb{R}^2,\ |x_1 - x_2| \leq \delta \rbrace$$
-\end{defi}
+\end{definition}
 
 
 
@@ -970,20 +977,20 @@ Nous avons besoin de quelques résultats préalables qui allègeront la preuve d
 
 
 
-\begin{ppt}\label{modulecont}
+\begin{proposition}\label{modulecont}
 		Pour toute fonction $f$ uniformément continue, le  module de continuité $w_f$ possède les 3 propriétés suivantes:
 	\begin{enumerate}
 		\item $\omega_f$ est croissant.
 		\item $\omega_f$ est sous-additif: $\forall \delta_1, \delta_2 \in \mathbb{R}^+$, $\omega_f(\delta_1 + \delta_2) \leq \omega_f(\delta_1) +\omega_f(\delta_2)$.
 		\item $\omega_f(\delta) \underset{\delta \to 0}{\longrightarrow}0$.
 	\end{enumerate}
-\end{ppt}		
-	
+\end{proposition}
+
 
 
 	\textbf{Preuve:}
 	\par \textbf{1)} Soient $\delta_1,\delta_2 \in \mathbb{R}^+$ tels que $\delta_1\leq \delta_2$. Comme $E_f(\delta_1)\subset E_f(\delta_2)$, $\sup E_f(\delta_1)\leq \sup E_f(\delta_2)$, \textit{i.e.} $\omega_f(\delta_1)\leq \omega_f(\delta_2)$.\\
-	
+
 	\par \textbf{2)} Soient $\delta_1,\delta_2 \in \mathbb{R}^+$, et $x_1, x_2 \in \mathbb{R}$ tels que $|x_1 -x_2|\leq \delta_1 + \delta_2$. Il existe $x_3 \in \mathbb{R}$ tel que $|x_1 -x_3|\leq \delta_1$ et $|x_3 -x_2|\leq \delta_2$. Et donc:
 	\begin{eqnarray*}
 		|f(x_1)-f(x_2)|&\leq& |f(x_1)-f(x_3)| + |f(x_3)-f(x_2)|\\
@@ -991,10 +998,10 @@ Nous avons besoin de quelques résultats préalables qui allègeront la preuve d
 			&\leq& \omega_f(\delta_1) + \omega_f(\delta_2).
 	\end{eqnarray*}
 	Par passage au $\sup$, on obtient : $\omega_f(\delta_1 + \delta_2) \leq \omega_f(\delta_1) +\omega_f(\delta_2)$.\\
-	
+
 	\par \textbf{3)} Soit $\varepsilon > 0$. Comme $f$ est uniformément continue, il existe $\eta >0$, tel que:
 	$$\forall (x_1,x_2) \in \mathbb{R}^2, ( |x_1-x_2|\leq \eta) \Longrightarrow (|f(x_1)-f(x_2)|\leq \varepsilon).  $$
-	On a alors $\omega_f(\eta)\leq\varepsilon$. Comme $\omega_f$ est croissant sur $\mathbb{R}^+$, pour tout $\delta \in \mathbb{R}^+$ tel que $\delta \leq \eta$, on a $\omega_f(\delta)\leq\omega_f(\eta)\leq\varepsilon$, ce qui achève la démonstration. $\hfill \square$\\
+	On a alors $\omega_f(\eta)\leq\varepsilon$. Comme $\omega_f$ est croissant sur $\mathbb{R}^+$, pour tout $\delta \in \mathbb{R}^+$ tel que $\delta \leq \eta$, on a $\omega_f(\delta)\leq\omega_f(\eta)\leq\varepsilon$, ce qui achève la démonstration. \hfill $\square$\\
 
 
 
@@ -1009,19 +1016,19 @@ Nous avons besoin de quelques résultats préalables qui allègeront la preuve d
 
 
 
-\begin{lm}\label{ouvertUr}
+\begin{lemma}\label{ouvertUr}
 	Soit $r \in \mathbb{Z}$.\\
 	Posons $U_r:=\lbrace f \in \mathcal{E}^+: \mathrm{Im}(f-Id_{\mathbb{R}}) \subset\ ]r,r+1[\rbrace$. $U_r$ est un ouvert de $\mathcal{E}^+$ muni de la topologie issue de la norme de la convergence uniforme.
-\end{lm}
-\newpage
-	\textbf{Preuve:}
+\end{lemma}
+
+\textbf{Preuve:}
 	\par Soit $f\in U_r$. On a :
 	\begin{eqnarray*}
 		\mathrm{Im}(f - \Id_{\Rbb}) \subset ]r,r+1[ &\Longleftrightarrow& \forall x \in \Rbb,\ |f(x)-x-(r+1/2)|< 1/2\\
 		&\Longleftrightarrow& ||f - \Id_\Rbb - (r + 1/2) ||_{\infty} < 1/2.
 	\end{eqnarray*}
 	Avec ces équivalences on en déduit que $U_r = \Ec^+ \cap  B_{\infty}(\Id_\Rbb+r + 1/2,1/2)$, ce qui permet de conclure que $U_r$ est un ouvert pour la topologie demandée.
-	 $\hfill \square$\\
+	 \hfill $\square$\\
 
 
 
@@ -1029,9 +1036,9 @@ Nous avons besoin de quelques résultats préalables qui allègeront la preuve d
 
 
 
-\begin{lm}\label{psi}
+\begin{lemma}\label{psi}
 	Notons $\Cc_U(\mathbb{R},\mathbb{R})$ l'ensemble des fonctions uniformément continues définies de $\mathbb{R}$ dans $\Rbb$. L'application $\psi: \Cc_U(\mathbb{R},\mathbb{R}) \times \Cc_U(\mathbb{R},\mathbb{R}) \to \Cc_U(\mathbb{R},\mathbb{R})$ définie par $\psi(f,g)=f\circ g$ est continue pour la topologie associée à la norme de la convergence uniforme.
-\end{lm}
+\end{lemma}
 
 	\textbf{Preuve:}
 	\par L'application $\psi$ est bien définie car une composée de fonctions uniformément continues est uniformément continue. Soient $f_1, f_2, g_1, g_2 \in \Cc_U(\mathbb{R},\mathbb{R})$. On a :
@@ -1048,13 +1055,13 @@ d'après la proposition \ref{modulecont}. $\square$\\
 
 
 
-\begin{coro}\label{phin}
+\begin{corollary}\label{phin}
 	Soit $n \in \mathbb{N}$, l'application  $\varphi_n : \Cc_U(\mathbb{R},\mathbb{R}) \to \Cc_U(\mathbb{R},\mathbb{R})$ définie par $\varphi_n(f)=f^n$ est continue pour la topologie associée à la norme de la convergence uniforme.
-\end{coro}
+\end{corollary}
 
 	\textbf{Preuve:}
-		\par Par récurrence, montrons que pour tout $n \in \mathbb{N}$, $\varphi_n $ est continue. Pour $n=0$, le résultat est clair. Soit $n \in \mathbb{N}$ pour lequel $\varphi_n$ est continue. Alors pour tout $f \in  \Cc_U(\mathbb{R},\mathbb{R})$, on a $\varphi_{n+1}(f)= \psi(f,f^n)$ (où $\psi$ est l'application du lemme \ref{psi}). Donc $\varphi_{n+1}$ est continue d'après l'hypothèse de récurrence et par le lemme \ref{psi}. $\hfill \square$ \\
-	
+		\par Par récurrence, montrons que pour tout $n \in \mathbb{N}$, $\varphi_n $ est continue. Pour $n=0$, le résultat est clair. Soit $n \in \mathbb{N}$ pour lequel $\varphi_n$ est continue. Alors pour tout $f \in  \Cc_U(\mathbb{R},\mathbb{R})$, on a $\varphi_{n+1}(f)= \psi(f,f^n)$ (où $\psi$ est l'application du lemme \ref{psi}). Donc $\varphi_{n+1}$ est continue d'après l'hypothèse de récurrence et par le lemme \ref{psi}. \hfill $\square$ \\
+
 
 
 
@@ -1063,9 +1070,9 @@ d'après la proposition \ref{modulecont}. $\square$\\
 \subsection{Théorème de continuité}
 Nous arrivons désormais au théorème qui nous intéresse dans cette partie.
 
-\begin{thm}
+\begin{theorem}
 	Le nombre de rotation $\rho(T)$ dépend continûment de T.
-\end{thm}
+\end{theorem}
 
 	\textbf{Preuve:}
 	\par Montrons d'abord que l'application $\alpha: \mathcal{E}^+ \to \mathbb{R}$ qui associe $\alpha(f)$ à tout $f \in \mathcal{E}$ est continue pour la topologie associée à la norme de la convergence uniforme dans $\mathcal{E}^+$.\\
@@ -1079,17 +1086,17 @@ Nous arrivons désormais au théorème qui nous intéresse dans cette partie.
 	\end{eqnarray*}
 	Or $U_r$ est un ouvert (lemme \ref{ouvertUr}) et $\varphi_k$ est continue (corollaire \ref{phin}), $\alpha^{-1}(O)$ est donc un ouvert de $\mathcal{E}^+$. \\
 
-	
-	Ainsi, l'application $\overline{\alpha}:f\mapsto \overline{\alpha(f)}= \pi\circ \alpha (f)$ est continue de $\mathcal{E}^+$ (muni de la topologie issue norme de la convergence uniforme) dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ (muni de la topologie quotient). Cette application est constante sur chaque classe d'équivalence pour la relation d'équivalence sur $\mathcal{E}^+$ définie par:
-	
-	$$f\ \thicksim\ g \Longleftrightarrow f-g \text{ est constante et à valeurs dans\ } \mathbb{Z}.$$
-	Par passage au quotient, l'application $\overline{\alpha}$ fournit une application continue $\widetilde{\alpha}$ de $\EnsembleQuotient{\mathcal{E}^+}{\thicksim}$ dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ telle que $\overline{\alpha}=\widetilde{\alpha}\circ p$ où $p$ est la projection canonique de $\Ec^+$ sur  $\EnsembleQuotient{\mathcal{E}^+}{\thicksim}$.\\ En utilisant l'isomorphisme $\iota$ vu au corollaire \ref{isom relation d'équiv sur les homéo}, on en déduit que $\rho$ est continue de $\EnsembleQuotient{\mathcal{E}^+}{\thicksim}$ dans $\HomT$. $\hfill \square$\\
-	
-	
-	
 
-	
-	
+	Ainsi, l'application $\overline{\alpha}:f\mapsto \overline{\alpha(f)}= \pi\circ \alpha (f)$ est continue de $\mathcal{E}^+$ (muni de la topologie issue norme de la convergence uniforme) dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ (muni de la topologie quotient). Cette application est constante sur chaque classe d'équivalence pour la relation d'équivalence sur $\mathcal{E}^+$ définie par:
+
+	$$f\ \thicksim\ g \Longleftrightarrow f-g \text{ est constante et à valeurs dans\ } \mathbb{Z}.$$
+	Par passage au quotient, l'application $\overline{\alpha}$ fournit une application continue $\widetilde{\alpha}$ de $\EnsembleQuotient{\mathcal{E}^+}{\thicksim}$ dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ telle que $\overline{\alpha}=\widetilde{\alpha}\circ p$ où $p$ est la projection canonique de $\Ec^+$ sur  $\EnsembleQuotient{\mathcal{E}^+}{\thicksim}$.\\ En utilisant l'isomorphisme $\iota$ vu au corollaire \ref{isom relation d'équiv sur les homéo}, on en déduit que $\rho$ est continue de $\EnsembleQuotient{\mathcal{E}^+}{\thicksim}$ dans $\HomT$. \hfill $\square$\\
+
+
+
+
+
+
 Voici un diagramme commutatif récapitulant tous les liens entre les différentes applications introduites dans ce mémoire:
 
 $$\Large\xymatrix{
@@ -1107,8 +1114,7 @@ $$\Large\xymatrix{
 
 
 
-\newpage	
-	
+
 \section{Étude des orbites de $T$ et classification de Poincaré}
 
 L'objectif de cette partie est d'étudier les orbites d'un homéomorphisme $T$, et d'établir un début de classification des homéomorphismes de $\HomT$.
@@ -1121,18 +1127,18 @@ Introduisons pour commencer quelques notions de vocabulaire autour des orbites.
 
 
 
-\begin{nota}
+\begin{notation}
 	Lorsqu'il n'y aura pas d'ambiguïté avec l'homéomorphisme $f: X \to X$ (avec X un espace topologique) considéré, on pourra noter $O_x := \lbrace f^n(x), n\in \mathbb{Z}\rbrace$ \textbf{l'orbite} de élément $x$ sous l'action d'un homéomorphisme $f$.
-\end{nota}
+\end{notation}
 
 
-\begin{defi}
-		Soit $f: X \to X$ un homéomorphisme. 
+\begin{definition}
+		Soit $f: X \to X$ un homéomorphisme.
 		\begin{enumerate}
 			\item On dit que $f$ est \textbf{transitif} si et seulement si il existe un point $x \in X$ tel que l'orbite $O_x$ est dense dans $X$.
 			\item	On dit que $f$ est \textbf{minimal} si et seulement si pour tout $x \in X$, l'orbite $O_x$ est dense dans $X$. Autrement dit, $f$ est minimal si toutes les orbites sont denses dans $X$.
-		\end{enumerate} 	
-\end{defi}
+		\end{enumerate}
+\end{definition}
 
 
 
@@ -1149,37 +1155,37 @@ Tout homéomorphisme est minimal est transitif. Nous allons voir par la suite qu
 
 
 
-\begin{ex}\label{exemple rot}
-	Pour une rotation $R_\theta$, il y a équivalence entre: 
+\begin{example}\label{exemple rot}
+	Pour une rotation $R_\theta$, il y a équivalence entre:
 	\begin{enumerate}
 		\item $R_{\theta}$ est minimale.
 		\item $R_{\theta}$ est transitive.
 		\item $\theta$ est irrationnel.
-	\end{enumerate} 
-\end{ex}
+	\end{enumerate}
+\end{example}
 
 \textbf{Preuve:}
 	\par (1)$\Rightarrow$(2) Cette implication est immédiate.\\
-	
+
 	\par(2)$\Rightarrow$(3) Montrons cette implication par contraposition. Supposons $\theta = p/q$ (avec $p\in \mathbb{Z}$, $q \in \mathbb{N}^*$ tels que $p \wedge q =1$). Pour tout $x \in \Tbb, R_{\theta}^q(x)=x$ et donc $O_x = \lbrace x, R_{\theta}(x),...,R_{\theta}^{q-1}(x) \rbrace$. Comme toute orbite est finie, $R_{\theta}$ n'est pas transitive.\\
 
-	\par(3)$\Rightarrow$(1) Supposons $\theta \in \mathbb{R} \setminus \mathbb{Q}$. Soient $x\in \Tbb$, et $a \in \mathbb{R}$ tel que $x = \overline{a}$. Montrons que $O_x$ est dense dans $\Tbb$. On a $O_x=\lbrace R_{\theta}^n(x); n \in \mathbb{Z} \rbrace = \pi ( a + \theta \mathbb{Z} )=\pi ( a + \mathbb{Z} + \theta \mathbb{Z} )$. L'ensemble $G := \mathbb{Z} + \theta \mathbb{Z}$ est un sous-groupe de $\mathbb{R}$  contenant $1$ et $\theta$. Comme $\theta$ est irrationnel, ce sous-groupe ne peut pas être de la forme $\alpha \mathbb{Z}$ (avec $\alpha \in \mathbb{R}$). Donc il est dense dans $\mathbb{R}$, et donc $a+G$ est également dense dans $\mathbb{R}$. Par continuité et surjectivité de $\pi$, $O_x = \pi(a+G)$ est dense dans $\mathbb{R} / \mathbb{Z}$, ce qui prouve le résultat. $\hfill \square$\\
+	\par(3)$\Rightarrow$(1) Supposons $\theta \in \mathbb{R} \setminus \mathbb{Q}$. Soient $x\in \Tbb$, et $a \in \mathbb{R}$ tel que $x = \overline{a}$. Montrons que $O_x$ est dense dans $\Tbb$. On a $O_x=\lbrace R_{\theta}^n(x); n \in \mathbb{Z} \rbrace = \pi ( a + \theta \mathbb{Z} )=\pi ( a + \mathbb{Z} + \theta \mathbb{Z} )$. L'ensemble $G := \mathbb{Z} + \theta \mathbb{Z}$ est un sous-groupe de $\mathbb{R}$  contenant $1$ et $\theta$. Comme $\theta$ est irrationnel, ce sous-groupe ne peut pas être de la forme $\alpha \mathbb{Z}$ (avec $\alpha \in \mathbb{R}$). Donc il est dense dans $\mathbb{R}$, et donc $a+G$ est également dense dans $\mathbb{R}$. Par continuité et surjectivité de $\pi$, $O_x = \pi(a+G)$ est dense dans $\mathbb{R} / \mathbb{Z}$, ce qui prouve le résultat. \hfill $\square$\\
 
 
-	
+
 
 La propriété suivante présente une \textbf{condition nécessaire} pour qu'un homéomorphisme soit transitif.\\
-	
-	
-	
-	
-	
-	
-	
-	
-\begin{ppt}\label{trans et nb rotation ratio}
+
+
+
+
+
+
+
+
+\begin{proposition}\label{trans et nb rotation ratio}
 	Si $\rho(T) \in \EnsembleQuotient{\mathbb{Q}}{\mathbb{Z}}$, alors aucune orbite de $T$ n'est dense dans $\Tbb$. De façon équivalente: si $T$ est transitive, alors nécessairement $\rho(T) \notin \EnsembleQuotient{\mathbb{Q}}{\mathbb{Z}}$.
-\end{ppt}
+\end{proposition}
 
 
 \textbf{Preuve:}
@@ -1187,50 +1193,50 @@ La propriété suivante présente une \textbf{condition nécessaire} pour qu'un 
 	Soit $x \in \mathbb{R}$. Considérons:
 	$$a(x)=\sup (F\ \cap \ ]-\infty,x]) \text{ et } b(x)=\inf(F \cap [x,+\infty[)$$
 	Comme $F$ est non minoré, non majoré et fermé, $a(x)$ et $b(x)$ sont des réels vérifiant l'inégalité $a(x)\leq x\leq b(x)$ et sont des points fixes de $f$. Sur $]a(x),b(x)[$,  la fonction continue $f - \mathrm{Id_{\mathbb{R}}}$ ne s'annule pas donc garde un signe constant.\\
-	
+
 	Supposons que $f - \mathrm{Id_{\mathbb{R}}}>0$ sur $]a(x),b(x)[$. Pour tout $y \in [a(x),b(x)]$, on a alors $$f(a(x))= a(x) \leq y \leq f(y) \leq b(x) =f(b(x)).$$
-	La "suite" $(f^n(x))_{n\in \mathbb{Z}}$ est croissante et à valeurs dans $[a(x),b(x)]$. Donc il existe des réels $\ell_1, \ell_2\in [a(x),b(x)]$ tels que: 
+	La "suite" $(f^n(x))_{n\in \mathbb{Z}}$ est croissante et à valeurs dans $[a(x),b(x)]$. Donc il existe des réels $\ell_1, \ell_2\in [a(x),b(x)]$ tels que:
 	$$f^{-n}(x) \underset{n \to + \infty}{\longrightarrow} \ell_1\text{ et }f^{n}(x) \underset{n \to + \infty}{\longrightarrow} \ell_2.$$
 	 Ces limites $\ell_1$ et $\ell_2$ valent nécessairement $a(x)$ et $b(x)$ sinon on aurait un point fixe dans l'intervalle ouvert $]a(x),b(x)[$ et cela contredirait la construction de $a(x)$ et de $b(x)$.\\
-	
-	Supposons maintenant que $f - \mathrm{Id_{\mathbb{R}}}<0$ sur $]a(x),b(x)[$. Avec des arguments similaires, on montre que $(f^n(x))_{n\geq 0}$ et $(f^{-n}(x))_{n\geq 0}$ convergent vers $b(x)$ et $a(x)$ quand $n \to \infty$.\\
-	
-	\par Par construction, l'ensemble $K=\lbrace f^n(x); n \in \mathbb{Z}\rbrace \cup \lbrace a(x); b(x)\rbrace = O_x \cup \lbrace a(x); b(x)\rbrace$ est un compact de $\mathbb{R}$. De plus, $K = \overline{O_x}$. En effet, comme $O_x \subset K$ et $K$ fermé, on a $\overline{O_x}\subset K$. Et comme $K=O_x \cup \lbrace a(x); b(x)\rbrace$, et $a(x), b(x) \in \overline{O_x}$ d'après l'étude réalisée précédemment, on a $K \subset \overline{O_x} $. Ainsi, l'adhérence de l'orbite de $x$ sous l'action de $T$ est dénombrable, en particulier, l'orbite de $x$ n'est pas dense dans $\Tbb$.\\
-	
-	
-	
-	\par Soit maintenant $T$ tel que $\rho(T) \in \EnsembleQuotient{\mathbb{Q}}{\mathbb{Z}}$ quelconque. Considérons alors $p \in \mathbb{N}^*$ tel que $p \times \rho(T)= \rho(T^p)= \overline{0}$. Soit $x \in \EnsembleQuotient{\Rbb}{\mathbb{Z}}$. L'orbite $O_x$ de $x$ sous l'action de $T$ est l'union finie des orbites de $x, T(x), ... ,T^{p-1}(x)$ sous l'action de $T^p$. Les adhérences de ces orbites sont dénombrables d'après le cas particulier précédent. On en déduit que $\overline{O_x}$ est dénombrable (comme union finie d'ensemble dénombrables). En particulier, $O_x$ n'est pas dense dans $\Tbb$.  $\hfill \square$\\
 
-	
-	
-	
-	
-	
-	
-\subsection{Classification de Poincaré}	
+	Supposons maintenant que $f - \mathrm{Id_{\mathbb{R}}}<0$ sur $]a(x),b(x)[$. Avec des arguments similaires, on montre que $(f^n(x))_{n\geq 0}$ et $(f^{-n}(x))_{n\geq 0}$ convergent vers $b(x)$ et $a(x)$ quand $n \to \infty$.\\
+
+	\par Par construction, l'ensemble $K=\lbrace f^n(x); n \in \mathbb{Z}\rbrace \cup \lbrace a(x); b(x)\rbrace = O_x \cup \lbrace a(x); b(x)\rbrace$ est un compact de $\mathbb{R}$. De plus, $K = \overline{O_x}$. En effet, comme $O_x \subset K$ et $K$ fermé, on a $\overline{O_x}\subset K$. Et comme $K=O_x \cup \lbrace a(x); b(x)\rbrace$, et $a(x), b(x) \in \overline{O_x}$ d'après l'étude réalisée précédemment, on a $K \subset \overline{O_x} $. Ainsi, l'adhérence de l'orbite de $x$ sous l'action de $T$ est dénombrable, en particulier, l'orbite de $x$ n'est pas dense dans $\Tbb$.\\
+
+
+
+	\par Soit maintenant $T$ tel que $\rho(T) \in \EnsembleQuotient{\mathbb{Q}}{\mathbb{Z}}$ quelconque. Considérons alors $p \in \mathbb{N}^*$ tel que $p \times \rho(T)= \rho(T^p)= \overline{0}$. Soit $x \in \EnsembleQuotient{\Rbb}{\mathbb{Z}}$. L'orbite $O_x$ de $x$ sous l'action de $T$ est l'union finie des orbites de $x, T(x), ... ,T^{p-1}(x)$ sous l'action de $T^p$. Les adhérences de ces orbites sont dénombrables d'après le cas particulier précédent. On en déduit que $\overline{O_x}$ est dénombrable (comme union finie d'ensemble dénombrables). En particulier, $O_x$ n'est pas dense dans $\Tbb$.  \hfill $\square$\\
+
+
+
+
+
+
+
+\subsection{Classification de Poincaré}
 Nous avons vu que si $T$ était transitif, alors nécessairement son nombre de rotation était la classe d'un irrationnel de $\EnsembleQuotient{\mathbb{R}}{\mathbb{Z}}$. L'objectif de la \textbf{classification de Poincaré} est de relier plus précisément ces homéomorphismes aux rotations d'angle irrationnel, qui sont des homéomorphismes plus simples à étudier.\\
 
 
-\begin{defi}
+\begin{definition}
 	Soient $X$ et $Y$ deux espaces topologiques et $f:X\to X$, $g:Y \to Y$ deux homéomorphismes. On dit que $f$ et $g$ sont \textbf{semi-conjuguées} (resp. \textbf{conjuguées}) s'il existe une application continue surjective (resp. bijective) $h : Y \to X$ telle que $f\circ h = h \circ g$.
-\end{defi}
+\end{definition}
 
 
 Le lemme qui suit sert à préparer le théorème sur la classification de Poincaré.
 
-	
 
 
-	
-	
-\begin{lm}
+
+
+
+\begin{lemma}
 	Soit f un relèvement de T. Supposons $\alpha(f) \notin \mathbb{Q}$.\\ Soient $n_1,n_2, m_1, m_2 \in \mathbb{Z}$, il y a équivalence entre:
 	\begin{enumerate}
 	\item $\forall \ x \in \mathbb{R}, \ f^{n_1}(x)+m_1 < f^{n_2}(x)+m_2$.
 	\item $n_1 \alpha(f) + m_1 < n_2 \alpha(f) + m_2$.
 	\item $\exists \ x \in \mathbb{R}, \ f^{n_1}(x)+m_1 < f^{n_2}(x)+m_2$.
 	\end{enumerate}
-\end{lm}
+\end{lemma}
 
 
 	\textbf{Preuve:}\label{lemme poincaré}
@@ -1239,12 +1245,12 @@ Le lemme qui suit sert à préparer le théorème sur la classification de Poinc
 		Le lemme \ref{bornesnbrot} appliqué à $f^{n_1 - n_2}$ et la propriété \ref{k rho} nous donnent:
 		$$\alpha(f^{n_1 - n_2})=n_1 \alpha(f) - n_2 \alpha(f) < m_2 -m_1 .$$
 	Ce qui est équivalent à $n_1 \alpha(f) + m_1 < n_2 \alpha(f) +m_2$, ce qui est l'implication voulue.\\
-		
+
 	\par(2)$\Rightarrow$(3) Montrons cette implication par contraposition. L'implication (1)$\Rightarrow$(2) reste vraie si l'on remplace les inégalités strictes par des inégalités larges et si l'on échange ($m_1$,$n_1$) et ($m_2$, $n_2$), ce qui nous donne exactement l'implication recherchée.\\
-	
-	
+
+
 	\par (3)$\Rightarrow$(1) Comme $\alpha(f) \notin \mathbb{Q}$, $T^{n_2 - n_1}$ n'a pas de point fixe (théorème \ref{equivrationnel}). Donc l'image de $f^{n_2 - n_1} - \mathrm{Id}$ est contenue dans un intervalle $]r,r+1[$ avec $r \in \mathbb{Z}$. En particulier, pour tout $x \in \Rbb$, on a $f^{n_2}(x) - f^{n_1}(x)=f^{n_2-n_1}(f^{n_1}(x))- f^{n_1}(x) \in ]r,r+1[$. Or $m_1 - m_2 < f^{n_2}(x)-f^{n_1}(x)$. Comme $m_1 - m_2 \in \mathbb{Z}$, on a $m_1 - m_2 \leq r$.\\
-	Et donc, pour tout $x \in \mathbb{R}, \ f^{n_2}(x) - f^{n_1}(x) = f^{n_2-n_1}(f^{n_1}(x))- f^{n_1}(x)>r \geq m_1 - m_2$, ce qui achève la démonstration. $\hfill \square$\\
+	Et donc, pour tout $x \in \mathbb{R}, \ f^{n_2}(x) - f^{n_1}(x) = f^{n_2-n_1}(f^{n_1}(x))- f^{n_1}(x)>r \geq m_1 - m_2$, ce qui achève la démonstration. \hfill $\square$\\
 
 
 
@@ -1255,13 +1261,13 @@ Le lemme qui suit sert à préparer le théorème sur la classification de Poinc
 
 
 
-\begin{thm}\label{poincaré}
+\begin{theorem}\label{poincaré}
 	Supposons que $\rho(T) \notin \EnsembleQuotient{\mathbb{Q}}{\mathbb{Z}}$, ie supposons que pour tout relèvement $ f$ de $T$, $\alpha(f) \in \Rbb\setminus \Qbb$. Notons $\alpha_T$ l'unique représentant de $\rho(T)$ dans [0,1[. La \textbf{classification de Poincaré} distingue deux cas:
 	\begin{enumerate}
 		\item Si $T$ est transitive, alors $T$ est \textbf{conjuguée à la rotation} $R_{\alpha_T}$.
 		\item Si $T$ n'est pas transitive, $T$ est seulement \textbf{semi-conjuguée à la rotation} $R_{\alpha_T}$. Plus particulièrement, il existe une application continue surjective $h$ telle que $$h\circ T = R_{\alpha_T} \circ h.$$
 	\end{enumerate}
-\end{thm}
+\end{theorem}
 
 	\textbf{Preuve:}
 	\par Soient $x$ un réel fixé et $f$ un relèvement de $T$. On définit \textit{A} et\textit{ B} les ensembles suivants:
@@ -1269,18 +1275,18 @@ Le lemme qui suit sert à préparer le théorème sur la classification de Poinc
 	Comme \textit{B} est un sous-groupe de $\Rbb$ qui contient $1$ et l'irrationnel $\alpha_T$, il ne peut donc être de la forme $\lambda \mathbb{Z}$ (avec $\lambda \in \Rbb$), donc il est dense dans $\Rbb$.\\
 	\par On pose l'application $H: A\to B$ définie par $$H(f^n(x)+m)= n \alpha_T +m.$$ D'après le lemme \ref{lemme poincaré}, $H$ est bien définie (comme $\alpha_T$ est irrationnel), bijective et strictement croissante. De plus, pour tout $z \in A$, il existe $n,m\in \mathbb{Z}$ tels que $z=f^n(x)+m$ et on a alors $$H(z+1)=H(f^n(x)+m+1)=n\alpha_T+m+1=H(z)+1$$
 	et $$H(f(z))=H(f(f^n(x)+m))=H(f^{n+1}(x)+m)=(n+1)\alpha_T +m =H(z)+\alpha_T.$$
-	
+
 	\par On définit la fonction $\widetilde{H}:\Rbb \to \Rbb$ en posant pour tout $y \in \Rbb$:
 	$$\widetilde{H}(y)= \sup \lbrace H(z): z \in A \cap ]-\infty,y]\rbrace.$$
-	
-	
+
+
 	\par  On vérifie facilement que pour tout $y \in A$ $H(y)=\widetilde{H}(y)$, ainsi $\widetilde{H}$ prolonge $H$. De plus, $\widetilde{H}$ est croissante sur $\Rbb$. En effet, soient $y_1, y_2 \in \Rbb$ tels que $y_1\leq y_2$. On a l'inclusion $\lbrace H(z): z \in A \cap ]-\infty,y_1]\rbrace \subset \lbrace H(z): z \in A \cap ]-\infty,y_2]\rbrace$ et par passage au sup, $\widetilde{H}(y_1)\leq \widetilde{H}(y_2)$.\\
-	
+
 	\par Montrons que $\widetilde{H}$ est continue sur $\Rbb$. Soient $y_0 \in \Rbb$ et $\varepsilon >0$. Comme $B$ est dense dans $\Rbb$, on peut choisir $b_1, b_2 \in B$ tels que $\widetilde{H}(y_0)-\varepsilon < b_1 < \widetilde{H}(y_0) <b_2<\widetilde{H}(y_0)+\varepsilon$. Notons $a_1$ et $a_2$ les antécédents de $b_1$ et $b_2$ par $H$ (qui est bijective). Par croissance de $\widetilde{H}$, on a $a_1<a_2$ et pour tout $y\in [a_1,a_2]$, $|\widetilde{H}(y)-\widetilde{H}(y_0)|<\varepsilon$. On en déduit que $\widetilde{H}$ est continue en $y_0$.\\
-	
-	
+
+
 	\par De plus, comme $\widetilde{H}$ est continue, $\mathrm{Im}(\widetilde{H})$ est un intervalle de $\Rbb$ contenant $B$ qui est dense dans $\Rbb$. Ainsi, $\mathrm{Im}(\widetilde{H})=\Rbb$, et donc $\widetilde{H}$ est surjective.\\
-	
+
 	\par Remarquons que, pour tout $y \in \Rbb$:
 		\begin{eqnarray*}
 			\widetilde{H}(y+1)&=&\sup \lbrace n \alpha_T +m: (n,m)\in \mathbb{Z}^2,\ f^n(x)+m\leq y+1 \rbrace\\
@@ -1295,39 +1301,39 @@ Le lemme qui suit sert à préparer le théorème sur la classification de Poinc
 		     &=& \alpha_T + \sup \lbrace n \alpha_T + m : (n,m)\in \mathbb{Z}^2,\ f^{n}(x)+m \leq y \rbrace\\
 		     &=&\alpha_T + \widetilde{H}(y). \\
 		\end{eqnarray*}
-	Ainsi, par passage au quotient $\widetilde{H}$ fournit une surjection continue $h: \EnsembleQuotient{\Rbb}{\mathbb{Z}}\to\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ telle que 
-	$$h\circ T=R_{\alpha_T} \circ h.$$ 
-	
-	\par Dans le cas où T est transitive, on peut fixer un réel $x$ tel que l'orbite de $\overline{x}$ sous l'action de T soit dense dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$. Pour ce choix du réel $x$, l'ensemble $A$ précédemment défini est dense dans $\Rbb$. Pour tous réels $y_1<y_2$, il existe $z_1<z_2$ dans $A$ tels que $y_1<z_1<z_2<y_2$. Par croissance stricte de $H$ et par croissance de $\widetilde{H}$, on alors $$\widetilde{H}(y_1)\leq \widetilde{H}(z_1)=H(z_1)<H(z_2)=\widetilde{H}(z_2)\leq \widetilde{H}(y_2).$$ 
-	Ainsi, dans ce cas $\widetilde{H}$ est strictement croissante donc bijective sur $\Rbb$. Cela entraine que $h$ est bijective et donc que $T$ est conjuguée à $R_{\alpha_T}$. $\hfill \square$\\
+	Ainsi, par passage au quotient $\widetilde{H}$ fournit une surjection continue $h: \EnsembleQuotient{\Rbb}{\mathbb{Z}}\to\EnsembleQuotient{\Rbb}{\mathbb{Z}}$ telle que
+	$$h\circ T=R_{\alpha_T} \circ h.$$
+
+	\par Dans le cas où T est transitive, on peut fixer un réel $x$ tel que l'orbite de $\overline{x}$ sous l'action de T soit dense dans $\EnsembleQuotient{\Rbb}{\mathbb{Z}}$. Pour ce choix du réel $x$, l'ensemble $A$ précédemment défini est dense dans $\Rbb$. Pour tous réels $y_1<y_2$, il existe $z_1<z_2$ dans $A$ tels que $y_1<z_1<z_2<y_2$. Par croissance stricte de $H$ et par croissance de $\widetilde{H}$, on alors $$\widetilde{H}(y_1)\leq \widetilde{H}(z_1)=H(z_1)<H(z_2)=\widetilde{H}(z_2)\leq \widetilde{H}(y_2).$$
+	Ainsi, dans ce cas $\widetilde{H}$ est strictement croissante donc bijective sur $\Rbb$. Cela entraine que $h$ est bijective et donc que $T$ est conjuguée à $R_{\alpha_T}$. \hfill $\square$\\
 
 
 
 
 
 
-\begin{coro}\label{minimal équivaut transitif}
+\begin{corollary}\label{minimal équivaut transitif}
 	Il y a équivalence entre les 3 propriétés suivantes:
 	\begin{enumerate}
 		\item Il existe $x\in \Tbb$ tel que $O_x$ soit dense dans $\Tbb$ (autrement dit, $T$ est transitif).
 		\item $T$ est conjugué à une rotation d'angle irrationnel.
 		\item Pour tout $x\in \Tbb$, l'orbite $O_x$ de $x$ est dense dans $\Tbb$ (autrement dit T est minimal).
 	\end{enumerate}
-\end{coro}
+\end{corollary}
 
 	\textbf{Preuve:}
 	\par (1)$\Rightarrow$(2) Cette implication est donnée par la classification de Poincaré (théorème \ref{poincaré}).\\
-	
+
 	\par (2)$\Rightarrow$(3) Si $T$ est conjugué à $R_{\theta}$, avec $\theta \in \mathbb{R}\setminus \mathbb{Q}$. Alors, il existe $h$ continue bijective telle que $T=h\circ R_\theta \circ h^{-1}$. Soit $x\in \Tbb$. L'orbite de $x$ sous l'action de T est:
 	\begin{eqnarray*}
 		O_x&=&\lbrace T^n(x), n \in \mathbb{N} \rbrace \\
 		&=& \lbrace h\circ R_\theta^n \circ h^{-1}(x), n \in \mathbb{Z} \rbrace\\
 		&=& h(\lbrace R^n_\theta(y), n \in \mathbb{Z}\rbrace)\text{ où } y = h^{-1}(x).
-	\end{eqnarray*} 
+	\end{eqnarray*}
 	Comme $\lbrace R^n_\theta(y), n \in \mathbb{Z}\rbrace$ est dense dans $\Tbb$ d'après l'exemple \ref{exemple rot}, et comme $h$ est continue et surjective, $O_x$ dense dans $\Tbb$.\\
-	
-	
-	\par (3)$\Rightarrow$(1) Cette implication est immédiate. $\hfill \square$
+
+
+	\par (3)$\Rightarrow$(1) Cette implication est immédiate. \hfill $\square$
 
 
 
@@ -1337,11 +1343,10 @@ Le lemme qui suit sert à préparer le théorème sur la classification de Poinc
 
 
 
-\newpage
 \section{Ensemble dérivé de $T$}
 Dans toute cette partie, on considère $T \in \HomT$ tel que $\rho(T) \notin \EnsembleQuotient{\Qbb}{\Zbb}$.
 
-\begin{nota}
+\begin{notation}
 	Soient $x,y \in \EnsembleQuotient{\Rbb}{\mathbb{Z}}$. Notons $a,b$ les représentants dans $[0,1[$ de $x,y$. On pose:
 	$$[x,y] = \left\{
 	\begin{array}{ll}
@@ -1350,7 +1355,7 @@ Dans toute cette partie, on considère $T \in \HomT$ tel que $\rho(T) \notin \En
 	\end{array}
 	\right.
 	$$
-\end{nota}
+\end{notation}
 
 \begin{rmq}
 	Pour tous $x, y \in \EnsembleQuotient{\Rbb}{\mathbb{Z}}$, avec la notation précédente on a:
@@ -1361,18 +1366,18 @@ Dans toute cette partie, on considère $T \in \HomT$ tel que $\rho(T) \notin \En
 
 
 
-\begin{lm}\label{T[x;y]}
+\begin{lemma}\label{T[x;y]}
 	Soient  $x,y \in \EnsembleQuotient{\Rbb}{\Zbb}$, on a l'égalité $T([x,y])=[T(x),T(y)].$
-\end{lm}
-	
+\end{lemma}
+
 	\textbf{Preuve :}
 	\par Soit $f$ un relèvement de $T$. Soient $a, b, c, d$ les représentants dans $[0,1[$ de $x,y,T(x),T(y)$. Supposons sans perte de généralité que $0\leq a\leq b <1$. Alors $f(a)$ et $f(b)$ sont des représentants de $T(x)$ et $T(y)$ et $f(a)\leq f(b) \leq f(a+1)=f(a)+1$. On a:
 		$$T([x,y])=(T\circ\pi)[a,b]=(\pi\circ f)[a,b]=\pi([f(a),f(b)]).$$
-	
+
 	\par \underline{1$^{\mathrm{er}}$ cas}: $f(a)$ et $f(b)$ appartiennent à un même intervalle $[k,k+1[$ avec $k \in \Zbb$.\\
 	Dans ce cas, $c=f(a)-k$ et $d=f(b)-k$. On a alors:
 	$$[T(x),T(y)]=\pi([c,d])=\pi([c,d]+k)=\pi([f(a),f(b)]).$$
-	
+
 	\par \underline{2$^{\mathrm{nd}}$ cas}: il existe $k \in \Zbb$ tel que $f(a)<k\leq f(b)$.\\
 	Dans ce cas, $c=f(a)-k+1$ et $d=f(b)-k$. Ainsi, $c>d$ et on a alors:
 	\begin{eqnarray*}
@@ -1382,9 +1387,7 @@ Dans toute cette partie, on considère $T \in \HomT$ tel que $\rho(T) \notin \En
 			&=&\pi([f(a),f(b)])
 	\end{eqnarray*}
 
-	\par Dans tous les cas, on a $T([x,y])=\pi([f(a),f(b)])=[T(x),T(y)]$, ce qui démontre le lemme. $\hfill \square$\\
-	
-		
+	\par Dans tous les cas, on a $T([x,y])=\pi([f(a),f(b)])=[T(x),T(y)]$, ce qui démontre le lemme. \hfill $\square$\\
 
 
 
@@ -1401,11 +1404,13 @@ Dans toute cette partie, on considère $T \in \HomT$ tel que $\rho(T) \notin \En
 
 
 
-\begin{lm}\label{delta orbite}
+
+
+\begin{lemma}\label{delta orbite}
 	Soient $n,m \in \mathbb{Z}$ avec $n\neq m$. Soit $x_0 \in \Tbb$. Notons $\Delta := [T^n(x_0),T^m(x_0)]$ et $\Delta':=[T^m(x_0),T^n(x_0)]$ les deux arcs de cercle joignant $T^n(x_0)$ et $T^m(x_0)$.\\ Alors, pour tout $k_0 \in \Nbb$, il existe des entiers $k_1\geq k_0$ et $k_1'\geq k_0$ tels que $$\Tbb=\overset{k_1}{\underset{j=k_0}{\bigcup}}T^{j(m-n)}\Delta=\overset{k_1'}{\underset{j=k_0}{\bigcup}}T^{j(m-n)}\Delta'.$$ \\De plus, pour tout $x \in \Tbb$, l'orbite $O_x$ de $x$ rencontre $\Delta$ et $\Delta'$ une infinité de fois dans le passé comme dans le futur.
-\end{lm}
+\end{lemma}
 
-	\textbf{Preuve:}	
+	\textbf{Preuve:}
 	\par Soient $f$ un relèvement de $T$, $x_0 \in \Tbb$, $k_0 \in \Nbb$ et $n\neq m$ dans $\Zbb$. Comme $\rho(T) \notin \EnsembleQuotient{\Qbb}{\Zbb}$, on a d'après le théorème \ref{equivrationnel} que $T^m(x_0)\neq T^n(x_0)$. Notons $a,b$ les représentants dans $[0,1[$ de $T^n(x_0)$ et $T^m(x_0)$. Supposons, sans perte de généralité, que $0\leq a<b<1$. Pour tout $k \in \Nbb$, on a par croissance de $f$:
 	$$f^{k(m-n)}a<f^{k(m-n)}(b)<f^{k(m-n)}(a+1)=f^{k(m-n)}(a)+1$$
 	De plus, on remarque que $T^{m-n}(T^n(x_0))=T^m(x_0)$, donc $f^{m-n}(a)=b+r$ avec $r\in \Zbb$. Pour tout $k\in \Nbb$, notons:
@@ -1422,19 +1427,18 @@ Dans toute cette partie, on considère $T \in \HomT$ tel que $\rho(T) \notin \En
 			&=&T^{k(m-n)}[T^n(x_0),T^m(x_0)]\\
 			&=&[T^{k(m-n)}(T^n(x_0)),T^{k(m-n)}(T^m(x_0))]\text{ d'après le lemme \ref{T[x;y]}}.
 	\end{eqnarray*}
-	
-	
+
+
 	\par Montrons qu'il existe $k_1\in \mathbb{N}$ tel que $\Tbb=\overset{k_1}{\underset{j=k_0}{\bigcup}}\Delta_j.$ Pour tout $k\geq k_0$,
 	$$\overset{k}{\underset{j=k_0}{\bigcup}}\Delta_j=\overset{k}{\underset{j=k_0}{\bigcup}}\pi(I_j)=\pi(\overset{k}{\underset{j=k_0}{\bigcup}}I_j)=\pi([f^{k_0(m-n)}(a)-k_0r,f^{k(m-n)}(b)-kr])$$
 
-	Or: 
+	Or:
 	$$\frac{f^{k(m-n)}(b)-b-kr}{k}=\frac{f^{k(m-n)}(b)-b}{k}-r\underset{k\to +\infty}{\longrightarrow}\alpha(f^{m-n})-r.	$$
 	Comme $f^{m-n}(a)-a=b-a+r \in ]r,r+1[$ et que $\alpha(f^{m-n})\notin \Zbb$, l'image de $f^{m-n} - \Id_{\Rbb}$ ne contient pas d'entier donc reste incluse dans $]r,r+1[$ (théorème \ref{equivrationnel}). D'après le corollaire \ref{equiv amel}, on a $\alpha(f^{m-n})\in ]r,r+1[$ et donc $\alpha(f^{m-n})-r \in ]0,1[$.\\ On en déduit que la suite $(f^{k(m-n)}(b)-kr)_{k\geq0}$ tend vers $+\infty$. Ainsi, il existe un rang $k_1\geq k_0$ tel que pour tout $k\geq k_1$,
 	$$f^{k(m-n)}(b)-kr\geq f^{k_0(m-n)}(a)-k_0r +1 \text{ d'où } \Tbb=\overset{k}{\underset{j=k_0}{\bigcup}}\Delta_j.$$
-	
+
 	\par On montre le résultat sur $\Delta'$ de façon similaire.
-	\par Ainsi, pour tout $x \in \Tbb$ et pour tout $k_0 \in \Nbb$,  il existe $j_1 \geq k_0$ et $j_1'\geq k_0$ tels que $x \in  T^{j_1(m-n)}\Delta$ et $x\in T^{j_1'(m-n)}\Delta'$ . On a donc $T^{-j_1(m-n)}(x) \in \Delta$ et $T^{-j_1'(m-n)}(x) \in \Delta'$, c'est-à-dire $O_x \cap \Delta \neq \emptyset$, $O_x \cap \Delta' \neq \emptyset$ ce qui prouve le lemme. $\hfill \square$\\
-	
+	\par Ainsi, pour tout $x \in \Tbb$ et pour tout $k_0 \in \Nbb$,  il existe $j_1 \geq k_0$ et $j_1'\geq k_0$ tels que $x \in  T^{j_1(m-n)}\Delta$ et $x\in T^{j_1'(m-n)}\Delta'$ . On a donc $T^{-j_1(m-n)}(x) \in \Delta$ et $T^{-j_1'(m-n)}(x) \in \Delta'$, c'est-à-dire $O_x \cap \Delta \neq \emptyset$, $O_x \cap \Delta' \neq \emptyset$ ce qui prouve le lemme. \hfill $\square$\\
 
 
 
@@ -1449,33 +1453,34 @@ Dans toute cette partie, on considère $T \in \HomT$ tel que $\rho(T) \notin \En
 
 
 
-	
-\begin{thm}\label{ensemble dérivé}
+
+
+\begin{theorem}\label{ensemble dérivé}
 	Soit $x \in \Tbb$. Notons $L_x$ \textbf{l'ensemble des valeurs d'adhérence} de la suite $(T^n(x))_{n\geq0}$. L'ensemble $L_x$ possède les trois propriétés suivantes:
 	\begin{enumerate}
 			\item Il est invariant par $T$ et $T^{-1}$.
 			\item Il ne dépend pas de $x$.
 			\item Il vaut soit $\Tbb$ tout entier, soit un fermé de $\Tbb$ d'intérieur vide sans point isolé.
 	\end{enumerate}
-\end{thm}
+\end{theorem}
 
 	\textbf{Preuve:}
 	\par \textbf{1)} Cette propriété est immédiate.\\
-	
-	
+
+
 	\par \textbf{2)} Soient $x_1, x_2 \in \Tbb$. Montrons que $L_{x_1}=L_{x_2}$. Soit $x \in L_{x_1}$. Il existe $\varphi:\Nbb \to \Nbb$ strictement croissante telle que $T^{\varphi(k)}(x_1) \underset{k \to \infty}{\longrightarrow}x$.\\
-	
+
 	D'après le lemme \ref{delta orbite}, pour tout $k\in \Nbb$, il existe des entiers naturels $n$ arbitrairement grands tels que $T^{n}(x_2)$ appartienne à l'arc de cercle le plus court joignant $T^{\varphi(k)}(x_1)$ et $T^{\varphi(k+1)}(x_1)$. On peut donc construire une suite strictement croissante $(n_k)_{k\geq0}$ d'entiers naturels telle que pour tout $k \in \Nbb$, $T^{n_k}(x_2)$ appartienne à l'arc de cercle le plus court joignant $T^{\varphi(k)}(x_1)$ et $T^{\varphi(k+1)}(x_1)$. On a alors $T^{n_k}(x_2) \underset{k \to \infty}{\longrightarrow}x$. Donc $x\in L_{x_2}$, ce qui montre $L_{x_1}\subset L_{x_2}$.\\
-	
+
 	\par Par symétrie $L_{x_2}\subset L_{x_1}$, d'où l'égalité ensembliste.\\
-	
+
 	\par \textbf{3)} Soit $x\in \Tbb$ et $y \in L_x$. Par définition de $L_x$, on a une suite strictement croissante $(n_k)_{k\geq0}$ d'entiers naturels telle que $y=\underset{k \to \infty}{\lim}T^{n_k}(x)$. Par le point \textbf{1}, $L_x$ est invariant par $T$, et donc pour tout $k\geq0$, $T^{n_k}(x) \in L_x$. De plus, pour tout $k\neq 0$, $n_k >1$ et donc $T^{n_k}(x)\neq x$. Donc $y$ est un point adhérent à $L_x\backslash\lbrace y \rbrace$, i.e. $y$ n'est pas un point isolé. Ainsi, $L_x$ ne possède pas de point isolé.\\
 	\par Supposons que $L_x$ ne soit pas d'intérieur vide. Alors $L_x$ contient une boule $B_{\Rbb/\Zbb}(y,r)$, avec $y\in L_x$ et $r\in ]0,1/4[$. Comme $y$ est une valeur d'adhérence de la suite $(T^k(x))_{k\geq0}$, on peut trouver deux entiers naturels $n\neq m$ tels que $T^n(x)$ et $T^m(x)$ soient dans $B_{\Rbb/\Zbb}(y,r)$. Soit $\Gamma$ l'arc de cercle le plus court contenant $T^n(x)$ et $T^m(x)$ (cela peut être $\Delta$ ou $\Delta'$ définis dans le lemme \ref{delta orbite}). Ainsi,
 	 $$\Gamma \subset B_{\Rbb/\Zbb}(y,r) \subset L_x.$$
 	  D'après le lemme \ref{delta orbite} (appliqué pour $k_0=0$), il existe $k_1 \in \mathbb{N}$ tel que:
 	$$\Tbb=\overset{k_1}{\underset{j=0}{\bigcup}}T^{j(m-n)}\Gamma
 			\subset \overset{k_1}{\underset{j=0}{\bigcup}}T^{j(m-n)} L_x = L_x,$$
-	la dernière égalité provenant du fait que $L_x$ est invariant par $T$. Ainsi, $L_x = \Tbb$ tout entier si $L_x$ n'est pas d'intérieur vide, ce qui achève la preuve.	$\hfill \square$\\
+	la dernière égalité provenant du fait que $L_x$ est invariant par $T$. Ainsi, $L_x = \Tbb$ tout entier si $L_x$ n'est pas d'intérieur vide, ce qui achève la preuve.	\hfill $\square$\\
 
 
 
@@ -1491,9 +1496,9 @@ Dans toute cette partie, on considère $T \in \HomT$ tel que $\rho(T) \notin \En
 
 Le théorème \ref{ensemble dérivé} motive et justifie la définition suivante:
 
-\begin{defi}
+\begin{definition}
 	L'ensemble fermé $L_T$ des valeurs d'adhérence de la suite $(T^n(x))_{n\geq 0}$, qui ne dépend pas de $x \in \Tbb$, est appelé \textbf{l'ensemble dérivé} de $T$.
-\end{defi}
+\end{definition}
 
 
 
@@ -1501,37 +1506,37 @@ Le théorème \ref{ensemble dérivé} motive et justifie la définition suivante
 
 
 	Le point 3 du théorème \ref{ensemble dérivé} montre que l'ensemble dérivé est soit $\Tbb$ tout entier, soit un fermé d'intérieur non vide sans point isolé. Ce deuxième cas se produit effectivement: \textbf{Arnaud Denjoy} a construit l'exemple d'un homéomorphisme dont l'ensemble dérivé ne vaut pas $\Tbb$ tout entier. C'est l'objet du théorème suivant, dont on admettra le résultat.
-	
-\begin{thm}\label{Denjoy}
+
+\begin{theorem}\label{Denjoy}
 	\textbf{Exemple de Denjoy}\\
 	Soit $\alpha$ un irrationnel fixé. Tout ensemble $L$ fermé d'intérieur non vide sans point isolé peut être vu comme ensemble dérivé d'un homéomorphisme de nombre de rotation $\alpha$.
-\end{thm}
+\end{theorem}
 
 
 
 Enfin, le cas où l'ensemble dérivé vaut $\Tbb$ tout entier est plus simple et donne lieu à la proposition suivante.
 
-\begin{ppt}
+\begin{proposition}
  	On a les équivalences suivantes:
  	\begin{enumerate}
 		\item $L_T= \Tbb$.
 		\item $T$ est minimal.
 		\item $T$ est transitif.
  	\end{enumerate}
-\end{ppt}
+\end{proposition}
 
 	\textbf{Preuve:}
 	\par D'après le théorème \ref{ensemble dérivé}, pour tout $x \in \Tbb$, l'ensemble des valeurs d'adhérence de la suite $(T^n(x))_{n\geq 0}$ est égal à l'ensemble dérivé $L_T$.
 	 Ainsi, on a:
 	$$L_T= \underset{N \in \mathbb{N}}{\bigcap}\overline{\lbrace T^n(x); \ n\geq N\rbrace}\subset \overline{O_x} .$$
-	
+
 	\par(1)$\Rightarrow$(2) Si $L_T = \Tbb$, alors pour tout $x \in \Tbb$, l'orbite $O_x$ est dense dans $\Tbb$, donc $T$ est minimal.\\
-	
+
 	\par(2)$\Rightarrow$(3) Si $T$ est minimal, alors $T$ est transitif par définition.\\
-	
+
 	\par(3)$\Rightarrow$(1) Si $T$ est transitif, alors il existe $x \in \Tbb$ tel que l'orbite $O_x$ est dense dans $\Tbb$. Par définition, l'ensemble $L_T$ contient tout point de $\overline{\lbrace T^n(x);\ n \geq 0\rbrace}$ qui n'est pas dans $\lbrace T^n(x);\ n \geq 0\rbrace$, c'est-à-dire:
 		$$\overline{O_x}\ \backslash \lbrace T^n(x);\ n \geq 0\rbrace \subset L_T.$$
-	Comme $\lbrace T^n(x);\ n \geq 0\rbrace$ est dénombrable, l'ensemble $\overline{O_x}\ \backslash \lbrace T^n(x);\ n \geq 0\rbrace$ est dense dans $\Tbb$. Et comme $L_T$ est fermé, avec l'inclusion précédente, on conclut que $L_T= \Tbb$. $\hfill \square$\\
+	Comme $\lbrace T^n(x);\ n \geq 0\rbrace$ est dénombrable, l'ensemble $\overline{O_x}\ \backslash \lbrace T^n(x);\ n \geq 0\rbrace$ est dense dans $\Tbb$. Et comme $L_T$ est fermé, avec l'inclusion précédente, on conclut que $L_T= \Tbb$. \hfill $\square$\\
 
 
 	\begin{rmq}
@@ -1549,43 +1554,40 @@ Enfin, le cas où l'ensemble dérivé vaut $\Tbb$ tout entier est plus simple et
 
 
 
-\newpage
 \section{Ouverture : brève étude du cas des homéomorphismes renversant l'orientation}
 	Nous nous sommes intéressés jusqu'ici uniquement aux homéomorphismes préservant l'orientation. Il est alors naturel de se demander si les homéomorphismes renversant l'orientation possèdent des propriétés remarquables.\\
-	
-	
-\begin{ppt}
+
+
+\begin{proposition}
 		Soit $T\in \HommoinsT$ un homéomorphisme renversant l'orientation. Alors $T$ possède \textbf{exactement deux points fixes}.
-\end{ppt}
+\end{proposition}
 
 	\textbf{Preuve:}
-	Soit $f \in \Ec^-$ un relèvement de $T$. Notons $g: \Rbb \to \Rbb$ la fonction définie par $g(x)=f(x)-x$. La fonction $g$ est continue et strictement décroissante car $f$ et $-\Id_{\Rbb}$ le sont. Donc $g$ est un homéomorphisme décroissant de $\Rbb$ dans $\Rbb$. Comme $g(1)=f(1)-1=f(0)-2$, les seuls éléments de $g^{-1}(\mathbb{Z})$ dans $[0,1[$ sont $x_1:=g^{-1}(\lfloor g(0) \rfloor)$ et $x_2:=g^{-1}(\lfloor g(0) \rfloor)$. Ainsi, les seuls points fixes de $T$ sont $\overline{x_1}$ et $\overline{x_2}$. $\hfill \square$\\
-	
-	
-	
-	
-	
-\begin{coro}
+	Soit $f \in \Ec^-$ un relèvement de $T$. Notons $g: \Rbb \to \Rbb$ la fonction définie par $g(x)=f(x)-x$. La fonction $g$ est continue et strictement décroissante car $f$ et $-\Id_{\Rbb}$ le sont. Donc $g$ est un homéomorphisme décroissant de $\Rbb$ dans $\Rbb$. Comme $g(1)=f(1)-1=f(0)-2$, les seuls éléments de $g^{-1}(\mathbb{Z})$ dans $[0,1[$ sont $x_1:=g^{-1}(\lfloor g(0) \rfloor)$ et $x_2:=g^{-1}(\lfloor g(0) \rfloor)$. Ainsi, les seuls points fixes de $T$ sont $\overline{x_1}$ et $\overline{x_2}$. \hfill $\square$\\
+
+
+
+
+
+\begin{corollary}
 	Soit $T \in \HommoinsT$. Alors:
 	\begin{enumerate}
 		\item $T^2 \in \HomT$ et $\rho(T^2)=\overline{0}$.
 		\item Pour tout $x \in \Tbb$, les suites $(T^{2n}(x))_{n\geq}0$, $(T^{2n+1}(x))_{n\geq}0$, $(T^{-2n}(x))_{n\geq}0$ et $(T^{-2n-1}(x))_{n\geq}0$ convergent vers des points fixes de $T^2$. Par conséquent, l'adhérence de l'orbite de $x$ est dénombrable.
 	\end{enumerate}
-\end{coro}
+\end{corollary}
 
 
 
 
 
 
-
-\newpage
 
 \begin{thebibliography}{9}
 	\bibitem{1}
 	I.P. Cornfeld, S.V. Fomin et Ya.G. Sinai, \emph{Ergodic theory}, Springer-Verlag, 1982.
 	\vspace{5mm}
-	
+
 	\bibitem{2}
 	M. Brin, G. Stuck, \emph{Introduction to Dynamical Systems}, Cambridge, Cambridge University Press, 2002.
 \end{thebibliography}
@@ -1594,4 +1596,4 @@ $\addcontentsline{toc}{section}{Références}$
 
 
 
-\end{document}	
+\end{document}

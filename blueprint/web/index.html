@@ -12,7 +12,7 @@
 <meta name="generator" content="plasTeX" />
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ED course</title>
+<title>Introduction to proof assistants</title>
 <link rel="next" href="sect0001.html" title="Introduction" />
 <link rel="stylesheet" href="styles/theme-white.css" />
 <link rel="stylesheet" href="styles/amsthm.css" />
@@ -33,7 +33,75 @@
   <a href="sect0001.html"><span class="toc_ref"></span> <span class="toc_entry">Introduction</span></a>
  </li>
 <li class="">
-  <a href="sect0002.html"><span class="toc_ref">1</span> <span class="toc_entry">The proof</span></a>
+  <a href="sect0002.html"><span class="toc_ref">1</span> <span class="toc_entry">Une preuve : Nombre de rotation</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-1">
+     <li class="">
+  <a href="sect0002.html#a0000000005"><span class="toc_ref">1.1</span> <span class="toc_entry">Fondements</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0002.html#a0000000006"><span class="toc_ref">1.1.1</span> <span class="toc_entry">Notations</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000007"><span class="toc_ref">1.1.2</span> <span class="toc_entry">Homéomorphismes: passage au quotient et relèvement</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">Nombre de rotation</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0002.html#a0000000009"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Résultats préliminaires sur les suites sous-additives et sur-additives</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000010"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Définition</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000011"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Premières propriétés</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000012"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Nombre de rotation d’une composée</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000013"><span class="toc_ref">1.3</span> <span class="toc_entry">Continuité du nombre de rotation par rapport à \(T\)</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0002.html#a0000000014"><span class="toc_ref">1.3.1</span> <span class="toc_entry">Résultats préliminaires</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000015"><span class="toc_ref">1.3.2</span> <span class="toc_entry">Théorème de continuité</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000016"><span class="toc_ref">1.4</span> <span class="toc_entry">Étude des orbites de \(T\) et classification de Poincaré</span></a>
+  <span class="expand-toc">▶</span>
+  <ul class="sub-toc-2">
+     <li class="">
+  <a href="sect0002.html#a0000000017"><span class="toc_ref">1.4.1</span> <span class="toc_entry">Homéomorphismes transitifs, orbites denses</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000018"><span class="toc_ref">1.4.2</span> <span class="toc_entry">Classification de Poincaré</span></a>
+ </li>
+
+  </ul>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000019"><span class="toc_ref">1.5</span> <span class="toc_entry">Ensemble dérivé de \(T\)</span></a>
+ </li>
+<li class="">
+  <a href="sect0002.html#a0000000020"><span class="toc_ref">1.6</span> <span class="toc_entry">Ouverture : brève étude du cas des homéomorphismes renversant l’orientation</span></a>
+ </li>
+
+  </ul>
  </li>
 <li ><a href="dep_graph_document.html">Dependency graph</a></li>
 </ul>
@@ -45,9 +113,9 @@
 
 <div class="main-text">
 <div class="titlepage">
-<h1>ED course</h1>
+<h1>Introduction to proof assistants</h1>
 <p class="authors">
-<span class="author">VB et al.</span>
+<span class="author">VB and the course participants</span>
 </p>
 </div>
 
@@ -58,7 +126,70 @@
   <a href="sect0001.html"><span class="toc_ref"></span> <span class="toc_entry">Introduction</span></a>
   </li>
   <li>	
-  <a href="sect0002.html"><span class="toc_ref">1</span> <span class="toc_entry">The proof</span></a>
+  <a href="sect0002.html"><span class="toc_ref">1</span> <span class="toc_entry">Une preuve : Nombre de rotation</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0002.html#a0000000005"><span class="toc_ref">1.1</span> <span class="toc_entry">Fondements</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0002.html#a0000000006"><span class="toc_ref">1.1.1</span> <span class="toc_entry">Notations</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000007"><span class="toc_ref">1.1.2</span> <span class="toc_entry">Homéomorphismes: passage au quotient et relèvement</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000008"><span class="toc_ref">1.2</span> <span class="toc_entry">Nombre de rotation</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0002.html#a0000000009"><span class="toc_ref">1.2.1</span> <span class="toc_entry">Résultats préliminaires sur les suites sous-additives et sur-additives</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000010"><span class="toc_ref">1.2.2</span> <span class="toc_entry">Définition</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000011"><span class="toc_ref">1.2.3</span> <span class="toc_entry">Premières propriétés</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000012"><span class="toc_ref">1.2.4</span> <span class="toc_entry">Nombre de rotation d’une composée</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000013"><span class="toc_ref">1.3</span> <span class="toc_entry">Continuité du nombre de rotation par rapport à \(T\)</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0002.html#a0000000014"><span class="toc_ref">1.3.1</span> <span class="toc_entry">Résultats préliminaires</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000015"><span class="toc_ref">1.3.2</span> <span class="toc_entry">Théorème de continuité</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000016"><span class="toc_ref">1.4</span> <span class="toc_entry">Étude des orbites de \(T\) et classification de Poincaré</span></a>
+	<ul>
+		   <li>	
+  <a href="sect0002.html#a0000000017"><span class="toc_ref">1.4.1</span> <span class="toc_entry">Homéomorphismes transitifs, orbites denses</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000018"><span class="toc_ref">1.4.2</span> <span class="toc_entry">Classification de Poincaré</span></a>
+  </li>
+
+	</ul>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000019"><span class="toc_ref">1.5</span> <span class="toc_entry">Ensemble dérivé de \(T\)</span></a>
+  </li>
+  <li>	
+  <a href="sect0002.html#a0000000020"><span class="toc_ref">1.6</span> <span class="toc_entry">Ouverture : brève étude du cas des homéomorphismes renversant l’orientation</span></a>
+  </li>
+
+	</ul>
   </li>
 </ul>
 </nav>

@@ -5,12 +5,15 @@
 
 \documentclass{report}
 
-\usepackage{amssymb, amsthm, amsmath}
+\usepackage{amssymb, amsthm, amsmath, mathds}
 \usepackage{hyperref}
 \usepackage[showmore, dep_graph]{blueprint}
 
 \input{macros/common}
 \input{macros/web}
+
+\newtheorem{notation}{Notation} \def\notationname{Notation}
+\newtheorem{thmdefi}{Théorème et définition}
 
 \home{https://vbeffara.github.io/Cours_ED}
 \github{https://github.com/vbeffara/Cours_ED}
@@ -22,4 +25,5 @@
 \begin{document}
 \maketitle
 \input{content}
+\input{rotation}
 \end{document}
