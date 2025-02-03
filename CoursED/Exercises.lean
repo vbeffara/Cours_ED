@@ -75,11 +75,29 @@ def rel_setoid (H : subgroup G) : Setoid G where
 
 def quotient (G : Type) [group G] (H : subgroup G) := Quotient (rel_setoid H)
 
+-- Multiplication is well-defined on the quotient
+theorem key (g₁ g₂ h₁ h₂ : G) (H1 : related H g₁ g₂) (H2 : related H h₁ h₂) :
+    related H (g₁ * h₁) (g₂ * h₂) := by
+  sorry
+
 instance (h_normal : normal H) : group (quotient G H) where
-  mul := sorry
+  mul := by -- Pass multiplication to the quotient
+    #check Quotient.map₂
+    apply Quotient.map₂ group.mul
+    intros g₁ g₂ H1 h₁ h₂ H2
+    apply key
+    assumption
+    assumption
   e := sorry
   inv := sorry
-  assoc := sorry
+  assoc := by
+    #check Quotient.map₂_mk
+    intros a b c
+    obtain ⟨a, rfl⟩ := a.exists_rep
+    obtain ⟨b, rfl⟩ := b.exists_rep
+    obtain ⟨c, rfl⟩ := c.exists_rep
+    simp only [Quotient.map₂_mk]
+    simp [group.assoc]
   neutl := sorry
   neutr := sorry
   invl := sorry
