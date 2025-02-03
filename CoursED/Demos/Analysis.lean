@@ -17,7 +17,7 @@ def continuous_at (f : ℝ → ℝ) (x₀ : ℝ) : Prop :=
 /-- Now we claim that if `f` is continuous at `x₀` then it is sequentially continuous
 at `x₀`: for any sequence `u` converging to `x₀`, the sequence `f ∘ u` converges
 to `f x₀`.  -/
-example (f : ℝ → ℝ) (u : ℕ → ℝ) (x₀ : ℝ)
+theorem composition_example (f : ℝ → ℝ) (u : ℕ → ℝ) (x₀ : ℝ)
     (hu : seq_limit u x₀) (hf : continuous_at f x₀) :
     seq_limit (f ∘ u) (f x₀) := by
 
@@ -41,6 +41,8 @@ example (f : ℝ → ℝ) (u : ℕ → ℝ) (x₀ : ℝ)
   apply Hf
 
   exact Hu n hn
+
+#print axioms composition_example
 
 example (f : ℝ → ℝ) (u : ℕ → ℝ) (x₀ : ℝ)
     (hu : seq_limit u x₀) (hf : continuous_at f x₀) :
