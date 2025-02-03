@@ -1,4 +1,3 @@
-import CoursED.Basic
 import CoursED.Demos
 import CoursED.Demos.Algebra
 import CoursED.Demos.Analysis
