@@ -19,7 +19,7 @@ what I advise you to do:
 4. There should be a ∀-shaped button appearing in the top-right corner, click it
    and choose `Open Project...` then `Download project...` and enter the course
    URL in the dialog: either
-   [git@github.com:vbeffara/Cours_ED.git](git@github.com:vbeffara/Cours_ED.git)
+   `git@github.com:vbeffara/Cours_ED.git`
    if you did step 1, or
    [https://github.com/vbeffara/Cours_ED.git](https://github.com/vbeffara/Cours_ED.git)
    if you didn't. This will download the project to a folder you will choose on
