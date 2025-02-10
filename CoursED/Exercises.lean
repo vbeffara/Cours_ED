@@ -15,18 +15,73 @@ def continuous (f : ℝ → ℝ) : Prop :=
 def unif_limit (F : ℕ → ℝ → ℝ) (f : ℝ → ℝ) : Prop :=
   ∀ ε > 0, ∃ N, ∀ n ≥ N, ∀ x, |F n x - f x| ≤ ε
 
-theorem continuous_limit (F : ℕ → ℝ → ℝ) (f : ℝ → ℝ) (h_F : ∀ n, continuous (F n))
+theorem continuous_limit (F : ℕ → (ℝ → ℝ)) (f : ℝ → ℝ) (h_F : ∀ n, continuous (F n))
     (h_lim : unif_limit F f) : continuous f := by
-  sorry
-
-theorem continuous_iff (f : ℝ → ℝ) (x₀ : ℝ) :
-    continuous_at f x₀ ↔
-      (∀ u : ℕ → ℝ, seq_limit u x₀ → seq_limit (f ∘ u) (f x₀)) := by
+  intro x₀ ε hε
+  have ε_3_pos : ε / 3 > 0 := by positivity
+  obtain ⟨N, hN⟩ := h_lim (ε / 3) ε_3_pos
+  obtain ⟨δ, hδ, l0⟩ := h_F N x₀ (ε / 3) ε_3_pos
+  use δ
   constructor
-  · sorry
+  · assumption
+  · intro x hx
+    have l1 := abs_add (f x - F N x) (F N x - f x₀)
+    have l2 := abs_add (F N x - F N x₀) (F N x₀ - f x₀)
+    simp at l1 l2
+    have l3 := hN N le_rfl x
+    rw [abs_sub_comm] at l3
+    have l8 := hN N le_rfl x₀
+    have l9 := l0 x hx
+    linarith
+
+theorem continuous_iff (f : ℝ → ℝ) (x₀ : ℝ) : continuous_at f x₀ ↔
+    (∀ u : ℕ → ℝ, seq_limit u x₀ → seq_limit (f ∘ u) (f x₀)) := by
+  constructor
+  · intro hf u hu ε hε
+    obtain ⟨δ, hδ, h⟩ := hf ε hε
+    obtain ⟨N, hN⟩ := hu δ hδ
+    use N
+    intro n hn
+    apply h
+    apply hN
+    assumption
   · intro h ε hε
     contrapose! h
-    sorry
+    -- Define our favorite sequence going to 0
+    let v (n : ℕ) : ℝ := 1 / (n + 1)
+    have hv1 n : 0 < v n := by positivity
+    have hv2 : seq_limit v 0 := by
+      intro ε hε
+      use Nat.ceil (1 / ε)
+      simp [v]
+      intro n hn
+      have := inv_le_of_inv_le₀ hε hn
+      refine le_trans ?_ this
+      rw [abs_inv]
+      apply inv_anti₀
+      · have : 0 < ε⁻¹ := by positivity
+        linarith
+      · rw [abs_of_nonneg (by positivity)]
+        simp
+    -- Construct the sequence `u n`
+    have key (n : ℕ) : ∃ x : ℝ, |x - x₀| ≤ v n ∧ ε < |f x - f x₀| := h (v n) (hv1 n)
+    choose u hu using key -- This does in one go what we painfully constructed together
+    use u
+    -- Show that it works
+    constructor
+    · intro ε hε
+      obtain ⟨N, hN⟩ := hv2 ε hε
+      simp at hN
+      use N
+      intro n hn
+      specialize hN n hn
+      rw [abs_of_pos (hv1 n)] at hN
+      linarith [(hu n).1]
+    · unfold seq_limit
+      push_neg
+      refine ⟨ε, hε, ?_⟩
+      intro N
+      exact ⟨N, le_rfl, (hu N).2⟩
 
 end topology
 
