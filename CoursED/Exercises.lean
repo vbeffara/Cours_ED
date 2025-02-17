@@ -137,6 +137,7 @@ theorem key (g₁ g₂ h₁ h₂ : G) (H1 : related H g₁ g₂) (H2 : related H
 
 instance (h_normal : normal H) : group (quotient G H) where
   mul := by -- Pass multiplication to the quotient
+    #check Quotient.map
     #check Quotient.map₂
     apply Quotient.map₂ group.mul
     intros g₁ g₂ H1 h₁ h₂ H2
@@ -146,11 +147,10 @@ instance (h_normal : normal H) : group (quotient G H) where
   e := sorry
   inv := sorry
   assoc := by
-    #check Quotient.map₂_mk
-    intros a b c
-    obtain ⟨a, rfl⟩ := a.exists_rep
-    obtain ⟨b, rfl⟩ := b.exists_rep
-    obtain ⟨c, rfl⟩ := c.exists_rep
+    #check Quotient.ind
+    apply Quotient.ind ; intro a
+    apply Quotient.ind ; intro b
+    apply Quotient.ind ; intro c
     simp only [Quotient.map₂_mk]
     simp [group.assoc]
   neutl := sorry
@@ -196,11 +196,55 @@ namespace arithmetic
 
 def divides (a b : ℕ) := ∃ k, b = a * k
 
-def prime (n : ℕ) := 2 ≤ n ∧ ∀ a, divides a n → a = 1 ∨ a = n
+def prime (n : ℕ) := n ≠ 0 ∧ n ≠ 1 ∧ ∀ a, divides a n → a = 1 ∨ a = n
+
+theorem eucl_div (n p : ℕ) (hp : 0 < p) : ∃ q : ℕ, ∃ r : Fin p, n = p * q + r := by
+  induction n with
+  | zero =>
+    use 0
+    use ⟨0, hp⟩
+    rfl
+  | succ n h =>
+    obtain ⟨q, r, h⟩ := h
+    by_cases hr : r.val + 1 = p
+    · use q + 1
+      use ⟨0, hp⟩
+      simp [h, ← hr]
+      ring
+    · use q
+      refine ⟨⟨r + 1, ?_⟩, ?_⟩
+      · have := r.2
+        omega
+      · simp [h]
+        ring
+
+theorem odd_square_form (hn : Odd n) : ∃ k : ℤ, n ^ 2 = 8 * k + 1 := by
+  unfold Odd at hn
+  obtain ⟨k, hk⟩ := hn
+  subst hk
+  have h1 := k.even_or_odd
+  cases' h1  with h h
+  · obtain ⟨l, hl⟩ := h
+    subst hl
+    ring_nf
+    use l + 2 * l ^ 2
+    ring
+  · obtain ⟨l, rfl⟩ := h
+    use 1 + 3 * l + 2 * l ^ 2
+    ring
 
 theorem prime_mod (n : ℕ) (hn : prime n) :
     (∃ k, n = 6 * k + 1) ∨ (∃ k, n = 6 * k + 5) := by
-  sorry
+  obtain ⟨q, r, rfl⟩ := eucl_div n 6 (by norm_num)
+  fin_cases r <;> simp [prime, divides] at * <;> contrapose! hn
+  · intro hq
+    use 2
+    use 3 * q
+    omega
+  · sorry
+  · sorry
+  · sorry
+  all_goals sorry
 
 theorem infinite_primes : ∀ a, ∃ b > a, prime b := by
   intro n
