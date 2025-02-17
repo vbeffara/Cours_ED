@@ -91,28 +91,62 @@ open group
 
 variable {G : Type} [group G]
 
-theorem group_inv_mul {a b : G} : inv (mul a b) = mul (inv b) (inv a) := by
-  sorry
+theorem group_inv_mul (a b : G) :
+    inv (mul a b) = mul (inv b) (inv a) := by
+  symm
+  apply inv_unique
+  rw [assoc]
+  have toto := assoc (inv a) a b
+  rw [← toto]
+  rw [invl]
+  rw [neutl]
+  simp [invl]
 
 structure group_action (G : Type) [group G] (E : Type) where
   act : G → E → E
   id : ∀ e : E, act 1 e = e
-  assoc : ∀ g₁ g₂ : G, ∀ e : E, act g₁ (act g₂ e) = act (g₁ * g₂) e
+  assoc : ∀ g₁ g₂ : G,
+    ∀ e : E, act g₁ (act g₂ e) = act (g₁ * g₂) e
 
 example : group_action G G where
   act g h := g * h
-  id := sorry
-  assoc := sorry
+  id := by
+    dsimp
+    intro e
+    apply neutl
+  assoc := by
+    dsimp
+    intro g h x
+    symm
+    apply assoc
 
 example : group_action G G where
   act g h := g * h * g⁻¹
-  id := sorry
-  assoc := sorry
+  id := by
+    dsimp
+    intro x
+    have key : (1 : G)⁻¹ = 1 := by
+      change inv 1 = 1
+      symm
+      apply inv_unique
+      change mul e e = 1
+      rw [neutr]
+      rfl
+    rw [key]
+    change mul (mul e x) e = x
+    rw [neutl, neutr]
+  assoc := by
+    dsimp
+    intro g₁ g₂ x
+    have : (g₁ * g₂)⁻¹ = g₂⁻¹ * g₁⁻¹ := group_inv_mul g₁ g₂
+    rw [this]
+    simp [assoc']
 
 structure subgroup (G : Type) [group G] where
   support : Set G
   id : 1 ∈ support
   mul : ∀ g ∈ support, ∀ h ∈ support, g * h ∈ support
+  inv : ∀ g ∈ support, g⁻¹ ∈ support
 
 variable {H : subgroup G}
 
@@ -122,13 +156,50 @@ def related (H : subgroup G) (g₁ g₂ : G) : Prop :=
 def normal (H : subgroup G) : Prop :=
   ∀ h ∈ H.support, ∀ g : G, g * h * g⁻¹ ∈ H.support
 
-theorem rel_equiv (H : subgroup G) : Equivalence (related H) := sorry
+theorem rel_equiv (H : subgroup G) :
+    Equivalence (related H) := by
+  constructor
+  · intro x
+    unfold related
+    use 1
+    constructor
+    · exact H.id
+    · change x = mul e x
+      rw [neutl]
+  · intro x y
+    intro ⟨h, h1, h2⟩
+    -- refine ⟨h⁻¹, ?_, ?_⟩
+    use h⁻¹
+    constructor
+    · apply H.inv
+      assumption
+    · rw [h2]
+      simp
+  · intro x y z ⟨g₁, h1, h2⟩ ⟨g₂, h3, h4⟩
+    use g₂ * g₁
+    constructor
+    · apply H.mul
+      exact h3
+      exact h1
+    · rw [h4, h2, assoc']
 
 def rel_setoid (H : subgroup G) : Setoid G where
   r := related H
   iseqv := rel_equiv H
 
-def quotient (G : Type) [group G] (H : subgroup G) := Quotient (rel_setoid H)
+def quotient (G : Type) [group G] (H : subgroup G) :=
+    Quotient (rel_setoid H)
+
+theorem inv_compat (hH : normal H) (rel : related H g₁ g₂) : related H g₁⁻¹ g₂⁻¹ := by
+  obtain ⟨h, h1, h2⟩ := rel
+  refine ⟨g₂⁻¹ * g₁, ?_, ?_⟩
+  · rw [h2]
+    change mul (inv (mul _ _)) _ ∈ _
+    rw [group_inv_mul]
+    have := hH h⁻¹ (H.inv h h1) g₁⁻¹
+    simp at this
+    exact this
+  · simp
 
 -- Multiplication is well-defined on the quotient
 theorem key (g₁ g₂ h₁ h₂ : G) (H1 : related H g₁ g₂) (H2 : related H h₁ h₂) :
@@ -144,8 +215,12 @@ instance (h_normal : normal H) : group (quotient G H) where
     apply key
     assumption
     assumption
-  e := sorry
-  inv := sorry
+  e := ⟦e⟧
+  inv := by
+    apply Quotient.map group.inv
+    intro x y hxy
+    apply inv_compat h_normal
+    assumption
   assoc := by
     #check Quotient.ind
     apply Quotient.ind ; intro a

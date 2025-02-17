@@ -16,7 +16,7 @@ open group
 
 variable {G : Type} [group G] {a b c : G}
 
-theorem mul_right (h : a = b) c : mul a c = mul b c := by
+theorem mul_right (h : a = b) (c : G) : mul a c = mul b c := by
   subst h
   rfl
 
@@ -44,7 +44,8 @@ instance : Mul G where mul := group.mul
 
 instance : Inv G where inv := group.inv
 
-theorem assoc' : (a * b) * c = a * (b * c) := assoc a b c
+theorem assoc' : (a * b) * c = a * (b * c) :=
+  assoc a b c
 
 @[simp]
 theorem invl' : a⁻¹ * a = 1 := invl a
@@ -53,7 +54,8 @@ theorem invl' : a⁻¹ * a = 1 := invl a
 theorem neutl' : 1 * a = a := neutl a
 
 example (h : c * a = c * b) : a = b := by
-  have : c⁻¹ * (c * a) = c⁻¹ * (c * b) := by simp [h]
+  have : c⁻¹ * (c * a) = c⁻¹ * (c * b) := by
+    simp [h]
   -- rw [← assoc] at this -- fails
   simp [← assoc'] at this
   exact this
