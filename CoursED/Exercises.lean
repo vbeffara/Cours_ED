@@ -125,30 +125,23 @@ structure subgroup (G : Type) [group G] where
 
 variable {H : subgroup G}
 
-def related (H : subgroup G) (g₁ g₂ : G) : Prop :=
-  ∃ h ∈ H.support, g₂ = h * g₁
+def related (H : subgroup G) (g₁ g₂ : G) : Prop := g₂ * g₁⁻¹ ∈ H.support
 
 def normal (H : subgroup G) : Prop :=
   ∀ h ∈ H.support, ∀ g : G, g * h * g⁻¹ ∈ H.support
 
 theorem rel_equiv (H : subgroup G) : Equivalence (related H) where
-  refl x := by
-    use 1
-    constructor
-    · exact H.id
-    · symm ; exact neutl x
+  refl x := by simp [related, H.id]
   symm := by
-    rintro x y ⟨h, h1, rfl⟩
-    use h⁻¹
-    constructor
-    · apply H.inv h h1
-    · simp
+    unfold related
+    intro x y h
+    convert H.inv _ h using 1
+    group
   trans := by
-    rintro x y z ⟨g₁, h1, rfl⟩ ⟨g₂, h3, rfl⟩
-    use g₂ * g₁
-    constructor
-    · exact H.mul g₂ h3 g₁ h1
-    · rw [assoc']
+    unfold related
+    rintro x y z h1 h2
+    convert H.mul _ h2 _ h1 using 1
+    group
 
 def rel_setoid (H : subgroup G) : Setoid G where
   r := related H
@@ -157,27 +150,18 @@ def rel_setoid (H : subgroup G) : Setoid G where
 def quotient (G : Type) [group G] (H : subgroup G) := Quotient (rel_setoid H)
 
 theorem inv_compat (hH : normal H) (rel : related H g₁ g₂) : related H g₁⁻¹ g₂⁻¹ := by
-  obtain ⟨h, h1, rfl⟩ := rel -- g₂ = h * g₁
-  refine ⟨g₁⁻¹ * h⁻¹ * g₁, ?_, ?_⟩
-  · convert hH h⁻¹ (H.inv h h1) g₁⁻¹
-    apply inv_unique
-    apply invr
-  · simp
+  have := hH _ (H.inv _ rel) g₁⁻¹
+  simp at this
+  simp [related]
+  assumption
 
 -- Multiplication is well-defined on the quotient
 theorem key (hH : normal H) {g₁ g₂ h₁ h₂ : G}
     (H1 : related H g₁ g₂) (H2 : related H h₁ h₂) :
     related H (g₁ * h₁) (g₂ * h₂) := by
-  obtain ⟨h₁', h1', rfl⟩ := H1 -- g₁ = h₁' * g₂
-  obtain ⟨h₂', h2', rfl⟩ := H2 -- h₁ = h₂' * h₂
-  unfold related
-  use h₁' * g₁ * h₂' * g₁⁻¹
-  constructor
-  · rw [assoc', assoc']
-    apply H.mul _ h1'
-    rw [← assoc']
-    exact hH h₂' h2' g₁
-  · group
+  unfold related at *
+  convert H.mul _ H1 _ (hH _ H2 g₁) using 1
+  group
 
 instance (h_normal : normal H) : group (quotient G H) where
   mul := by -- Pass multiplication to the quotient
