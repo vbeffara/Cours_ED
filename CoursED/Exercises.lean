@@ -232,9 +232,7 @@ end induction
 
 namespace arithmetic
 
-def divides (a b : ℕ) := ∃ k, b = a * k
-
-def prime (n : ℕ) := n ≠ 0 ∧ n ≠ 1 ∧ ∀ a, divides a n → a = 1 ∨ a = n
+def prime (n : ℕ) := n ≠ 0 ∧ n ≠ 1 ∧ ∀ a, a ∣ n → a = 1 ∨ a = n
 
 theorem eucl_div (n p : ℕ) (hp : 0 < p) :
     ∃ q : ℕ, ∃ r : Fin p, n = p * q + r := by
@@ -274,59 +272,45 @@ theorem odd_square_form (hn : Odd n) : ∃ k : ℤ, n ^ 2 = 8 * k + 1 := by
 theorem prime_mod (n : ℕ) (hn : prime n) :
     (∃ k, n = 6 * k + 1) ∨ (∃ k, n = 6 * k + 5) := by
   obtain ⟨q, r, rfl⟩ := eucl_div n 6 (by norm_num)
-  fin_cases r <;> simp [prime, divides] at * <;> contrapose! hn
-  · intro hq
-    use 2
-    use 3 * q
-    omega
+  fin_cases r <;> simp [prime] at * <;> contrapose! hn
+  · sorry
   · sorry
   · sorry
   · sorry
   all_goals sorry
 
-theorem infinite_primes : ∀ a, ∃ b > a, prime b := by
+theorem infinite_primes : ∀ n, ∃ p > n, prime p := by
   classical
   intro n
   let N := n.factorial + 1
-  have l1 : ∃ k : ℕ, (1 < k) ∧ (divides k N) := by
-    use N
-    constructor
-    · simp [N]
-      exact Nat.factorial_pos n
-    · unfold divides
-      use 1
-      simp
-  have l2 := Nat.find_spec l1
-  set k := Nat.find l1
-  have k_pos : 0 < k := Nat.zero_lt_of_lt l2.1
-  use k
-  constructor
-  · obtain ⟨l3, l4⟩ := l2
-    unfold divides at l4
-    contrapose! l4
-    intro a
-    simp [N]
-    intro l5
-    have l6 : divides k n.factorial := Nat.dvd_factorial k_pos l4
-    obtain ⟨b, l7⟩ := l6
-    have l8 : 1 = Nat.find l1 * (a - b) := by
+  have key : ∃ k : ℕ, (1 < k) ∧ (k ∣ N) := by
+    refine ⟨N, ?_, Nat.dvd_refl N⟩
+    simp [N, Nat.factorial_pos]
+  set p := Nat.find key
+  obtain ⟨one_lt_p : 1 < p, p_dvd_N : p ∣ N⟩ := Nat.find_spec key
+  have p_pos : 0 < p := Nat.zero_lt_of_lt one_lt_p
+  have p_ne_zero : p ≠ 0 := Nat.not_eq_zero_of_lt one_lt_p
+  have p_ne_one : p ≠ 1 := (Nat.ne_of_lt one_lt_p).symm
+  refine ⟨p, ?_, ?_⟩
+  · rw [dvd_def] at p_dvd_N
+    contrapose! p_dvd_N
+    intro a N_eq_mul
+    have k_dvd_n_factorial : p ∣ n.factorial := Nat.dvd_factorial p_pos p_dvd_N
+    obtain ⟨b, l7⟩ := k_dvd_n_factorial
+    have one_eq_mul : 1 = p * (a - b) := by
       rw [Nat.mul_sub]
-      simp [← l5, ← l7]
-    have l9 := Nat.eq_one_of_mul_eq_one_right l8.symm
+      simp [← N_eq_mul, ← l7, N]
+    have k_eq_one := Nat.eq_one_of_mul_eq_one_right one_eq_mul.symm
     omega
-  · unfold prime
-    obtain ⟨l3, l4⟩ := l2
-    have l5 : k ≠ 0 := Nat.not_eq_zero_of_lt l3
-    have l6 : k ≠ 1 := (Nat.ne_of_lt l3).symm
-    simp [l5, l6]
-    intro a ha
+  · simp [prime, p_ne_zero, p_ne_one]
+    intro a a_dvd_p
     by_cases ha' : a = 1
     · simp [ha']
-    · have a_ne_zero : a ≠ 0 := ne_zero_of_dvd_ne_zero l5 ha
+    · have a_ne_zero : a ≠ 0 := ne_zero_of_dvd_ne_zero p_ne_zero a_dvd_p
       have one_lt_a : 1 < a := by omega
-      have l7 : 1 < a ∧ divides a N := ⟨one_lt_a, dvd_trans ha l4⟩
-      have : k ≤ a := Nat.find_min' l1 l7
-      have l8 : a ≤ k := Nat.le_of_dvd k_pos ha
+      have a_dvd_N : a ∣ N := dvd_trans a_dvd_p p_dvd_N
+      have k_le_a : p ≤ a := Nat.find_min' key ⟨one_lt_a, a_dvd_N⟩
+      have a_le_k : a ≤ p := Nat.le_of_dvd p_pos a_dvd_p
       omega
 
 #print axioms infinite_primes
