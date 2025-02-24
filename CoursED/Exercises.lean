@@ -202,9 +202,11 @@ def mul (a : nat) : nat → nat
 
 variable {a b : nat}
 
+@[simp]
 theorem nat_add_zero : add a nat.zero = a := by
   rfl
 
+@[simp]
 theorem nat_zero_add : add nat.zero b = b := by
   induction b with
   | zero => rfl
@@ -212,7 +214,17 @@ theorem nat_zero_add : add nat.zero b = b := by
     rw [add]
     rw [hr]
 
-theorem nat_add_comm : add a b = add b a := sorry
+theorem toto : add a.succ b = (add a b).succ := by
+  induction b with
+  | zero => simp
+  | succ b hb =>
+    simp [add]
+    exact hb
+
+theorem nat_add_comm : add a b = add b a := by
+  induction b with
+  | zero => simp
+  | succ b hb => simp [add, hb, toto]
 
 theorem nat_mul_comm : mul a b = mul b a := sorry
 
@@ -224,25 +236,25 @@ def divides (a b : ℕ) := ∃ k, b = a * k
 
 def prime (n : ℕ) := n ≠ 0 ∧ n ≠ 1 ∧ ∀ a, divides a n → a = 1 ∨ a = n
 
-theorem eucl_div (n p : ℕ) (hp : 0 < p) : ∃ q : ℕ, ∃ r : Fin p, n = p * q + r := by
+theorem eucl_div (n p : ℕ) (hp : 0 < p) :
+    ∃ q : ℕ, ∃ r : Fin p, n = p * q + r := by
   induction n with
   | zero =>
     use 0
     use ⟨0, hp⟩
-    rfl
-  | succ n h =>
-    obtain ⟨q, r, h⟩ := h
-    by_cases hr : r.val + 1 = p
-    · use q + 1
-      use ⟨0, hp⟩
-      simp [h, ← hr]
+    simp
+  | succ n hn =>
+    obtain ⟨q, ⟨r, hr⟩, hqr⟩ := hn
+    have key : (r + 1 < p) ∨ (r + 1 = p) := by omega
+    cases key with
+    | inl h =>
+      use q, ⟨r + 1, h⟩
+      simp [hqr]
+      omega
+    | inr h =>
+      use q + 1, ⟨0, hp⟩
+      simp [hqr, ← h]
       ring
-    · use q
-      refine ⟨⟨r + 1, ?_⟩, ?_⟩
-      · have := r.2
-        omega
-      · simp [h]
-        ring
 
 theorem odd_square_form (hn : Odd n) : ∃ k : ℤ, n ^ 2 = 8 * k + 1 := by
   unfold Odd at hn
@@ -273,12 +285,50 @@ theorem prime_mod (n : ℕ) (hn : prime n) :
   all_goals sorry
 
 theorem infinite_primes : ∀ a, ∃ b > a, prime b := by
+  classical
   intro n
-  let N : ℕ := n.factorial + 1
-  have h1 : ∃ p : ℕ, prime p ∧ divides p N := sorry
-  obtain ⟨p, hp1, hp2⟩ := h1
-  refine ⟨p, ?_, hp1⟩
-  contrapose! hp2
-  sorry
+  let N := n.factorial + 1
+  have l1 : ∃ k : ℕ, (1 < k) ∧ (divides k N) := by
+    use N
+    constructor
+    · simp [N]
+      exact Nat.factorial_pos n
+    · unfold divides
+      use 1
+      simp
+  have l2 := Nat.find_spec l1
+  set k := Nat.find l1
+  have k_pos : 0 < k := Nat.zero_lt_of_lt l2.1
+  use k
+  constructor
+  · obtain ⟨l3, l4⟩ := l2
+    unfold divides at l4
+    contrapose! l4
+    intro a
+    simp [N]
+    intro l5
+    have l6 : divides k n.factorial := Nat.dvd_factorial k_pos l4
+    obtain ⟨b, l7⟩ := l6
+    have l8 : 1 = Nat.find l1 * (a - b) := by
+      rw [Nat.mul_sub]
+      simp [← l5, ← l7]
+    have l9 := Nat.eq_one_of_mul_eq_one_right l8.symm
+    omega
+  · unfold prime
+    obtain ⟨l3, l4⟩ := l2
+    have l5 : k ≠ 0 := Nat.not_eq_zero_of_lt l3
+    have l6 : k ≠ 1 := (Nat.ne_of_lt l3).symm
+    simp [l5, l6]
+    intro a ha
+    by_cases ha' : a = 1
+    · simp [ha']
+    · have a_ne_zero : a ≠ 0 := ne_zero_of_dvd_ne_zero l5 ha
+      have one_lt_a : 1 < a := by omega
+      have l7 : 1 < a ∧ divides a N := ⟨one_lt_a, dvd_trans ha l4⟩
+      have : k ≤ a := Nat.find_min' l1 l7
+      have l8 : a ≤ k := Nat.le_of_dvd k_pos ha
+      omega
+
+#print axioms infinite_primes
 
 end arithmetic
