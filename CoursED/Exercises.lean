@@ -279,38 +279,32 @@ theorem prime_mod (n : ℕ) (hn : prime n) :
   · sorry
   all_goals sorry
 
-theorem infinite_primes : ∀ n, ∃ p > n, prime p := by
-  classical
-  intro n
+theorem infinite_primes (n : ℕ) : ∃ p > n, prime p := by
   let N := n.factorial + 1
   have key : ∃ k : ℕ, (1 < k) ∧ (k ∣ N) := by
     refine ⟨N, ?_, Nat.dvd_refl N⟩
     simp [N, Nat.factorial_pos]
-  set p := Nat.find key
+  let p := Nat.find key
   obtain ⟨one_lt_p : 1 < p, p_dvd_N : p ∣ N⟩ := Nat.find_spec key
-  have p_pos : 0 < p := Nat.zero_lt_of_lt one_lt_p
-  have p_ne_zero : p ≠ 0 := Nat.not_eq_zero_of_lt one_lt_p
-  have p_ne_one : p ≠ 1 := (Nat.ne_of_lt one_lt_p).symm
+  have p_pos : 0 < p := by omega
+  have p_ne_zero : p ≠ 0 := by omega
+  have p_ne_one : p ≠ 1 := by omega
   refine ⟨p, ?_, ?_⟩
-  · rw [dvd_def] at p_dvd_N
-    contrapose! p_dvd_N
-    intro a N_eq_mul
-    have k_dvd_n_factorial : p ∣ n.factorial := Nat.dvd_factorial p_pos p_dvd_N
-    obtain ⟨b, l7⟩ := k_dvd_n_factorial
-    have one_eq_mul : 1 = p * (a - b) := by
-      rw [Nat.mul_sub]
-      simp [← N_eq_mul, ← l7, N]
-    have k_eq_one := Nat.eq_one_of_mul_eq_one_right one_eq_mul.symm
-    omega
-  · simp [prime, p_ne_zero, p_ne_one]
+  · contrapose! p_ne_one
+    obtain ⟨a, N_eq_mul⟩ := p_dvd_N
+    obtain ⟨b, factorial_eq_mul⟩ := Nat.dvd_factorial p_pos p_ne_one
+    have one_eq_mul : p * (a - b) = 1 := by
+      simp [Nat.mul_sub, ← N_eq_mul, ← factorial_eq_mul, N]
+    exact Nat.eq_one_of_mul_eq_one_right one_eq_mul
+  · simp only [prime, ne_eq, p_ne_zero, not_false_eq_true, p_ne_one, true_and]
     intro a a_dvd_p
-    by_cases ha' : a = 1
-    · simp [ha']
+    obtain rfl | a_ne_one := eq_or_ne a 1
+    · tauto
     · have a_ne_zero : a ≠ 0 := ne_zero_of_dvd_ne_zero p_ne_zero a_dvd_p
       have one_lt_a : 1 < a := by omega
       have a_dvd_N : a ∣ N := dvd_trans a_dvd_p p_dvd_N
-      have k_le_a : p ≤ a := Nat.find_min' key ⟨one_lt_a, a_dvd_N⟩
-      have a_le_k : a ≤ p := Nat.le_of_dvd p_pos a_dvd_p
+      have p_le_a : p ≤ a := Nat.find_min' key ⟨one_lt_a, a_dvd_N⟩
+      have a_le_p : a ≤ p := Nat.le_of_dvd p_pos a_dvd_p
       omega
 
 #print axioms infinite_primes
